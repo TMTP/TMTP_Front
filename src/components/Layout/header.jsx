@@ -1,21 +1,21 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-import useHeaderDetail from "../../hooks/components/header/hook"
+import React, { useState } from "react";
+import { Link } from "gatsby";
+import useHeaderDetail from "../../hooks/components/header/hook";
 
 const Header = () => {
-  const { title } = useHeaderDetail()
-  const [searchTerm, setSearchTerm] = useState("")
+  const { title } = useHeaderDetail();
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = event => {
-    event.preventDefault()
+  const handleSearch = (event) => {
+    event.preventDefault();
     if (searchTerm !== "") {
-      window.location.href = `/search/${searchTerm}`
+      window.location.href = `/search/${searchTerm}`;
     }
-  }
+  };
 
-  const handleChange = event => {
-    setSearchTerm(event.target.value)
-  }
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
 
   return (
     <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6">
@@ -50,7 +50,7 @@ const Header = () => {
         </form>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
