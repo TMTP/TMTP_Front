@@ -9,15 +9,15 @@ const Footer = () => {
       <ul className="flex flex-row w-[200px] justify-between mb-[10px] text-white">
         {data.map((data, index) => {
           return (
-            <a key={index} href={data.url}>
+            <Link to={data.url} key={index}>
               {data.name}
-            </a>
+            </Link>
           )
         })}
       </ul>
       <span className=" text-red-800">
         {copyright.map(data => {
-          return <a href={data.url}>{data.name} ⓒ.All rights reserved.</a>
+          return <Link to={data.url}>{data.name} ⓒ.All rights reserved.</Link>
         })}
       </span>
     </div>
