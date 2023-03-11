@@ -1,17 +1,17 @@
-import * as React from "react"
-import useFooterDetail from "../../hooks/components/footer/hook"
-import { Link } from "gatsby"
+import * as React from "react";
+import useFooterDetail from "../../hooks/components/footer/hook";
+import { Link } from "gatsby";
 
 const Footer = () => {
-  const { data, copyright } = useFooterDetail()
+  const { data, copyright } = useFooterDetail();
   return (
     <footer className="bg-gray-800 text-gray-400 py-4 px-4 sm:flex sm:justify-between">
       <div className="flex justify-center sm:justify-start mb-2 sm:mb-0">
         <p className="text-center sm:text-left text-white">
-          {copyright.map(data => {
-            return <Link to={data.url}>{data.name}</Link>
+          {copyright.map((data) => {
+            return <Link to={data.url}>{data.name}</Link>;
           })}{" "}
-          ⓒ.All rights reserved.
+          <span>ⓒ.All rights reserved.</span>
         </p>
       </div>
       <div className="flex justify-center sm:justify-end">
@@ -21,12 +21,12 @@ const Footer = () => {
               <Link to={data.url} key={index}>
                 {data.name}
               </Link>
-            )
+            );
           })}
         </ul>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
