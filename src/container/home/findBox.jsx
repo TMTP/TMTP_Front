@@ -1,42 +1,13 @@
 import * as React from "react";
+import useSeoDetail from "../../hooks/components/seo/hook";
 
-const findBox = () => {
+const FindBox = () => {
+  const data = useSeoDetail();
   return (
     <div>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
-      <p>tutorial</p>
+      <p>{data.site.siteMetadata.title}</p>
     </div>
   );
 };
 
-export default findBox;
+export default FindBox;

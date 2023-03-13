@@ -4,7 +4,8 @@
 module.exports = {
   siteMetadata: {
     title: `TMTP`,
-    description: `Websites that provide services for vulnerable people who are not fully aware of the drug or are not easily identified.`,
+    description:
+      "Websites that provide services for vulnerable people who are not fully aware of the drug or are not easily identified.",
   },
   plugins: [
     `gatsby-plugin-image`,
