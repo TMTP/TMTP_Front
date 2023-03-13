@@ -3,8 +3,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `TMTP`,
+    description: `Websites that provide services for vulnerable people who are not fully aware of the drug or are not easily identified.`,
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
@@ -34,4 +34,4 @@ module.exports = {
       },
     },
   ],
-}
+};
