@@ -5,8 +5,6 @@ module.exports = {
   siteMetadata: {
     title: `TMTP`,
     description: `Websites that provide services for vulnerable people who are not fully aware of the drug or are not easily identified.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -22,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `TMTP`,
+        short_name: `TMTP`,
         start_url: `/`,
         background_color: `#663399`,
         // This will impact how browsers show your PWA/website
