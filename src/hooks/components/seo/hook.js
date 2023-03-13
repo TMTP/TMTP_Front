@@ -1,8 +1,9 @@
-import { graphql, useStaticQuery } from "gatsby";
+import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-function useSeoDetail() {
+const useSeoDetail = () => {
   const data = useStaticQuery(graphql`
-    query {
+    {
       site {
         siteMetadata {
           title
@@ -12,6 +13,6 @@ function useSeoDetail() {
     }
   `);
   return { data };
-}
+};
 
 export default useSeoDetail;
