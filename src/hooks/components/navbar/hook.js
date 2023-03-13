@@ -6,7 +6,7 @@ function useNavbarDetail() {
     },
     {
       name: "약품 성분",
-      url: "/dd",
+      url: "/search",
     },
   ];
   return { data };

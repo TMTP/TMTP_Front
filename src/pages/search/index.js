@@ -1,11 +1,14 @@
 import * as React from "react";
 import Layout from "../../components/Layout/layout";
 import PageMeta from "../../components/PageMeta";
+import DrugBox from "../../container/search/drugBox";
 
 const SearchIndexPage = () => {
   return (
     <main>
-      <Layout>hi im search</Layout>
+      <Layout>
+        <DrugBox />
+      </Layout>
     </main>
   );
 };

@@ -22,7 +22,7 @@ const Header = () => {
     <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6">
       <div className="flex items-center flex-shrink-0 text-white">
         <Link to="/" className="font-bold text-xl tracking-tight">
-          {title}
+          <h2>{title}</h2>
         </Link>
       </div>
       <div className="flex items-center w-auto">
