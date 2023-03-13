@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby";
 
 function useSeoDetail() {
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    query {
       site {
         siteMetadata {
           title
