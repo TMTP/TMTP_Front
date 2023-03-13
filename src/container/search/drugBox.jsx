@@ -1,7 +1,21 @@
 import * as React from "react";
+import useSeoDetail from "../../hooks/components/seo/hook";
 
-const drugBox = () => {
-  return <h2>hi im search</h2>;
+const DrugBox = () => {
+  const { data } = useSeoDetail();
+  return (
+    <div>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+      <p>{data.site.siteMetadata.title}</p>
+    </div>
+  );
 };
 
-export default drugBox;
+export default DrugBox;

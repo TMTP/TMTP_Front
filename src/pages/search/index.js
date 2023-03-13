@@ -1,6 +1,5 @@
 import * as React from "react";
 import Layout from "../../components/Layout/layout";
-import PageMeta from "../../components/PageMeta";
 import Seo from "../../components/seo";
 import DrugBox from "../../container/search/drugBox";
 

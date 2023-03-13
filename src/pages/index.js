@@ -2,7 +2,6 @@ import * as React from "react";
 import Layout from "../components/Layout/layout";
 import SearchBar from "../container/home/searchBox";
 import FindBox from "../container/home/findBox";
-import PageMeta from "../components/PageMeta";
 import Seo from "../components/seo";
 
 const IndexPage = () => {
