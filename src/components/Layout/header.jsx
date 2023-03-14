@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import useHeaderDetail from "../../hooks/components/header/hook";
 import { FaSearch } from "react-icons/fa";
 import { StaticImage } from "gatsby-plugin-image";
+import Logo from "../../../static/Logo.svg";
 
 const Header = () => {
   const { title, data } = useHeaderDetail();
@@ -22,8 +23,8 @@ const Header = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6">
       <div className="flex items-center flex-shrink-0 text-white">
-        <img src="./Logo.svg" alt="LogoImg" />
-        <Link to="/" className="font-bold text-xl tracking-tight">
+        <img src={Logo} alt="LogoImg" />
+        <Link to="/" className="ml-2 font-bold text-xl tracking-tight">
           <h2>{title}</h2>
         </Link>
       </div>
