@@ -3,26 +3,22 @@ import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search/${query}`);
-  };
-
-  const handleInputChange = (e) => {
-    setQuery(e.target.value);
+    navigate(`/search/${searchQuery}`);
   };
 
   return (
     <div className="flex items-center justify-center my-10">
-      <form onSubmit={handleSubmit} className="relative w-1/2 sm:hidden">
+      <form onSubmit={handleSearch} className="relative w-1/2 sm:hidden">
         <input
           type="text"
           placeholder="Search"
           className="block w-full border border-gray-300 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-          value={query}
-          onChange={handleInputChange}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           autoFocus
         />
         <button

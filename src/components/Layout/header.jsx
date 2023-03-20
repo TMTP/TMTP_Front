@@ -2,22 +2,16 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import useHeaderDetail from "../../hooks/components/header/hook";
 import { FaSearch } from "react-icons/fa";
-import { StaticImage } from "gatsby-plugin-image";
 import Logo from "../../../static/Logo.svg";
+import { navigate } from "gatsby";
 
 const Header = () => {
   const { title, data } = useHeaderDetail();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    if (searchTerm !== "") {
-      window.location.href = `/search/${searchTerm}`;
-    }
-  };
-
-  const handleChange = (event) => {
-    setSearchTerm(event.target.value);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search/${searchQuery}`);
   };
 
   return (
@@ -35,8 +29,8 @@ const Header = () => {
               className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
               type="text"
               placeholder="Search"
-              value={searchTerm}
-              onChange={handleChange}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             ></input>
             <button
               className="flex-shrink-0 bg-white hover:bg-gray-100 border-white hover:border-gray-100 text-blue-500 font-semibold border-4 py-1 px-2 rounded"

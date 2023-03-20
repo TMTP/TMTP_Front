@@ -31,7 +31,7 @@ const SearchDrugBox = ({ searchQuery }) => {
 
     return (
       <>
-        <h1>Search Results for {searchQuery}</h1>
+        <h1>{searchQuery}에 대한 결과입니다.</h1>
         <ul>
           {filteredUsers.map(({ node }) => (
             <li key={node.id}>
@@ -47,7 +47,7 @@ const SearchDrugBox = ({ searchQuery }) => {
     );
   } catch (err) {
     console.error(err);
-    return <p>An error occurred while searching for {searchQuery}.</p>;
+    return <p>{searchQuery}에 해당하는 약품이 없습니다.</p>;
   }
 };
 
