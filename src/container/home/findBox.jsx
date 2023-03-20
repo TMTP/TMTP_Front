@@ -1,8 +1,27 @@
-import * as React from "react";
-import useDrugBoxDetail from "../../hooks/Container/Home/Search/hook";
+import React, { useState } from "react";
+import { navigate } from "gatsby";
 
 const FindBox = () => {
-  return null;
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search/${searchQuery}`);
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSearch}>
+        <input
+          type="text"
+          placeholder="Search for first name"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+    </>
+  );
 };
 
 export default FindBox;

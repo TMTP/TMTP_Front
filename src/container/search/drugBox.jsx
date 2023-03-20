@@ -8,7 +8,7 @@ const DrugBox = () => {
     <div>
       {data.allRandomUser.edges.slice(0, 10).map(({ node }) => (
         <div key={node.id}>
-          <img src={node.picture.medium} alt={node.name.first} />
+          <img src={node.picture.large} alt={node.name.first} />
           <p>{`${node.name.title} ${node.name.first} ${node.name.last}`}</p>
           <p>{node.gender}</p>
         </div>
