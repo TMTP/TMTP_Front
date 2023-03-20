@@ -1,30 +1,9 @@
 import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import useSearchDrugDetail from "../../hooks/Container/Search/searchDrugBox/hook";
 
 const SearchDrugBox = ({ searchQuery }) => {
+  const { data } = useSearchDrugDetail();
   try {
-    const data = useStaticQuery(graphql`
-      query RandomUserQuery {
-        allRandomUser {
-          edges {
-            node {
-              gender
-              name {
-                title
-                first
-                last
-              }
-              picture {
-                large
-                medium
-                thumbnail
-              }
-            }
-          }
-        }
-      }
-    `);
-
     const filteredUsers = data.allRandomUser.edges.filter(({ node }) =>
       node.name.first.toLowerCase().includes(searchQuery.toLowerCase())
     );

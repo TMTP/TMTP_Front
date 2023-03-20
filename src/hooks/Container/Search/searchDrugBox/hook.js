@@ -1,3 +1,5 @@
+import { useStaticQuery, graphql } from "gatsby";
+
 function useSearchDrugDetail() {
   const data = useStaticQuery(graphql`
     query RandomUserQuery {
