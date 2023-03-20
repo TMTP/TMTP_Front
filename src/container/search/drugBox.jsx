@@ -1,5 +1,5 @@
 import * as React from "react";
-import useDrugBoxDetail from "../../hooks/Container/Home/Search/hook";
+import useDrugBoxDetail from "../../hooks/Container/Search/drugBox/hook";
 
 const DrugBox = () => {
   const { data } = useDrugBoxDetail();

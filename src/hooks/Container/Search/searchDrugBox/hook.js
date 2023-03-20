@@ -1,6 +1,4 @@
-import { useStaticQuery, graphql } from "gatsby";
-
-function useDrugBoxDetail() {
+function useSearchDrugDetail() {
   const data = useStaticQuery(graphql`
     query RandomUserQuery {
       allRandomUser {
@@ -25,4 +23,4 @@ function useDrugBoxDetail() {
   return { data };
 }
 
-export default useDrugBoxDetail;
+export default useSearchDrugDetail;
