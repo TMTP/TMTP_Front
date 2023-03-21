@@ -36,6 +36,16 @@ exports.sourceNodes = async ({ actions }) => {
         medium: user.picture.medium,
         thumbnail: user.picture.thumbnail,
       },
+      location: {
+        street: {
+          number: user.location.street.number,
+          name: user.location.street.name,
+        },
+        city: user.location.city,
+        state: user.location.state,
+        country: user.location.country,
+      },
+
       // etc...
     };
 

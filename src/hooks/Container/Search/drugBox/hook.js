@@ -17,6 +17,15 @@ function useDrugBoxDetail() {
               medium
               thumbnail
             }
+            location {
+              street {
+                name
+                number
+              }
+              city
+              country
+              state
+            }
           }
         }
       }

@@ -17,6 +17,15 @@ function useSearchDrugDetail() {
               medium
               thumbnail
             }
+            location {
+              street {
+                name
+                number
+              }
+              city
+              country
+              state
+            }
           }
         }
       }
