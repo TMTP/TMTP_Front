@@ -2,6 +2,7 @@ import * as React from "react";
 import Layout from "../../components/Layout/layout";
 import Seo from "../../components/seo";
 import SearchDrugBox from "../../container/search/searchDrugBox";
+import SearchBar from "../../container/home/searchBox";
 
 const SearchIndexPage = ({ location }) => {
   const searchQuery = location.pathname
@@ -10,6 +11,7 @@ const SearchIndexPage = ({ location }) => {
   return (
     <main>
       <Layout>
+        <SearchBar />
         <SearchDrugBox searchQuery={searchQuery} />
       </Layout>
     </main>

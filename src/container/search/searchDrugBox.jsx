@@ -11,7 +11,7 @@ const SearchDrugBox = ({ searchQuery }) => {
 
     return (
       <div className="bg-white p-6 rounded-md shadow-md">
-        <h1 className="text-3xl font-bold mb-8">
+        <h1 className="text-3xl text-center font-bold mb-8 sm:text-base sm:mb-5 text-red-300">
           {searchQuery}에 대한 결과입니다.
         </h1>
         <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-center">

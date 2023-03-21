@@ -25,6 +25,18 @@ function Navbar() {
           .grid-cols-5 > *:nth-child(n + 4) {
             grid-column: span 2;
           }
+          /* Add the following styles for sm screen size */
+          .sm\:py-4 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+          }
+          .sm\:px-6 {
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+          .text-lg.sm\:text-xl {
+            font-size: 1.25rem;
+          }
         }
         @media (max-width: 639px) {
           .grid-cols-5 {

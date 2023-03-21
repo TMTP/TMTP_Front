@@ -6,6 +6,9 @@ const DrugBox = () => {
 
   return (
     <div className="bg-white p-6 rounded-md shadow-md ">
+      <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
+        전체 약품에 대한 정보입니다.
+      </h1>
       <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-center ">
         {data.allRandomUser.edges.slice(0, 30).map(({ node }) => (
           <div className="flex flex-col sm:flex-row justify-between items-center w-full mb-2 border-[2px] border-black bg-gray-100">
