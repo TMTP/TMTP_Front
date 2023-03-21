@@ -2,11 +2,11 @@ function useNavbarDetail() {
   const data = [
     {
       name: "약품 정보",
-      url: "/search",
+      url: "/product",
     },
     {
       name: "약품 성분",
-      url: "/search",
+      url: "/product",
     },
   ];
   return { data };

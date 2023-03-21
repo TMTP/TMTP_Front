@@ -1,11 +1,19 @@
 import * as React from "react";
+import Layout from "../../components/Layout/layout";
 import Seo from "../../components/seo";
+import DrugBox from "../../container/product/drugBox";
 
-const SearchIndexPage = () => {
-  return null;
+const ProductIndexPage = () => {
+  return (
+    <main>
+      <Layout>
+        <DrugBox />
+      </Layout>
+    </main>
+  );
 };
 
-export default SearchIndexPage;
+export default ProductIndexPage;
 
 export const Head = () => {
   return (
