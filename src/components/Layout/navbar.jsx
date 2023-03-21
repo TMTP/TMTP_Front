@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import useNavbarDetail from "../../hooks/components/navbar/hook";
 
 function Navbar() {
   const { data } = useNavbarDetail();
   return (
-    <div className="grid grid-cols-5  lg:grid-cols-2 lg:px-16">
+    <div className="grid grid-cols-5 sm:w-auto sm:h-auto  lg:grid-cols-2 lg:px-16">
       {data.map((data, index) => {
         return (
           <Link
