@@ -8,7 +8,7 @@ const IndexPage = () => {
   return (
     <main>
       <Layout>
-        <SearchBar />
+        <SearchBar width="w-1/2" marginY="my-10" autofocus={true} />
         <ShapeFindBox />
       </Layout>
     </main>
