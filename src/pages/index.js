@@ -8,7 +8,12 @@ const IndexPage = () => {
   return (
     <main>
       <Layout>
-        <SearchBar width="w-1/2" marginY="my-10" autofocus={true} />
+        <SearchBar
+          width="w-1/2"
+          marginY="my-10"
+          autofocus={true}
+          placeholder="이름으로 검색하세요"
+        />
         <ShapeFindBox />
       </Layout>
     </main>

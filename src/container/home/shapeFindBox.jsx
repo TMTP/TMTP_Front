@@ -1,4 +1,5 @@
 import React from "react";
+import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "./searchBox";
 
 const ShapeFindBox = () => {
@@ -10,9 +11,16 @@ const ShapeFindBox = () => {
         </div>
         <div className="flex-col flex ">
           <div className="flex justify-center">
-            <SearchBar marginY="my-2" width="w-full" autofocus={false} />
+            <SearchBar
+              marginY="my-2"
+              width="w-full"
+              autofocus={false}
+              placeholder="모양으로 검색하세요"
+            />
           </div>
-          <div></div>
+          <div>
+            <ShapeTable />
+          </div>
           Content goes here
         </div>
       </div>

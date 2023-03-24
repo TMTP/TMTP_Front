@@ -1,5 +1,4 @@
 import { graphql, useStaticQuery } from "gatsby";
-import * as React from "react";
 
 function useHeaderDetail() {
   const title = "TMTP 이약저약";

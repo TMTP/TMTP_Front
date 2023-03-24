@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import useNavbarDetail from "../../hooks/components/navbar/hook";
+import useNavbarDetail from "../../hooks/components/Layout/navbar/hook";
 
 function Navbar() {
   const { data } = useNavbarDetail();
@@ -17,36 +17,6 @@ function Navbar() {
           </Link>
         );
       })}
-      <style jsx>{`
-        @media (max-width: 1023px) {
-          .grid-cols-5 {
-            grid-template-columns: repeat(3, 1fr);
-          }
-          .grid-cols-5 > *:nth-child(n + 4) {
-            grid-column: span 2;
-          }
-          /* Add the following styles for sm screen size */
-          .sm\:py-4 {
-            padding-top: 8px;
-            padding-bottom: 8px;
-          }
-          .sm\:px-6 {
-            padding-left: 12px;
-            padding-right: 12px;
-          }
-          .text-lg.sm\:text-xl {
-            font-size: 1.25rem;
-          }
-        }
-        @media (max-width: 639px) {
-          .grid-cols-5 {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .grid-cols-5 > *:nth-child(n + 4) {
-            grid-column: span 1;
-          }
-        }
-      `}</style>
     </div>
   );
 }

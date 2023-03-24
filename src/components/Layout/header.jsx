@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-import useHeaderDetail from "../../hooks/components/header/hook";
+import useHeaderDetail from "../../hooks/components/Layout/header/hook";
 import { FaSearch } from "react-icons/fa";
 import Logo from "../../../static/Logo.svg";
 import { navigate } from "gatsby";
 
 const Header = () => {
-  const { title, data } = useHeaderDetail();
+  const { title } = useHeaderDetail();
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {

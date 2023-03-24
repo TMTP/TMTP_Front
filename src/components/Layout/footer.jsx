@@ -1,5 +1,5 @@
 import * as React from "react";
-import useFooterDetail from "../../hooks/components/footer/hook";
+import useFooterDetail from "../../hooks/components/Layout/footer/hook";
 import { Link } from "gatsby";
 
 const Footer = () => {
