@@ -63,3 +63,26 @@ exports.sourceNodes = async ({ actions }) => {
 
   return;
 };
+
+exports.createPages = async ({ actions }) => {
+  const { createPage } = actions;
+
+  // fetch raw data from the randomuser api
+  const fetchRandomUser = () =>
+    axios.get(`https://randomuser.me/api/?results=500`);
+  // await for results
+  const res = await fetchRandomUser();
+
+  // map into these results and create nodes
+  res.data.results.forEach((user, i) => {
+    const pagePath = `/product/${user.name.last}`;
+
+    createPage({
+      path: pagePath,
+      component: path.resolve(`src/container/product/drugDetail.js`),
+      context: {
+        last: user.name.last,
+      },
+    });
+  });
+};

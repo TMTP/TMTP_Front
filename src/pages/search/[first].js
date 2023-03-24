@@ -1,10 +1,9 @@
 import * as React from "react";
 import Layout from "../../components/Layout/layout";
-import Seo from "../../components/seo";
 import SearchDrugBox from "../../container/search/searchDrugBox";
 import SearchBar from "../../container/home/searchBox";
 
-const SearchIndexPage = ({ location }) => {
+const SearchPage = ({ location }) => {
   const searchQuery = location.pathname
     .replace("/search/", "")
     .replace(/\/$/, "");
@@ -18,6 +17,6 @@ const SearchIndexPage = ({ location }) => {
   );
 };
 
-export default SearchIndexPage;
+export default SearchPage;
 
 <title>TMTP</title>;

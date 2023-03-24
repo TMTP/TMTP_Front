@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { navigate } from "gatsby";
 
-const FindBox = () => {
+const ShapeFindBox = () => {
   return null;
 };
 
-export default FindBox;
+export default ShapeFindBox;

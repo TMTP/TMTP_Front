@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import * as React from "react";
 import useDrugBoxDetail from "../../hooks/Container/Product/drugBox/hook";
 
@@ -19,12 +20,15 @@ const DrugBox = () => {
                   alt={node.name.first}
                   className="rounded-full h-16 w-16 sm:h-10 sm:w-10 mr-4 border-[2px]"
                 />
-                <div>
+                <Link
+                  to={`/product/${node.name.last}`}
+                  state={{ last: node.name.last }}
+                >
                   <p className="font-bold text-lg sm:text-base truncate ">
-                    {`${node.name.title} ${node.name.first} ${node.name.last}`}
+                    {` ${node.name.first} ${node.name.last}`}
                   </p>
                   <p className="hidden sm:block ">{node.gender}</p>
-                </div>
+                </Link>
               </div>
               <div className="flex flex-col justify-between w-full sm:hidden ">
                 <div className="text-right">

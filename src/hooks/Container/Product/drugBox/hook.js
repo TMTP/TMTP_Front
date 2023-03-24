@@ -6,6 +6,7 @@ function useDrugBoxDetail() {
       allRandomUser {
         edges {
           node {
+            id
             gender
             name {
               title
@@ -31,6 +32,7 @@ function useDrugBoxDetail() {
       }
     }
   `);
+
   return { data };
 }
 

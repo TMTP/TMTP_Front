@@ -29,7 +29,7 @@ const SearchDrugBox = ({ searchQuery }) => {
                   />
                   <div>
                     <p className="font-bold text-lg sm:text-base truncate">
-                      {`${node.name.title} ${node.name.first} ${node.name.last}`}
+                      {` ${node.name.first} ${node.name.last}`}
                     </p>
                     <p className="hidden sm:block">{node.gender}</p>
                   </div>

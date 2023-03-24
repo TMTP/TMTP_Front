@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../components/Layout/layout";
 import SearchBar from "../container/home/searchBox";
-import FindBox from "../container/home/findBox";
+import ShapeFindBox from "../container/home/shapeFindBox";
 import Seo from "../components/seo";
 
 const IndexPage = () => {
@@ -9,7 +9,7 @@ const IndexPage = () => {
     <main>
       <Layout>
         <SearchBar />
-        <FindBox />
+        <ShapeFindBox />
       </Layout>
     </main>
   );
