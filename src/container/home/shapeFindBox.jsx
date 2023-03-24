@@ -1,4 +1,5 @@
 import React from "react";
+import ColorTable from "../../components/shapeFind/colorTable";
 import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "./searchBox";
 
@@ -19,6 +20,7 @@ const ShapeFindBox = () => {
             />
           </div>
           <div>
+            <ColorTable />
             <ShapeTable />
           </div>
           Content goes here
