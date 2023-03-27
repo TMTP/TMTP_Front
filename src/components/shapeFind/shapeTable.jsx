@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useShapeTableDetail from "../../hooks/components/shapeFind/shapeTable/hook";
 
-const ShapeTable = () => {
+const ShapeTable = ({ handleShape, handleForm, handleLine }) => {
   const { baseName, drug } = useShapeTableDetail();
   const [showShapeModal, setShowShapeModal] = useState(false);
   const [selectedShape, setSelectedShape] = useState("");
@@ -11,6 +11,12 @@ const ShapeTable = () => {
 
   const [showSplitLineModal, setShowSplitLineModal] = useState(false);
   const [selectedSplitLine, setSelectedSplitLine] = useState("");
+
+  useEffect(() => {
+    handleShape(selectedShape);
+    handleForm(selectedForm);
+    handleLine(selectedSplitLine);
+  }, [selectedShape]);
 
   const handleShapeClick = (shape) => {
     setSelectedShape(shape);

@@ -4,8 +4,17 @@ import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "./searchBox";
 
 const ShapeFindBox = () => {
-  const handleSelectedColors = (colors) => {
+  const handleSelectedColor = (colors) => {
     console.log(colors);
+  };
+  const handleShape = (shape) => {
+    console.log(shape);
+  };
+  const handleForm = (form) => {
+    console.log(form);
+  };
+  const handleLine = (line) => {
+    console.log(line);
   };
   return (
     <div className="flex flex-col items-center h-screen">
@@ -23,8 +32,12 @@ const ShapeFindBox = () => {
             />
           </div>
           <div>
-            <ColorTable handleSelectedColors={handleSelectedColors} />
-            <ShapeTable />
+            <ColorTable handleSelectedColors={handleSelectedColor} />
+            <ShapeTable
+              handleShape={handleShape}
+              handleForm={handleForm}
+              handleLine={handleLine}
+            />
           </div>
         </div>
       </div>
