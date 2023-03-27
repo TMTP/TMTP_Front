@@ -54,7 +54,7 @@ const ShapeTable = () => {
         {baseName.map((name, index) => (
           <button
             key={index}
-            className="border border-black px-4 py-2 rounded-md hover:bg-gray-200"
+            className="border sm:px-1 sm:py-1 sm:text-sm border-black px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
             onClick={() => {
               if (index === 0) setShowShapeModal(true);
               if (index === 1) setShowFormModal(true);
@@ -76,21 +76,21 @@ const ShapeTable = () => {
             modal.showModal && (
               <div className="fixed inset-0 z-50 flex items-center justify-center">
                 <div className="absolute inset-0 opacity-75"></div>
-                <div className="z-10 bg-white p-4 rounded-md">
+                <div className="z-10 bg-white grid grid-cols-4 border-[1px] border-black p-4 gap-1 rounded-md relative sm:text-xs">
                   {modal.options.map((option) => (
                     <button
                       key={option}
-                      className="px-4 py-2 rounded-md hover:bg-gray-200"
+                      className="px-4 py-2 rounded-md hover:bg-cyan-100 bg-gray-200"
                       onClick={() => modal.handleClick(option)}
                     >
                       {option.toLowerCase()}
                     </button>
                   ))}
                   <button
-                    className="px-4 py-2 rounded-md hover:bg-gray-200"
+                    className="absolute top-0 right-0"
                     onClick={() => modal.setShowModal(false)}
                   >
-                    close
+                    ❌
                   </button>
                 </div>
               </div>
