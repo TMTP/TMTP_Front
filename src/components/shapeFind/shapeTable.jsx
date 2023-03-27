@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import useShapeTableDetail from "../../hooks/components/shapeFind/shapeTable/hook";
 
 const ShapeTable = () => {
+  const { baseName, drug } = useShapeTableDetail();
   const [showShapeModal, setShowShapeModal] = useState(false);
   const [selectedShape, setSelectedShape] = useState("");
 
@@ -25,125 +27,74 @@ const ShapeTable = () => {
     setShowSplitLineModal(false);
   };
 
+  const modals = [
+    {
+      showModal: showShapeModal,
+      setShowModal: setShowShapeModal,
+      options: drug.shape,
+      handleClick: handleShapeClick,
+    },
+    {
+      showModal: showFormModal,
+      setShowModal: setShowFormModal,
+      options: drug.form,
+      handleClick: handleFormClick,
+    },
+    {
+      showModal: showSplitLineModal,
+      setShowModal: setShowSplitLineModal,
+      options: drug.splitLine,
+      handleClick: handleSplitLineClick,
+    },
+  ];
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex space-x-4 mb-8">
-        <button
-          className="border border-black px-4 py-2 rounded-md hover:bg-gray-200"
-          onClick={() => setShowShapeModal(true)}
-        >
-          {selectedShape ? selectedShape : "모양 선택"}
-        </button>
-        <button
-          className="border border-black px-4 py-2 rounded-md hover:bg-gray-200"
-          onClick={() => setShowFormModal(true)}
-        >
-          {selectedForm ? selectedForm : "제형 선택"}
-        </button>
-        <button
-          className="border border-black px-4 py-2 rounded-md hover:bg-gray-200"
-          onClick={() => setShowSplitLineModal(true)}
-        >
-          {selectedSplitLine ? selectedSplitLine : "분할선 선택"}
-        </button>
-        {showShapeModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="absolute inset-0 opacity-75"></div>
-            <div className="z-10 bg-white p-4 rounded-md">
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleShapeClick("원형")}
-              >
-                원형
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleShapeClick("타원형")}
-              >
-                타원형
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleShapeClick("장방형")}
-              >
-                장방형
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleShapeClick("반원형")}
-              >
-                반원형
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => setShowShapeModal(false)}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
-        {showFormModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="absolute inset-0 opacity-75"></div>
-            <div className="z-10 bg-white p-4 rounded-md">
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleFormClick("정제")}
-              >
-                정제
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleFormClick("경질캡슐")}
-              >
-                경질캡슐
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleFormClick("연질캡슐")}
-              >
-                연질캡슐
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => setShowFormModal(false)}
-              >
-                닫기
-              </button>
-            </div>
-          </div>
-        )}
-        {showSplitLineModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
-            <div className="absolute inset-0 opacity-75"></div>
-            <div className="z-10 bg-white p-4 rounded-md">
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleSplitLineClick("없음")}
-              >
-                없음
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleSplitLineClick("+")}
-              >
-                +
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => handleSplitLineClick("-")}
-              >
-                -
-              </button>
-              <button
-                className="px-4 py-2 rounded-md hover:bg-gray-200"
-                onClick={() => setShowSplitLineModal(false)}
-              >
-                닫기
-              </button>
-            </div>
-          </div>
+        {baseName.map((name, index) => (
+          <button
+            key={index}
+            className="border border-black px-4 py-2 rounded-md hover:bg-gray-200"
+            onClick={() => {
+              if (index === 0) setShowShapeModal(true);
+              if (index === 1) setShowFormModal(true);
+              if (index === 2) setShowSplitLineModal(true);
+            }}
+          >
+            {index === 0 && selectedShape
+              ? selectedShape
+              : index === 1 && selectedForm
+              ? selectedForm
+              : index === 2 && selectedSplitLine
+              ? selectedSplitLine
+              : name}
+          </button>
+        ))}
+
+        {modals.map(
+          (modal) =>
+            modal.showModal && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center">
+                <div className="absolute inset-0 opacity-75"></div>
+                <div className="z-10 bg-white p-4 rounded-md">
+                  {modal.options.map((option) => (
+                    <button
+                      key={option}
+                      className="px-4 py-2 rounded-md hover:bg-gray-200"
+                      onClick={() => modal.handleClick(option)}
+                    >
+                      {option.toLowerCase()}
+                    </button>
+                  ))}
+                  <button
+                    className="px-4 py-2 rounded-md hover:bg-gray-200"
+                    onClick={() => modal.setShowModal(false)}
+                  >
+                    close
+                  </button>
+                </div>
+              </div>
+            )
         )}
       </div>
     </div>
