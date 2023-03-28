@@ -69,10 +69,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
-    query AllRandomUsersQuery {
+    query RandomUserQuery {
       allRandomUser {
         edges {
           node {
+            id
             name {
               last
             }
@@ -85,10 +86,8 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allRandomUser.edges.forEach(({ node }) => {
     createPage({
       path: `/product/${node.name.last}`,
-      component: path.resolve(`./src/pages/product/[last].js`),
-      context: {
-        last: node.name.last,
-      },
+      component: require.resolve(`./src/pages/product/[last].js`),
+      context: { last: node.name.last },
     });
   });
 };
