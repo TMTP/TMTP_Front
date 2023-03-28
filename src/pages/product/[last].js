@@ -39,3 +39,24 @@ export const query = graphql`
     }
   }
 `;
+export const pageQuery = graphql`
+  query ($last: String!) {
+    randomUser(name: { last: { eq: $last } }) {
+      name {
+        last
+      }
+      picture {
+        large
+      }
+      location {
+        street {
+          number
+          name
+        }
+        city
+        state
+        country
+      }
+    }
+  }
+`;
