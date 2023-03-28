@@ -19,28 +19,7 @@ export default function Product({ data }) {
 }
 
 export const query = graphql`
-  query ($last: String!) {
-    randomUser(name: { last: { eq: $last } }) {
-      name {
-        last
-      }
-      picture {
-        large
-      }
-      location {
-        street {
-          number
-          name
-        }
-        city
-        state
-        country
-      }
-    }
-  }
-`;
-export const pageQuery = graphql`
-  query ($last: String!) {
+  query ($last: String) {
     randomUser(name: { last: { eq: $last } }) {
       name {
         last
