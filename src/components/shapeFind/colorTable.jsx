@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import useColorTableDetail from "../../hooks/components/shapeFind/colorTable/hook";
-import { useEffect } from "react";
 
 const ColorTable = ({ handleSelectedColors }) => {
   const { data } = useColorTableDetail();

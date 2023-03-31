@@ -10,7 +10,7 @@ const SearchPage = ({ location }) => {
   return (
     <main>
       <Layout>
-        <SearchBar />
+        <SearchBar width="w-1/2" marginY="my-10" autofocus={true} />
         <SearchDrugBox searchQuery={searchQuery} />
       </Layout>
     </main>

@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import ColorTable from "../../components/shapeFind/colorTable";
 import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "./searchBox";

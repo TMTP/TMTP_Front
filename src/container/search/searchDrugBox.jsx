@@ -1,8 +1,19 @@
 import * as React from "react";
+import { Link } from "gatsby";
 import useSearchDrugDetail from "../../hooks/Container/Search/searchDrugBox/hook";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const SearchDrugBox = ({ searchQuery }) => {
   const { data } = useSearchDrugDetail();
+  const location = useLocation();
+  const [previousLocation, setPreviousLocation] = useState(location);
+
+  useEffect(() => {
+    if (location !== previousLocation) {
+      setPreviousLocation(location);
+    }
+  }, [location]);
 
   try {
     const filteredUsers = data.allRandomUser.edges.filter(({ node }) =>
@@ -27,11 +38,17 @@ const SearchDrugBox = ({ searchQuery }) => {
                     alt={node.name.first}
                     className="rounded-full h-16 w-16 sm:h-10 sm:w-10 mr-4"
                   />
+
                   <div>
-                    <p className="font-bold text-lg sm:text-base truncate">
-                      {` ${node.name.first} ${node.name.last}`}
-                    </p>
-                    <p className="hidden sm:block">{node.gender}</p>
+                    <Link
+                      to={`/product/${node.name.last}`}
+                      state={{ last: node.name.last }}
+                    >
+                      <p className="font-bold text-lg sm:text-base truncate">
+                        {` ${node.name.first} ${node.name.last}`}
+                      </p>
+                      <p className="hidden sm:block">{node.gender}</p>{" "}
+                    </Link>
                   </div>
                 </div>
                 <div className="flex flex-col justify-between w-full sm:hidden">

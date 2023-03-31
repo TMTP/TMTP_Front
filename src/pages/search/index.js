@@ -1,8 +1,21 @@
 import * as React from "react";
 import Seo from "../../components/seo";
+import Layout from "../../components/Layout/layout";
+import SearchBar from "../../container/home/searchBox";
+import SearchDrugBox from "../../container/search/searchDrugBox";
 
 const SearchIndexPage = () => {
-  return null;
+  return (
+    <main>
+      <Layout>
+        <SearchBar width="w-1/2" marginY="my-10" autofocus={true} />
+
+        <div className="mb-[440px]">
+          <SearchDrugBox />
+        </div>
+      </Layout>
+    </main>
+  );
 };
 
 export default SearchIndexPage;
