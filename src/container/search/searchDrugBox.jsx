@@ -1,19 +1,9 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import useSearchDrugDetail from "../../hooks/Container/Search/searchDrugBox/hook";
-import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 const SearchDrugBox = ({ searchQuery }) => {
   const { data } = useSearchDrugDetail();
-  const location = useLocation();
-  const [previousLocation, setPreviousLocation] = useState(location);
-
-  useEffect(() => {
-    if (location !== previousLocation) {
-      setPreviousLocation(location);
-    }
-  }, [location]);
 
   try {
     const filteredUsers = data.allRandomUser.edges.filter(({ node }) =>
