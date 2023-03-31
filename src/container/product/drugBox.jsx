@@ -1,19 +1,10 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import useDrugBoxDetail from "../../hooks/Container/Product/drugBox/hook";
-import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const DrugBox = () => {
   const { data } = useDrugBoxDetail();
-  const location = useLocation();
-  const [previousLocation, setPreviousLocation] = useState(location);
-
-  useEffect(() => {
-    if (location !== previousLocation) {
-      setPreviousLocation(location);
-    }
-  }, [location]);
 
   return (
     <div className="bg-white p-6 rounded-md shadow-md ">
