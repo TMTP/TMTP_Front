@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import ColorTable from "../../components/shapeFind/colorTable";
 import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "./searchBox";
@@ -7,15 +8,11 @@ const ShapeFindBox = () => {
   const handleSelectedColor = (colors) => {
     console.log(colors);
   };
-  const handleShape = (shape) => {
-    console.log(shape);
+
+  const handleReset = () => {
+    handleSelectedColor([]);
   };
-  const handleForm = (form) => {
-    console.log(form);
-  };
-  const handleLine = (line) => {
-    console.log(line);
-  };
+
   return (
     <div className="flex flex-col items-center h-screen">
       <div className="w-96 h-96 sm:w-64 sm:h-60  bg-gray-200 flex flex-col">
@@ -33,12 +30,9 @@ const ShapeFindBox = () => {
           </div>
           <div>
             <ColorTable handleSelectedColors={handleSelectedColor} />
-            <ShapeTable
-              handleShape={handleShape}
-              handleForm={handleForm}
-              handleLine={handleLine}
-            />
+            <ShapeTable />
           </div>
+          <button onClick={handleReset}>초기화</button>
         </div>
       </div>
     </div>

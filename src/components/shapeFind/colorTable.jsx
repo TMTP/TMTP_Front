@@ -11,7 +11,6 @@ const ColorTable = ({ handleSelectedColors }) => {
   const likePurple = data.slice(11, 13).map((item) => item.name);
 
   const [selectedColors, setSelectedColors] = useState([]);
-  // console.log(selectedColors);
   useEffect(() => {
     handleSelectedColors(selectedColors);
   }, [selectedColors]);
