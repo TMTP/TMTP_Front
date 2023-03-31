@@ -2,6 +2,7 @@ import * as React from "react";
 import Layout from "../components/Layout/layout";
 import SearchBar from "../container/home/searchBox";
 import ShapeFindBox from "../container/home/shapeFindBox";
+import CompareBox from "../container/home/compareBox";
 import Seo from "../components/seo";
 
 const IndexPage = () => {
@@ -15,6 +16,7 @@ const IndexPage = () => {
           placeholder="이름으로 검색하세요"
         />
         <ShapeFindBox />
+        <CompareBox />
       </Layout>
     </main>
   );
