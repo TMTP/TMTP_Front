@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import useHeaderDetail from "../../hooks/components/Layout/header/hook";
-import { FaSearch } from "react-icons/fa";
-import Logo from "../../../static/Logo.svg";
+import { FaSearch, FaPills } from "react-icons/fa";
+// import Logo from "../../../static/Logo.svg";
 import { navigate } from "gatsby";
 
 const Header = () => {
@@ -17,7 +17,8 @@ const Header = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-6">
       <div className="flex items-center flex-shrink-0 text-white">
-        <img src={Logo} alt="LogoImg" />
+        {/* <img src={Logo} alt="LogoImg" /> */}
+        <FaPills size={48} />
         <Link to="/" className="ml-2 font-bold text-xl tracking-tight">
           <h2>{title}</h2>
         </Link>
