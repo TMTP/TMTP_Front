@@ -15,6 +15,7 @@ module.exports = {
       options: {
         name: `data`,
         path: `${__dirname}/src/`,
+        ignore: [`**/\.*`],
       },
     },
     `gatsby-transformer-sharp`,
