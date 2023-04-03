@@ -35,4 +35,4 @@ export const Head = () => {
   );
 };
 
-<title>TMTP</title>;
+<title>TMTP|Search</title>;

@@ -34,7 +34,7 @@ function CompareBox() {
               value={query}
               placeholder="제품명, 제품코드 입력"
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full  border border-gray-400 rounded-lg py-2 px-4 mb-4"
+              className="w-full  border border-gray-400 rounded-lg py-2 px-4 mb-4 sm:placeholder:text-xs"
             />
             {query.length > 0 && (
               <div className="flex flex-wrap gap-4">

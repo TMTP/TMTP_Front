@@ -1,19 +1,18 @@
 import * as React from "react";
 import Layout from "../../components/Layout/layout";
 import Seo from "../../components/seo";
-import DrugBox from "../../container/product/drugBox";
 
-const ProductIndexPage = () => {
+const CompareIndexPage = () => {
   return (
     <main>
       <Layout>
-        <DrugBox />
+        <p>It's Compare</p>
       </Layout>
     </main>
   );
 };
 
-export default ProductIndexPage;
+export default CompareIndexPage;
 
 export const Head = () => {
   return (
@@ -30,4 +29,4 @@ export const Head = () => {
   );
 };
 
-<title>TMTP|Product</title>;
+<title>TMTP|Compare</title>;
