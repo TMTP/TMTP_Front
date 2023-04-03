@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import useCompareBoxDetail from "../../hooks/Container/Home/CompareBox/hook";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { navigate } from "gatsby";
 
 function CompareBox() {
   const { data } = useCompareBoxDetail();
@@ -19,6 +20,11 @@ function CompareBox() {
 
   const handleDelete = (index) => {
     setSelected(selected.filter((_, e) => e !== index));
+  };
+
+  const handleCompare = () => {
+    const selectedIds = selected.map((item) => item.id);
+    navigate(`/compare/?id=${selectedIds.join("&id=")}`);
   };
 
   return (
@@ -111,7 +117,10 @@ function CompareBox() {
       </div>
       <div className="flex flex-col justify-center items-center h-full ">
         <div className="flex justify-center items-center w-full h-full">
-          <button className="bg-blue-500 py-4 px-8 sm:py-2 sm:px-4 text-white text-lg sm:text-base rounded-lg">
+          <button
+            className="bg-blue-500 py-4 px-8 sm:py-2 sm:px-4 text-white text-lg sm:text-base rounded-lg"
+            onClick={handleCompare}
+          >
             결과 보기
           </button>
         </div>

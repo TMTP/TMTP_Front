@@ -32,7 +32,7 @@ const SearchDrugBox = ({ searchQuery }) => {
                   <div>
                     <Link
                       to={`/product/${node.name.last}`}
-                      state={{ last: node.name.last }}
+                      // state={{ last: node.name.last }}
                     >
                       <p className="font-bold text-lg sm:text-base truncate">
                         {` ${node.name.first} ${node.name.last}`}

@@ -90,4 +90,25 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { last: node.name.last },
     });
   });
+
+  const compareResult = await graphql(`
+    query RandomUserQuery {
+      allRandomUser {
+        edges {
+          node {
+            id
+          }
+        }
+      }
+    }
+  `);
+  compareResult.data.allRandomUser.edges.forEach(({ node }) => {
+    createPage({
+      path: `/compare/${node.id}`,
+      component: require.resolve("./src/pages/compare/index.js"),
+      context: {
+        id: node.id,
+      },
+    });
+  });
 };
