@@ -92,7 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   const compareResult = await graphql(`
-    query RandomUserQuery {
+    query RandomQuery {
       allRandomUser {
         edges {
           node {
