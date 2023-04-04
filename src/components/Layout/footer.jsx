@@ -1,6 +1,5 @@
 import * as React from "react";
 import useFooterDetail from "../../hooks/components/Layout/footer/hook";
-import { Link } from "gatsby";
 
 const Footer = () => {
   const { data, copyright } = useFooterDetail();
@@ -9,7 +8,7 @@ const Footer = () => {
       <div className="flex justify-center sm:justify-start mb-2 sm:mb-0">
         <p className="text-center sm:text-left text-white">
           {copyright.map((data) => {
-            return <Link to={data.url}>{data.name}</Link>;
+            return <a href={data.url}>{data.name}</a>;
           })}{" "}
           <span>ⓒ.All rights reserved.</span>
         </p>
@@ -18,9 +17,9 @@ const Footer = () => {
         <ul className="flex flex-row  justify-between mb-[10px]   text-white">
           {data.map((data, index) => {
             return (
-              <Link className="mr-[10px]" to={data.url} key={index}>
+              <a className="mr-[10px]" href={data.url} key={index}>
                 {data.name}
-              </Link>
+              </a>
             );
           })}
         </ul>
