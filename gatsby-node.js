@@ -91,24 +91,24 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  const compareResult = await graphql(`
-    query RandomQuery {
-      allRandomUser {
-        edges {
-          node {
-            id
-          }
-        }
-      }
-    }
-  `);
-  compareResult.data.allRandomUser.edges.forEach(({ node }) => {
-    createPage({
-      path: `/compare/${node.id}`,
-      component: require.resolve("./src/pages/compare/index.js"),
-      context: {
-        id: node.id,
-      },
-    });
-  });
+  // const compareResult = await graphql(`
+  //   query RandomQuery {
+  //     allRandomUser {
+  //       edges {
+  //         node {
+  //           id
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
+  // compareResult.data.allRandomUser.edges.forEach(({ node }) => {
+  //   createPage({
+  //     path: `/compare/${node.id}`,
+  //     component: require.resolve("./src/pages/compare/index.js"),
+  //     context: {
+  //       id: node.id,
+  //     },
+  //   });
+  // });
 };
