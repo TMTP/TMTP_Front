@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Link } from "gatsby";
 import useSearchDrugDetail from "../../hooks/Container/Search/searchDrugBox/hook";
-import useCommonHook from "../../hooks/hook";
 
 const SearchDrugBox = ({ searchQuery }) => {
-  const { data } = useCommonHook();
+  const { data } = useSearchDrugDetail();
 
   try {
     const filteredUsers = data.allRandomUser.edges.filter(({ node }) =>

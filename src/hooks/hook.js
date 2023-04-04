@@ -1,8 +1,7 @@
-import * as React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 
 function useCommonHook() {
-  const data = useStaticQuery(graphql`
+  const data = graphql`
     query RandomUserQuery {
       allRandomUser {
         edges {
@@ -32,7 +31,7 @@ function useCommonHook() {
         }
       }
     }
-  `);
+  `;
   return { data };
 }
 

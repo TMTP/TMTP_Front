@@ -1,11 +1,9 @@
 import { Link } from "gatsby";
 import * as React from "react";
 import useDrugBoxDetail from "../../hooks/Container/Product/drugBox/hook";
-import { useState, useEffect } from "react";
-import useCommonHook from "../../hooks/hook";
 
 const DrugBox = () => {
-  const { data } = useCommonHook();
+  const { data } = useDrugBoxDetail();
 
   return (
     <div className="bg-white p-6 rounded-md shadow-md ">

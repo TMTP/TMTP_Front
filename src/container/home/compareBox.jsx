@@ -3,10 +3,9 @@ import React from "react";
 import useCompareBoxDetail from "../../hooks/Container/Home/CompareBox/hook";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { navigate } from "gatsby";
-import useCommonHook from "../../hooks/hook";
 
 function CompareBox() {
-  const { data } = useCommonHook();
+  const { data } = useCompareBoxDetail();
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState([]);
 
