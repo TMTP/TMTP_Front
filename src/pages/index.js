@@ -16,7 +16,7 @@ const IndexPage = () => {
           placeholder="이름으로 검색하세요"
         />
         <ShapeFindBox />
-        <CompareBox />
+        {/* <CompareBox /> */}
       </Layout>
     </main>
   );
