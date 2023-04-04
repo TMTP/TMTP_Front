@@ -1,19 +1,39 @@
-import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import * as React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 
-function useHook() {
+function useCommonHook() {
   const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
+    query RandomUserQuery {
+      allRandomUser {
+        edges {
+          node {
+            id
+            gender
+            name {
+              title
+              first
+              last
+            }
+            picture {
+              large
+              medium
+              thumbnail
+            }
+            location {
+              street {
+                name
+                number
+              }
+              city
+              country
+              state
+            }
+          }
         }
       }
     }
-  `)
-  const link = [1, 2, 3]
-
-  return { data, link }
+  `);
+  return { data };
 }
 
-export default useHook
+export default useCommonHook;
