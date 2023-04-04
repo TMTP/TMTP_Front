@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby";
 
 function useDrugBoxDetail() {
-  const data = graphql`
+  const data = useStaticQuery(graphql`
     query RandomUserQuery {
       allRandomUser {
         edges {
@@ -31,7 +31,7 @@ function useDrugBoxDetail() {
         }
       }
     }
-  `;
+  `);
 
   return { data };
 }
