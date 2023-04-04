@@ -7,6 +7,9 @@ module.exports = {
     description:
       "Websites that provide services for vulnerable people who are not fully aware of the drug or are not easily identified.",
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     "gatsby-plugin-apollo",
     `gatsby-plugin-image`,
