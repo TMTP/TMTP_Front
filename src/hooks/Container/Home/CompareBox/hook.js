@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby";
 
 function useCompareBoxDetail() {
-  const data = useStaticQuery(graphql`
+  const data = graphql`
     query RandomUserQuery {
       allRandomUser {
         edges {
@@ -31,7 +31,7 @@ function useCompareBoxDetail() {
         }
       }
     }
-  `);
+  `;
   return { data };
 }
 
