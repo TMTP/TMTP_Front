@@ -16,7 +16,6 @@ function CompareBox() {
       setSelected([...selected, edge.node]);
     }
   };
-  console.log(selected);
 
   const handleDelete = (index) => {
     setSelected(selected.filter((_, e) => e !== index));
@@ -58,7 +57,7 @@ function CompareBox() {
                         <div className="flex items-center">
                           <img
                             src={edge.node.picture.large}
-                            alt="d"
+                            alt={edge.node.picture.thumbnail}
                             className="w-16 h-16 rounded-full mr-4 sm:w-8 sm:h-8"
                           />
                           <div>
