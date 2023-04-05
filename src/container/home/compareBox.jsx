@@ -28,12 +28,12 @@ function CompareBox() {
 
   return (
     <div className="my-10 flex flex-col sm:mx-5">
-      <div className="flex flex-row justify-center items-center h-full ">
-        <div className="w-96 h-96 sm:w-60 sm:h-60  bg-gray-200 flex flex-col border-r-2 border-gray-600">
-          <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full">
+      <div className="flex flex-row justify-center items-center h-full  ">
+        <div className="w-96 h-96 sm:w-60 sm:h-60  bg-gray-200 flex flex-col border-r-2 border-gray-600  rounded-l-full">
+          <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full  rounded-l-xl">
             약 검색
           </div>
-          <div className="bg-gray-200 p-4 rounded-lg flex-1 overflow-auto">
+          <div className="bg-gray-200 p-4 rounded-lg flex-1 overflow-auto ">
             <input
               type="text"
               value={query}
@@ -89,8 +89,8 @@ function CompareBox() {
             )}
           </div>
         </div>
-        <div className="w-96 h-96 sm:w-64 sm:h-60  bg-gray-200 flex flex-col">
-          <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full">
+        <div className="w-96 h-96 sm:w-64 sm:h-60  bg-gray-200 flex flex-col rounded-r-full">
+          <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full rounded-r-2xl">
             선택한 약
           </div>
           <div className="bg-gray-200 p-4 rounded-lg flex-1 overflow-auto">

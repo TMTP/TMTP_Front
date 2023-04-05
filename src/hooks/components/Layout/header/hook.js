@@ -1,21 +1,16 @@
-import { graphql, useStaticQuery } from "gatsby";
-
 function useHeaderDetail() {
   const title = "TMTP 이약저약";
-  const data = useStaticQuery(graphql`
+
+  const data = [
     {
-      imageSharp(fluid: { src: {} }) {
-        resize {
-          src
-          tracedSVG
-          width
-          height
-          aspectRatio
-          originalName
-        }
-      }
-    }
-  `);
+      name: "약품 정보",
+      url: "/product",
+    },
+    {
+      name: "약품 성분",
+      url: "/product",
+    },
+  ];
 
   return { title, data };
 }
