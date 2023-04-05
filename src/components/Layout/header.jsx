@@ -7,6 +7,7 @@ import { navigate } from "gatsby";
 const Header = () => {
   const { data, title } = useHeaderDetail();
   const [searchQuery, setSearchQuery] = useState("");
+  const [menuToggle, setMenuToggle] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -20,17 +21,19 @@ const Header = () => {
         <Link to="/" className="mx-2 font-bold text-xl tracking-tight">
           <h2>{title}</h2>
         </Link>
-        {data.map((data, index) => {
-          return (
-            <Link
-              to={data.url}
-              key={index}
-              className="px-3 text-lg font-bold text-gray-800  hover:text-gray-900"
-            >
-              {data.name}
-            </Link>
-          );
-        })}
+        <div>
+          {data.map((data, index) => {
+            return (
+              <Link
+                to={data.url}
+                key={index}
+                className="px-3 text-lg font-bold text-white  hover:text-gray-900 sm:text-xs"
+              >
+                {data.name}
+              </Link>
+            );
+          })}
+        </div>
       </div>
       <div className="flex items-center w-auto">
         <form className="flex-grow" onSubmit={handleSearch}>
@@ -41,7 +44,7 @@ const Header = () => {
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-            ></input>
+            />
             <button
               className="flex-shrink-0 bg-white hover:bg-gray-100 border-white hover:border-gray-100 text-blue-500 font-semibold border-4 py-1 px-2 rounded"
               type="submit"

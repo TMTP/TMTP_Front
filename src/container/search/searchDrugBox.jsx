@@ -12,56 +12,50 @@ const SearchDrugBox = ({ searchQuery }) => {
 
     return (
       <div className="bg-white p-6 rounded-md shadow-md">
-        <h1 className="text-3xl text-center font-bold mb-8 sm:text-base sm:mb-5 text-red-300">
+        <h1 className="text-3xl text-center font-bold mb-8 sm:text-base sm:mb-5 text-red-500">
           {searchQuery}에 대한 결과입니다.
         </h1>
-        <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-center">
-          {filteredUsers.map(({ node }) => (
-            <div
-              key={node.id}
-              className="bg-gray-100 p-4 rounded-md mb-4  sm:mr-8 sm:border-gray-900 sm:mb-2 sm:border-2 w-full"
-            >
-              <div className="flex items-center mb-4 sm:mb-0">
-                <div className="flex items-center mr-4 flex-shrink-0">
+        <table className="w-full table-auto ">
+          <thead>
+            <tr className="bg-blue-200 sm:text-xs text-center">
+              <th className="px-2 py-2">사진</th>
+              <th className="px-4 py-2">제품명</th>
+              <th className="px-4 py-2">회사명</th>
+              <th className="px-4 py-2">제형</th>
+              <th className=" sm:hidden px-4 py-2">구분</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredUsers.map(({ node }) => (
+              <tr
+                key={node.id}
+                className="border-b-2 border-gray-900 text-xs text-center"
+              >
+                <td className="py-2 justify-center flex">
                   <img
                     src={node.picture.large}
                     alt={node.name.first}
-                    className="rounded-full h-16 w-16 sm:h-10 sm:w-10 mr-4"
+                    className="rounded-full h-16 w-16 sm:h-auto sm:w-auto mr-4"
                   />
-
-                  <div>
-                    <Link
-                      to={`/product/${node.name.last}`}
-                      // state={{ last: node.name.last }}
-                    >
-                      <p className="font-bold text-lg sm:text-base truncate">
-                        {` ${node.name.first} ${node.name.last}`}
-                      </p>
-                      <p className="hidden sm:block">{node.gender}</p>{" "}
-                    </Link>
-                  </div>
-                </div>
-                <div className="flex flex-col justify-between w-full sm:hidden">
-                  <div className="text-right">
-                    <p className="font-bold text-lg sm:text-xs truncate">
-                      {`${node.location.street.name} ${node.location.street.number}`}
-                    </p>
-                  </div>
-                  <div className="text-right mt-1 sm:mt-0 sm:ml-4">
-                    <p className="font-bold text-lg sm:text-xs truncate">
-                      {`${node.location.city}, ${node.location.state}`}
-                    </p>
-                  </div>
-                  <div className="text-right mt-1 sm:mt-0 sm:ml-4">
-                    <p className="font-bold text-lg sm:text-xs truncate">
-                      {node.location.country}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                </td>
+                <td className="px-3 py-2">
+                  <Link to={`/product/${node.name.last}`}>
+                    {` ${node.name.first} ${node.name.last}`}
+                  </Link>
+                </td>
+                <td className="px-4 py-2">
+                  {`${node.location.street.name} ${node.location.street.number}`}
+                </td>
+                <td className="px-4 py-2">
+                  {`${node.location.city}, ${node.location.state}`}
+                </td>
+                <td className=" sm:hidden px-4 py-2">
+                  {node.location.country}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   } catch (err) {
