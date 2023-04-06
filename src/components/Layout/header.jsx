@@ -7,7 +7,6 @@ import { navigate } from "gatsby";
 const Header = () => {
   const { data, title } = useHeaderDetail();
   const [searchQuery, setSearchQuery] = useState("");
-  const [menuToggle, setMenuToggle] = useState(false);
 
   const handleSearch = (e) => {
     e.preventDefault();

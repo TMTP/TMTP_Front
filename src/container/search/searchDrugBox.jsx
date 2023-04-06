@@ -31,11 +31,11 @@ const SearchDrugBox = ({ searchQuery }) => {
                 key={node.id}
                 className="border-b-2 border-gray-900 text-xs text-center"
               >
-                <td className="py-2 justify-center flex">
+                <td className="py-2 justify-center flex sm:ml-2">
                   <img
                     src={node.picture.large}
                     alt={node.name.first}
-                    className="rounded-full h-16 w-16 sm:h-auto sm:w-auto mr-4"
+                    className="rounded-full h-16 w-16 sm:h-auto sm:w-auto  mr-4"
                   />
                 </td>
                 <td className="px-3 py-2">
@@ -43,15 +43,13 @@ const SearchDrugBox = ({ searchQuery }) => {
                     {` ${node.name.first} ${node.name.last}`}
                   </Link>
                 </td>
-                <td className="px-4 py-2">
+                <td className=" py-2">
                   {`${node.location.street.name} ${node.location.street.number}`}
                 </td>
-                <td className="px-4 py-2">
+                <td className=" py-2">
                   {`${node.location.city}, ${node.location.state}`}
                 </td>
-                <td className=" sm:hidden px-4 py-2">
-                  {node.location.country}
-                </td>
+                <td className=" sm:hidden  py-2">{node.location.country}</td>
               </tr>
             ))}
           </tbody>
