@@ -4,11 +4,11 @@ import Header from "./header";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="flex flex-col justify-between h-[100vh]">
       <Header />
-      {children}
+      <div className="flex flex-col">{children}</div>
       <Footer />
-    </>
+    </div>
   );
 };
 
