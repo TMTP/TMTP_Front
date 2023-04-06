@@ -10,47 +10,45 @@ const DrugBox = () => {
       <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
         전체 약품에 대한 정보입니다.
       </h1>
-      <div className="flex flex-col sm:flex-row sm:flex-wrap justify-between items-center ">
-        {data.allRandomUser.edges.slice(0, 30).map(({ node }) => (
-          <div className="flex flex-col sm:flex-row justify-between items-center w-full mb-2 border-[2px] border-black bg-gray-100">
-            <div className="flex items-center mb-4 sm:mb-0 sm:mr-8 sm:w-1/2  w-full">
-              <div className="flex items-center mr-4 flex-shrink-0">
+      <table className="w-full table-auto ">
+        <thead>
+          <tr className="bg-blue-200 sm:text-xs text-center">
+            <th className="px-2 py-2">사진</th>
+            <th className="px-4 py-2">제품명</th>
+            <th className="px-4 py-2">회사명</th>
+            <th className="px-4 py-2">제형</th>
+            <th className=" sm:hidden px-4 py-2">구분</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.allRandomUser.edges.slice(0, 30).map(({ node }) => (
+            <tr
+              key={node.id}
+              className="border-b-2 border-gray-900 text-xs text-center"
+            >
+              <td className="py-2 justify-center flex sm:ml-2">
                 <img
                   src={node.picture.large}
                   alt={node.name.first}
-                  className="rounded-full h-16 w-16 sm:h-10 sm:w-10 mr-4 border-[2px]"
+                  className="rounded-full h-16 w-16 sm:h-auto sm:w-auto  mr-4"
                 />
-                <Link
-                  to={`/product/${node.name.last}`}
-                  state={{ last: node.name.last }}
-                >
-                  <p className="font-bold text-lg sm:text-base truncate ">
-                    {` ${node.name.first} ${node.name.last}`}
-                  </p>
-                  <p className="hidden sm:block ">{node.gender}</p>
+              </td>
+              <td className="px-3 py-2">
+                <Link to={`/product/${node.name.last}`}>
+                  {` ${node.name.first} ${node.name.last}`}
                 </Link>
-              </div>
-              <div className="flex flex-col justify-between w-full sm:hidden ">
-                <div className="text-right">
-                  <p className="font-bold text-lg sm:text-xs truncate ">
-                    {`${node.location.street.name} ${node.location.street.number}`}
-                  </p>
-                </div>
-                <div className="text-right mt-1 sm:mt-0 sm:ml-4">
-                  <p className="font-bold text-lg sm:text-xs truncate ">
-                    {`${node.location.city}, ${node.location.state}`}
-                  </p>
-                </div>
-                <div className="text-right mt-1 sm:mt-0 sm:ml-4">
-                  <p className="font-bold text-lg sm:text-xs truncate ">
-                    {node.location.country}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+              </td>
+              <td className=" py-2">
+                {`${node.location.street.name} ${node.location.street.number}`}
+              </td>
+              <td className=" py-2">
+                {`${node.location.city}, ${node.location.state}`}
+              </td>
+              <td className=" sm:hidden  py-2">{node.location.country}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
