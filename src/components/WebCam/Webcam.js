@@ -15,6 +15,10 @@ const WebCamera = () => {
     setIsCameraEnabled(!isCameraEnabled);
   };
 
+  const videoConstraints = {
+    facingMode: "enviroment",
+  };
+
   return (
     <>
       {isCameraEnabled ? (
@@ -23,9 +27,9 @@ const WebCamera = () => {
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            videoConstraints={{
-              facingMode: this.state.isFacingModeUser ? "user" : "environment",
-            }}
+            width={800}
+            height={600}
+            videoConstraints={videoConstraints}
           />
           <button onClick={handleCapture}>캡쳐</button>
           {capturedImage && <img src={capturedImage} />}
