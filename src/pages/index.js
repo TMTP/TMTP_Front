@@ -4,6 +4,7 @@ import SearchBar from "../container/home/searchBox";
 import ShapeFindBox from "../container/home/shapeFindBox";
 import CompareBox from "../container/home/compareBox";
 import Seo from "../components/seo";
+import WebCamera from "../components/WebCam/Webcam";
 
 const IndexPage = () => {
   return (
@@ -17,6 +18,7 @@ const IndexPage = () => {
         />
         <ShapeFindBox />
         <CompareBox />
+        <WebCamera />
       </Layout>
     </main>
   );
