@@ -16,7 +16,7 @@ const WebCamera = () => {
   };
 
   const videoConstraints = {
-    facingMode: "enviroment",
+    facingMode: "user",
   };
 
   return (
