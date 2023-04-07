@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import { useMediaQuery } from "react-responsive";
+import Banner from "../Layout/banner";
 
 const WebCamera = () => {
   const [capturedImage, setCapturedImage] = useState(null);
@@ -41,15 +42,16 @@ const WebCamera = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center relative">
+      <div className="sm:hidden">
+        <Banner />
+      </div>
       {isCameraEnabled ? (
-        <div className="flex justify-center flex-col items-center">
+        <div className="flex absolute  justify-center flex-col items-center">
           <Webcam
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
-            width={800}
-            height={600}
             videoConstraints={videoConstraints}
             className="border-2 border-red-300 rounded-md shadow-md"
           />
@@ -69,12 +71,14 @@ const WebCamera = () => {
           </div>
         </div>
       ) : (
-        <button
-          onClick={handleCameraToggle}
-          className=" bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-        >
-          카메라 활성화
-        </button>
+        <div className="absolute top-1/2 right-1/3 transform -translate-y-1/2 sm:top-full sm:mt-10">
+          <button
+            onClick={handleCameraToggle}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          >
+            카메라 활성화
+          </button>
+        </div>
       )}
     </div>
   );

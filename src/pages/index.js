@@ -10,14 +10,13 @@ const IndexPage = () => {
   return (
     <main>
       <Layout>
+        <WebCamera />
         <SearchBar
           width="w-1/2"
           marginY="my-10"
           autofocus={true}
           placeholder="이름으로 검색하세요"
         />
-        <WebCamera />
-
         <ShapeFindBox />
         <CompareBox />
       </Layout>

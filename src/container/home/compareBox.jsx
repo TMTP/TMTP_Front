@@ -52,9 +52,12 @@ function CompareBox() {
                       .includes(query.toLowerCase());
                   })
                   .map((edge) => (
-                    <div key={edge.node.id} className="w-full sm:lg:w-1/3">
+                    <div
+                      key={edge.node.id}
+                      className="w-full border-2 border-black  sm:lg:w-1/3"
+                    >
                       <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between ">
-                        <div className="flex items-center">
+                        <div className="flex items-center sm:text-xs">
                           <img
                             src={edge.node.picture.large}
                             alt={edge.node.picture.thumbnail}
@@ -64,13 +67,13 @@ function CompareBox() {
                             <div className="font-bold sm:text-xs">
                               {edge.node.name.first} {edge.node.name.last}
                             </div>
-                            <div className="text-gray-500 sm:text-xs">
+                            <div className="text-gray-500 sm:hidden">
                               {edge.node.location.city},{" "}
                               {edge.node.location.country}
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center justify-end sm:ml-7 ">
+                        <div className="flex items-center justify-end ml-2 ">
                           <button
                             onClick={() => handleSelect(edge)}
                             className={
@@ -111,7 +114,7 @@ function CompareBox() {
           </div>
           <div className="flex-grow-0 flex-shrink-0">
             <button
-              className="block w-full text-center bg-blue-500 text-white py-2 px-4 rounded-lg"
+              className="block w-full text-center bg-blue-500 text-white py-2 px-4 rounded-lg sm:text-sm"
               onClick={handleCompare}
             >
               결과 보기
