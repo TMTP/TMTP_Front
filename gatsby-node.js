@@ -2,8 +2,6 @@ const axios = require("axios");
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
-const express = require("express");
-const multer = require("multer");
 
 exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions;
@@ -115,31 +113,6 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
-
-// const app = express();
-
-// const upload = multer({
-//   storage: multer.diskStorage({
-//     destination: (req, file, cb) => {
-//       cb(null, "static/webcam");
-//     },
-//     filename: (req, file, cb) => {
-//       const filename = `webcam-${Date.now()}.jpg`;
-//       cb(null, filename);
-//     },
-//   }),
-// });
-
-// app.post("/api/save-image", upload.single("image"), (req, res) => {
-//   if (req.file) {
-//     res.send(`/webcam/${req.file.filename}`);
-//   } else {
-//     res.status(400).send("Bad Request: No image found in request body");
-//   }
-// });
-// app.use("/webcam", express.static(path.join(__dirname, "static/webcam")));
-
-// module.exports = app;
 
 exports.onCreateDevServer = ({ app }) => {
   app.post("/api/save-image", (req, res) => {

@@ -29,7 +29,7 @@ function CompareBox() {
   return (
     <div className="my-10 flex flex-col sm:mx-5">
       <div className="flex flex-row justify-center items-center h-full  ">
-        <div className="w-96 h-96 sm:w-60 sm:h-60  bg-gray-200 flex flex-col border-r-2 border-gray-600  rounded-l-full">
+        <div className="w-96 h-96 sm:w-60 sm:h-60  bg-gray-200 flex flex-col border-r-2 border-dashed border-gray-600  rounded-l-full">
           <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full  rounded-l-xl">
             약 검색
           </div>
@@ -89,39 +89,34 @@ function CompareBox() {
             )}
           </div>
         </div>
-        <div className="w-96 h-96 sm:w-64 sm:h-60  bg-gray-200 flex flex-col rounded-r-full">
-          <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full rounded-r-2xl">
+        <div className="w-96 h-96 sm:w-64 sm:h-60 bg-gray-200 flex flex-col rounded-r-full">
+          <div className="bg-red-400 text-white h-10 flex items-center justify-center  rounded-r-2xl">
             선택한 약
           </div>
           <div className="bg-gray-200 p-4 rounded-lg flex-1 overflow-auto">
             <div className="flex flex-wrap gap-4">
               {selected.map((item, index) => (
-                <div key={index} className="w-full  lg:w-1/3">
-                  <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between sm:text-xs">
+                <div key={index} className="w-full lg:w-1/3">
+                  <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between text-sm sm:text-xs">
                     <p>
                       {item.name.first} {item.name.last}
                     </p>
-                    <button
-                      onClick={() => handleDelete(index)}
-                      className="ml-2"
-                    >
-                      <FaTimesCircle color="red" />
+                    <button onClick={() => handleDelete(index)}>
+                      <FaTimesCircle className="text-red-500" />
                     </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </div>
-      <div className="flex flex-col justify-center items-center h-full ">
-        <div className="flex justify-center items-center w-full h-full">
-          <button
-            className="bg-blue-500 py-4 px-8 sm:py-2 sm:px-4 text-white text-lg sm:text-base rounded-lg"
-            onClick={handleCompare}
-          >
-            결과 보기
-          </button>
+          <div className="flex-grow-0 flex-shrink-0">
+            <button
+              className="block w-full text-center bg-blue-500 text-white py-2 px-4 rounded-lg"
+              onClick={handleCompare}
+            >
+              결과 보기
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -16,9 +16,10 @@ const IndexPage = () => {
           autofocus={true}
           placeholder="이름으로 검색하세요"
         />
+        <WebCamera />
+
         <ShapeFindBox />
         <CompareBox />
-        <WebCamera />
       </Layout>
     </main>
   );

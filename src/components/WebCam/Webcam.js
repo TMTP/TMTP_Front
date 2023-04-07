@@ -14,7 +14,7 @@ const WebCamera = () => {
     const formData = new FormData();
     const filename = `webcam-${Date.now()}.png`;
     const blob = new Blob([imageSrc], { type: "image/png" });
-    formData.append("image", blob, filename);
+    formData.append("image", blob, `/static/${filename}`); // /static 경로 추가
 
     fetch(`/api/save-image`, {
       method: "POST",
@@ -25,7 +25,7 @@ const WebCamera = () => {
         setCapturedImage(`/webcam/${data.filename}`);
       })
       .catch((error) => {
-        console.error("Error saving image:", error);
+        console.error("Error ", error);
       });
   };
 
@@ -41,9 +41,9 @@ const WebCamera = () => {
   };
 
   return (
-    <>
+    <div className="flex justify-center">
       {isCameraEnabled ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center flex-col items-center">
           <Webcam
             audio={false}
             ref={webcamRef}
@@ -51,15 +51,32 @@ const WebCamera = () => {
             width={800}
             height={600}
             videoConstraints={videoConstraints}
+            className="border-2 border-red-300 rounded-md shadow-md"
           />
-          <button onClick={handleCapture}>캡쳐</button>
-          <button onClick={handleCameraToggle}>닫기</button>
-          {/* {capturedImage && <img src={capturedImage} />} */}
+          <div>
+            <button
+              onClick={handleCapture}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+            >
+              캡쳐
+            </button>
+            <button
+              onClick={handleCameraToggle}
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+            >
+              닫기
+            </button>
+          </div>
         </div>
       ) : (
-        <button onClick={handleCameraToggle}>카메라 활성화</button>
+        <button
+          onClick={handleCameraToggle}
+          className=" bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          카메라 활성화
+        </button>
       )}
-    </>
+    </div>
   );
 };
 
