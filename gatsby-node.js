@@ -1,6 +1,9 @@
 const axios = require("axios");
 const crypto = require("crypto");
+const fs = require("fs");
 const path = require("path");
+const express = require("express");
+const multer = require("multer");
 
 exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions;
@@ -109,6 +112,52 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: node.id,
       },
+    });
+  });
+};
+
+// const app = express();
+
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     destination: (req, file, cb) => {
+//       cb(null, "static/webcam");
+//     },
+//     filename: (req, file, cb) => {
+//       const filename = `webcam-${Date.now()}.jpg`;
+//       cb(null, filename);
+//     },
+//   }),
+// });
+
+// app.post("/api/save-image", upload.single("image"), (req, res) => {
+//   if (req.file) {
+//     res.send(`/webcam/${req.file.filename}`);
+//   } else {
+//     res.status(400).send("Bad Request: No image found in request body");
+//   }
+// });
+// app.use("/webcam", express.static(path.join(__dirname, "static/webcam")));
+
+// module.exports = app;
+
+exports.onCreateDevServer = ({ app }) => {
+  app.post("/api/save-image", (req, res) => {
+    const filename = req.query.filename;
+    const filepath = path.join(__dirname, "static/webcam", filename);
+    const data = req.body;
+    const webcamRef = React.useRef(null);
+
+    const imageSrc = webcamRef.current.getScreenshot();
+    const buffer = Buffer.from(imageSrc, "base64");
+
+    fs.writeFile(filepath, buffer, (err) => {
+      if (err) {
+        console.error("Error saving image:", err);
+        res.status(500).send("Error saving image");
+      } else {
+        res.send("Image saved");
+      }
     });
   });
 };
