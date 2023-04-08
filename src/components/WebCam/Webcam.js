@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import { useMediaQuery } from "react-responsive";
 
@@ -6,6 +6,11 @@ const WebCamera = () => {
   const [capturedImage, setCapturedImage] = useState(null);
   const [isCameraEnabled, setIsCameraEnabled] = useState(false);
   const webcamRef = React.useRef(null);
+
+  const [containerDimensions, setContainerDimensions] = useState({
+    width: 0,
+    height: 0,
+  });
 
   const isLargeScreen = useMediaQuery({ minDeviceWidth: 1080 });
 
@@ -40,11 +45,29 @@ const WebCamera = () => {
     facingMode: isLargeScreen ? "user" : { exact: "environment" },
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const { width, height } = document
+        .getElementById("gatsby-focus-wrapper")
+        .getBoundingClientRect();
+      setContainerDimensions({ width, height });
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="flex justify-center my-10">
       {isCameraEnabled ? (
-        <div className="flex justify-center flex-col items-center">
+        <div className="flex justify-center flex-col items-center absolute">
           <Webcam
+            width={containerDimensions.width}
+            height={containerDimensions.height}
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
