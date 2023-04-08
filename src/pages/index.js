@@ -5,19 +5,23 @@ import ShapeFindBox from "../container/home/shapeFindBox";
 import CompareBox from "../container/home/compareBox";
 import Seo from "../components/seo";
 import WebCamera from "../components/WebCam/Webcam";
+import Banner from "../components/Layout/banner";
 
 const IndexPage = () => {
   return (
     <main>
       <Layout>
-        <WebCamera />
+        <Banner />
         <SearchBar
           width="w-1/2"
           marginY="my-10"
           autofocus={true}
           placeholder="이름으로 검색하세요"
         />
-        <ShapeFindBox />
+        <div className="flex justify-center">
+          <ShapeFindBox />
+          <WebCamera />
+        </div>
         <CompareBox />
       </Layout>
     </main>
