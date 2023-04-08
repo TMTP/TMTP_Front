@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
+import WebCamera from "../../components/WebCam/Webcam";
 
 const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +19,9 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div className={`flex items-center justify-center ${props.marginY}`}>
+    <div
+      className={`flex items-center justify-center ${props.marginY} sm:${props.smMarginY}`}
+    >
       <form
         onSubmit={handleSearch}
         className={`relative ${props.width} sm:hidden`}
@@ -31,6 +34,7 @@ const SearchBar = (props) => {
           onChange={(e) => setSearchQuery(e.target.value)}
           ref={inputRef}
         />
+
         <button
           type="submit"
           className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 bg-transparent hover:text-gray-700"

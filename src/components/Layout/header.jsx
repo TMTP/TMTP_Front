@@ -3,6 +3,7 @@ import { Link } from "gatsby";
 import useHeaderDetail from "../../hooks/components/Layout/header/hook";
 import { FaSearch, FaPills } from "react-icons/fa";
 import { navigate } from "gatsby";
+import WebCamera from "../WebCam/Webcam";
 
 const Header = () => {
   const { data, title } = useHeaderDetail();
@@ -44,6 +45,7 @@ const Header = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+
             <button
               className="flex-shrink-0 bg-white hover:bg-gray-100 border-white hover:border-gray-100 text-blue-500 font-semibold border-4 py-1 px-2 rounded"
               type="submit"
