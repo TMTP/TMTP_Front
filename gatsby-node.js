@@ -113,24 +113,3 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 };
-
-exports.onCreateDevServer = ({ app }) => {
-  app.post("/api/save-image", (req, res) => {
-    const filename = req.query.filename;
-    const filepath = path.join(__dirname, "static/webcam", filename);
-    const data = req.body;
-    const webcamRef = React.useRef(null);
-
-    const imageSrc = webcamRef.current.getScreenshot();
-    const buffer = Buffer.from(imageSrc, "base64");
-
-    fs.writeFile(filepath, buffer, (err) => {
-      if (err) {
-        console.error("Error saving image:", err);
-        res.status(500).send("Error saving image");
-      } else {
-        res.send("Image saved");
-      }
-    });
-  });
-};

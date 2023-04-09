@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import useHeaderDetail from "../../hooks/components/Layout/header/hook";
 import { FaSearch, FaPills } from "react-icons/fa";
 import { navigate } from "gatsby";
-import WebCamera from "../WebCam/Webcam";
 
 const Header = () => {
   const { data, title } = useHeaderDetail();

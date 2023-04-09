@@ -12,7 +12,7 @@ const IndexPage = () => {
     <main>
       <Layout>
         <Banner hidden="hidden" />
-        <WebCamera xlHidden="hidden" lgHidden="hidden" size="40" />
+        <WebCamera size="40" />
         <SearchBar
           width="w-1/2"
           marginY="my-10"

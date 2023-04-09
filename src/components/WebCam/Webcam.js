@@ -8,7 +8,8 @@ const WebCamera = (props) => {
   const [isCameraEnabled, setIsCameraEnabled] = useState(false);
   const webcamRef = React.useRef(null);
 
-  const isLargeScreen = useMediaQuery({ minDeviceWidth: 1080 });
+  const isSmallScreen = useMediaQuery({ maxDeviceWidth: 640 });
+  const isLargeScreen = useMediaQuery({ minDeviceWidth: 1024 });
 
   const handleCapture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -69,12 +70,14 @@ const WebCamera = (props) => {
         </div>
       ) : (
         <div>
-          <button
-            onClick={handleCameraToggle}
-            className={`xl:${props.xlHidden} lg:${props.lgHidden} hover:bg-gray-200 text-black rounded `}
-          >
-            <FaCamera size={props.size} />
-          </button>
+          {isSmallScreen && (
+            <button
+              onClick={handleCameraToggle}
+              className={`hover:bg-gray-200 text-black rounded `}
+            >
+              <FaCamera size={props.size} />
+            </button>
+          )}
         </div>
       )}
     </div>

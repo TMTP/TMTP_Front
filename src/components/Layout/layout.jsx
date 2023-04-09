@@ -1,7 +1,6 @@
 import * as React from "react";
 import Footer from "./footer";
 import Header from "./header";
-import Banner from "./banner";
 
 const Layout = ({ children }) => {
   return (

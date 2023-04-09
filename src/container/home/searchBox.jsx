@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { navigate } from "gatsby";
 import { FaSearch } from "react-icons/fa";
-import WebCamera from "../../components/WebCam/Webcam";
 
 const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
