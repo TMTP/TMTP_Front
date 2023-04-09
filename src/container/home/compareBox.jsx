@@ -29,7 +29,7 @@ function CompareBox() {
   return (
     <div className="my-10 flex flex-col sm:mx-5">
       <div className="flex flex-row justify-center items-center h-full  ">
-        <div className="w-96 h-96 sm:w-60 sm:h-60  bg-gray-200 flex flex-col border-r-2 border-dashed border-gray-600  rounded-l-full">
+        <div className="w-96 h-96 sm:w-60 sm:h-60  bg-gray-200 flex flex-col border-r-[1px] border-dashed border-gray-600  rounded-l-full">
           <div className="bg-red-400 text-white h-10 flex items-center justify-center w-full  rounded-l-xl">
             약 검색
           </div>
