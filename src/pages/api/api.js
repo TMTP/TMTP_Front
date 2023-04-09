@@ -7,11 +7,11 @@ async function fetchUsers() {
 }
 
 export async function getStaticProps() {
-  const users = await fetchUsers();
-
-  return {
-    props: {
-      users,
-    },
-  };
+  try {
+    const users = await fetchUsers();
+    return { props: { users } };
+  } catch (err) {
+    console.error(err);
+    return { props: { users: [] } };
+  }
 }
