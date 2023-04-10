@@ -6,7 +6,7 @@ async function fetchUsers() {
   return data.results;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const users = await fetchUsers();
     return { props: { users } };

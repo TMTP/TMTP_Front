@@ -1,5 +1,5 @@
 import * as React from "react";
-import { getStaticProps } from "../api/api";
+import { getServerSideProps } from "../api/api";
 import Layout from "@/components/layout/layout";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,7 +23,7 @@ const ProductIndexPage = ({ users }) => {
               </tr>
             </thead>
             <tbody>
-              {users.map((result) => (
+              {users.slice(0, 30).map((result) => (
                 <tr
                   key={result.login.uuid}
                   className="border-b-2 border-gray-900 text-xs text-center"
@@ -61,5 +61,5 @@ const ProductIndexPage = ({ users }) => {
   );
 };
 
-export { getStaticProps };
+export { getServerSideProps };
 export default ProductIndexPage;
