@@ -1,6 +1,6 @@
 import SearchBar from "@/components/home/searchBar";
 import Layout from "@/components/layout/layout";
-import { getStaticProps } from "../api/api";
+import { getServerSideProps } from "../api/api";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -77,5 +77,5 @@ const SearchIndexPage = ({ users, searchQuery }) => {
   }
 };
 
-export { getStaticProps };
+export { getServerSideProps };
 export default SearchIndexPage;
