@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 const CompareIndexPage = () => {
   const [selectedItems, setSelectedItems] = useState([]);

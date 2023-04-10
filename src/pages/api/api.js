@@ -6,12 +6,13 @@ async function fetchUsers() {
   return data.results;
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }) {
   try {
     const users = await fetchUsers();
-    return { props: { users } };
+    const searchQuery = query.searchQuery || "";
+    return { props: { users, searchQuery } };
   } catch (err) {
     console.error(err);
-    return { props: { users: [] } };
+    return { props: { users: [], searchQuery: "" } };
   }
 }

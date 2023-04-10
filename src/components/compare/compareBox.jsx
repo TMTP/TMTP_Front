@@ -21,7 +21,7 @@ function CompareBox({ users }) {
   };
 
   const handleCompare = () => {
-    const selectedIds = selected.map((item) => item.login.uuid); // 수정된 부분
+    const selectedIds = selected.map((item) => item.login.uuid);
     router.push(`/compare/?id=${selectedIds.join("&id=")}`);
   };
 
