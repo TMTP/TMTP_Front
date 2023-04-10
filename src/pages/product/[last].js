@@ -40,7 +40,7 @@ const ProductDetailPage = ({ product }) => {
 export async function getServerSideProps({ params }) {
   const res = await fetch(`https://randomuser.me/api/?seed=${params.last}`);
   const data = await res.json();
-
+  console.log(params.last);
   if (!data.results) {
     return {
       notFound: true,

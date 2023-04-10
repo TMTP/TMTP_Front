@@ -3,8 +3,8 @@ import SearchBar from "@/components/home/searchBar";
 import { getServerSideProps } from "../api/api";
 
 export default function SearchPage({ users, searchQuery }) {
-  const filteredUsers = users.filter(
-    (user) => user.name.first.toLowerCase() === searchQuery.toLowerCase()
+  const filteredUsers = users.filter((user) =>
+    user.name.first.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
     <main>

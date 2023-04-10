@@ -10,8 +10,11 @@ const ColorTable = ({ handleSelectedColors }) => {
   const likePurple = data.slice(11, 13).map((item) => item.name);
 
   const [selectedColors, setSelectedColors] = useState([]);
+
   useEffect(() => {
-    handleSelectedColors(selectedColors);
+    if (typeof handleSelectedColors === "function") {
+      handleSelectedColors(selectedColors);
+    }
   }, [selectedColors, handleSelectedColors]);
 
   const toggleColor = (color) => {
@@ -57,7 +60,6 @@ const ColorTable = ({ handleSelectedColors }) => {
       });
     }
   };
-  console.log(selectedColors);
 
   return (
     <div className="py-4 sm:pt-0 pl-3">

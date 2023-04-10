@@ -3,50 +3,36 @@ import useShapeTableDetail from "../../hook/components/shapeFind/shapeTable/hook
 
 const ShapeTable = () => {
   const { baseName, drug } = useShapeTableDetail();
-  const [showShapeModal, setShowShapeModal] = useState(false);
-  const [selectedShape, setSelectedShape] = useState("");
-
-  const [showFormModal, setShowFormModal] = useState(false);
-  const [selectedForm, setSelectedForm] = useState("");
-
-  const [showSplitLineModal, setShowSplitLineModal] = useState(false);
-  const [selectedSplitLine, setSelectedSplitLine] = useState("");
-
-  const handleShapeClick = (shape) => {
-    setSelectedShape(shape);
-    setShowShapeModal(false);
-  };
-
-  const handleFormClick = (form) => {
-    setSelectedForm(form);
-    setShowFormModal(false);
-  };
-
-  const handleSplitLineClick = (splitLine) => {
-    setSelectedSplitLine(splitLine);
-    setShowSplitLineModal(false);
-  };
-
-  const modals = [
+  const [modals, setModals] = useState([
     {
-      showModal: showShapeModal,
-      setShowModal: setShowShapeModal,
+      show: false,
       options: drug.shape,
-      handleClick: handleShapeClick,
+      selectedOption: "",
+      handleClick: setSelectedOption,
     },
     {
-      showModal: showFormModal,
-      setShowModal: setShowFormModal,
+      show: false,
       options: drug.form,
-      handleClick: handleFormClick,
+      selectedOption: "",
+      handleClick: setSelectedOption,
     },
     {
-      showModal: showSplitLineModal,
-      setShowModal: setShowSplitLineModal,
+      show: false,
       options: drug.splitLine,
-      handleClick: handleSplitLineClick,
+      selectedOption: "",
+      handleClick: setSelectedOption,
     },
-  ];
+  ]);
+
+  function setSelectedOption(option, index) {
+    const updatedModals = [...modals];
+    updatedModals[index] = {
+      ...updatedModals[index],
+      selectedOption: option,
+      show: false,
+    };
+    setModals(updatedModals);
+  }
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -56,24 +42,21 @@ const ShapeTable = () => {
             key={`btn-${index}`}
             className="border sm:px-1 sm:py-1 sm:text-sm border-black px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
             onClick={() => {
-              if (index === 0) setShowShapeModal(true);
-              if (index === 1) setShowFormModal(true);
-              if (index === 2) setShowSplitLineModal(true);
+              const updatedModals = [...modals];
+              updatedModals[index] = {
+                ...updatedModals[index],
+                show: true,
+              };
+              setModals(updatedModals);
             }}
           >
-            {index === 0 && selectedShape
-              ? selectedShape
-              : index === 1 && selectedForm
-              ? selectedForm
-              : index === 2 && selectedSplitLine
-              ? selectedSplitLine
-              : name}
+            {modals[index].selectedOption || name}
           </button>
         ))}
 
         {modals.map(
           (modal, index) =>
-            modal.showModal && (
+            modal.show && (
               <div
                 key={index}
                 className="fixed inset-0 z-50 flex items-center justify-center"
@@ -84,14 +67,21 @@ const ShapeTable = () => {
                     <button
                       key={optionIndex}
                       className="px-4 py-2 rounded-md hover:bg-cyan-100 bg-gray-200"
-                      onClick={() => modal.handleClick(option)}
+                      onClick={() => modal.handleClick(option, index)}
                     >
                       {option.toLowerCase()}
                     </button>
                   ))}
                   <button
                     className="absolute top-0 right-0"
-                    onClick={() => modal.setShowModal(false)}
+                    onClick={() => {
+                      const updatedModals = [...modals];
+                      updatedModals[index] = {
+                        ...updatedModals[index],
+                        show: false,
+                      };
+                      setModals(updatedModals);
+                    }}
                   >
                     ❌
                   </button>
