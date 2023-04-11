@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { FaSearch } from "react-icons/fa";
 
 const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
+  //나중에 api들어오면 이름을 변경하자
   const router = useRouter();
+  const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push(`/search/${searchQuery}`);
   };
 
+  useEffect(() => {
+    if (props.autofocus) {
+      inputRef.current.focus();
+    }
+  }, [props.autofocus]);
+
   return (
     <div className="flex justify-center items-start">
       <form
         onSubmit={handleSubmit}
-        className={`relative ${props.width || "w-96"}`}
+        className={`relative ${props.width || "w-96"} ${
+          props.my || "my-10"
+        } sm:${props.hidden || ""}`}
       >
         <input
           type="text"
@@ -23,6 +33,7 @@ const SearchBar = (props) => {
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder={props.placeholder || "Search"}
           className="block w-full border border-gray-300 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          ref={inputRef}
         />
         <button
           type="submit"

@@ -21,11 +21,9 @@ const ShapeFindBox = () => {
         <div className="flex-col flex ">
           <div className="flex justify-center">
             <SearchBar
-              marginY="my-2"
               width="w-full"
-              autofocus={false}
+              my="my-2"
               placeholder="약에 적힌 문자검색"
-              hidden="hidden"
             />
           </div>
           <div>

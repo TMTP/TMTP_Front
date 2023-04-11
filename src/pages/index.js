@@ -8,7 +8,12 @@ export default function Home({ users }) {
   return (
     <div>
       <Layout>
-        <SearchBar placeholder="이름을 입력하세요" width="w-1/2" />
+        <SearchBar
+          placeholder="이름을 입력하세요"
+          width="w-1/2"
+          hidden="hidden"
+          autofocus={true}
+        />
         <ShapeFindBox />
         <CompareBox users={users} />
       </Layout>
