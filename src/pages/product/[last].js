@@ -8,6 +8,7 @@ const ProductDetailPage = ({ product }) => {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+  console.log(product);
 
   return (
     <Layout>

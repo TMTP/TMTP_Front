@@ -8,6 +8,7 @@ export default function SearchPage({ users, searchQuery }) {
   const filteredUsers = users.filter((user) =>
     user.name.first.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
   return (
     <main>
       <Layout>

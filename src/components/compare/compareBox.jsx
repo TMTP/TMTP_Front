@@ -22,7 +22,7 @@ function CompareBox({ users }) {
 
   const handleCompare = () => {
     const selectedIds = selected.map((item) => item.login.uuid);
-    router.push(`/compare/?id=${selectedIds.join("&id=")}`);
+    router.push(`/compare/?uuid=${selectedIds.join("&uuid=")}`);
   };
 
   const router = useRouter();

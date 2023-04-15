@@ -33,9 +33,12 @@ export default function ProductBox({ users }) {
                 />
               </td>
               <td className="px-3 py-2">
-                <Link href={`/product/${result.name.last}`}>
-                  {` ${result.name.first} ${result.name.last}`}
-                </Link>
+                <Link
+                  href={{
+                    pathname: "/product/[last]",
+                    query: { last: result.name.last },
+                  }}
+                >{` ${result.name.first} ${result.name.last}`}</Link>
               </td>
               <td className=" py-2">
                 {`${result.location.street.name} ${result.location.street.number}`}
