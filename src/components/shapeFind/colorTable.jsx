@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import useColorTableDetail from "../../hook/components/shapeFind/colorTable/hook";
 
-const ColorTable = ({ handleSelectedColors }) => {
+const ColorTable = () => {
   const { data } = useColorTableDetail();
   const likeYellow = data.slice(1, 6).map((item) => item.name);
   const likeGreen = data.slice(6, 9).map((item) => item.name);
@@ -10,12 +10,13 @@ const ColorTable = ({ handleSelectedColors }) => {
   const likePurple = data.slice(11, 13).map((item) => item.name);
 
   const [selectedColors, setSelectedColors] = useState([]);
+  const [isReset, setIsReset] = useState(false);
 
-  useEffect(() => {
-    if (typeof handleSelectedColors === "function") {
-      handleSelectedColors(selectedColors);
-    }
-  }, [selectedColors, handleSelectedColors]);
+  const handleReset = () => {
+    setSelectedColors([]);
+    setIsReset(true);
+  };
+  console.log(selectedColors);
 
   const toggleColor = (color) => {
     const index = selectedColors.indexOf(color);
@@ -81,6 +82,12 @@ const ColorTable = ({ handleSelectedColors }) => {
           </li>
         ))}
       </ul>
+      <button
+        className="border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+        onClick={handleReset}
+      >
+        색상 초기화
+      </button>
     </div>
   );
 };

@@ -4,13 +4,13 @@ import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "../../components/home/searchBar";
 
 const ShapeFindBox = () => {
-  const handleSelectedColor = (colors) => {
-    console.log(colors);
-  };
+  // const handleSelectedColor = (colors) => {
+  //   console.log(colors);
+  // };
 
-  const handleReset = () => {
-    handleSelectedColor([]);
-  };
+  // const handleReset = () => {
+  //   handleSelectedColor([]);
+  // };
 
   return (
     <div className="flex flex-col items-center h-full my-10">
@@ -29,10 +29,11 @@ const ShapeFindBox = () => {
             />
           </div>
           <div>
-            <ColorTable handleSelectedColors={handleSelectedColor} />
+            {/* <ColorTable handleSelectedColors={handleSelectedColor} /> */}
+            <ColorTable />
             <ShapeTable />
           </div>
-          <button onClick={handleReset}>초기화</button>
+          {/* <button onClick={handleReset}>초기화</button> */}
         </div>
       </div>
     </div>

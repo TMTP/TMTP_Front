@@ -3,60 +3,90 @@ import useShapeTableDetail from "../../hook/components/shapeFind/shapeTable/hook
 
 const ShapeTable = () => {
   const { baseName, drug } = useShapeTableDetail();
-  const [modals, setModals] = useState([
-    {
-      show: false,
-      options: drug.shape,
-      selectedOption: "",
-      handleClick: setSelectedOption,
-    },
-    {
-      show: false,
-      options: drug.form,
-      selectedOption: "",
-      handleClick: setSelectedOption,
-    },
-    {
-      show: false,
-      options: drug.splitLine,
-      selectedOption: "",
-      handleClick: setSelectedOption,
-    },
-  ]);
 
-  function setSelectedOption(option, index) {
-    const updatedModals = [...modals];
-    updatedModals[index] = {
-      ...updatedModals[index],
-      selectedOption: option,
-      show: false,
-    };
-    setModals(updatedModals);
+  const [showShapeModal, setShowShapeModal] = useState(false);
+  const [selectedShape, setSelectedShape] = useState("");
+  const [showFormModal, setShowFormModal] = useState(false);
+  const [selectedForm, setSelectedForm] = useState("");
+  const [showSplitLineModal, setShowSplitLineModal] = useState(false);
+  const [selectedSplitLine, setSelectedSplitLine] = useState("");
+
+  const handleShapeClick = (shape) => {
+    setSelectedShape(shape);
+    setShowShapeModal(false);
+  };
+
+  const handleFormClick = (form) => {
+    setSelectedForm(form);
+    setShowFormModal(false);
+  };
+
+  const handleSplitLineClick = (splitLine) => {
+    setSelectedSplitLine(splitLine);
+    setShowSplitLineModal(false);
+  };
+
+  const modals = [
+    {
+      showModal: showShapeModal,
+      setShowModal: setShowShapeModal,
+      options: drug.shape,
+      handleClick: handleShapeClick,
+    },
+    {
+      showModal: showFormModal,
+      setShowModal: setShowFormModal,
+      options: drug.form,
+      handleClick: handleFormClick,
+    },
+    {
+      showModal: showSplitLineModal,
+      setShowModal: setShowSplitLineModal,
+      options: drug.splitLine,
+      handleClick: handleSplitLineClick,
+    },
+  ];
+
+  function resetModals() {
+    setSelectedShape("");
+    setSelectedForm("");
+    setSelectedSplitLine("");
   }
 
+  // 선택한 옵션값을 console.log로 출력
+  console.log(selectedShape, selectedForm, selectedSplitLine);
   return (
     <div className="flex flex-col items-center justify-center">
+      <button
+        className="border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+        onClick={resetModals}
+      >
+        모양 초기화
+      </button>
       <div className="flex space-x-4 mb-8">
         {baseName.map((name, index) => (
           <button
             key={`btn-${index}`}
             className="border sm:px-1 sm:py-1 sm:text-sm border-black px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
             onClick={() => {
-              const updatedModals = [...modals];
-              updatedModals[index] = {
-                ...updatedModals[index],
-                show: true,
-              };
-              setModals(updatedModals);
+              if (index === 0) setShowShapeModal(true);
+              if (index === 1) setShowFormModal(true);
+              if (index === 2) setShowSplitLineModal(true);
             }}
           >
-            {modals[index].selectedOption || name}
+            {index === 0 && selectedShape
+              ? selectedShape
+              : index === 1 && selectedForm
+              ? selectedForm
+              : index === 2 && selectedSplitLine
+              ? selectedSplitLine
+              : name}
           </button>
         ))}
 
         {modals.map(
           (modal, index) =>
-            modal.show && (
+            modal.showModal && (
               <div
                 key={index}
                 className="fixed inset-0 z-50 flex items-center justify-center"
@@ -67,21 +97,14 @@ const ShapeTable = () => {
                     <button
                       key={optionIndex}
                       className="px-4 py-2 rounded-md hover:bg-cyan-100 bg-gray-200"
-                      onClick={() => modal.handleClick(option, index)}
+                      onClick={() => modal.handleClick(option)}
                     >
                       {option.toLowerCase()}
                     </button>
                   ))}
                   <button
                     className="absolute top-0 right-0"
-                    onClick={() => {
-                      const updatedModals = [...modals];
-                      updatedModals[index] = {
-                        ...updatedModals[index],
-                        show: false,
-                      };
-                      setModals(updatedModals);
-                    }}
+                    onClick={() => modal.setShowModal(false)}
                   >
                     ❌
                   </button>
