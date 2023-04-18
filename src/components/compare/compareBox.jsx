@@ -4,13 +4,13 @@ import { useState } from "react";
 import React from "react";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 
-function CompareBox({ users }) {
+function CompareBox({ medicineData }) {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState([]);
 
   const handleSelect = (edge) => {
-    if (selected.some((item) => item.id === edge.id)) {
-      setSelected(selected.filter((item) => item.id !== edge.id));
+    if (selected.some((item) => item.ITEM_SEQ === edge.ITEM_SEQ)) {
+      setSelected(selected.filter((item) => item.ITEM_SEQ !== edge.ITEM_SEQ));
     } else {
       setSelected([...selected, edge]);
     }
@@ -21,8 +21,8 @@ function CompareBox({ users }) {
   };
 
   const handleCompare = () => {
-    const selectedIds = selected.map((item) => item.login.uuid);
-    router.push(`/compare/?uuid=${selectedIds.join("&uuid=")}`);
+    const selectedIds = selected.map((item) => item.ITEM_SEQ);
+    router.push(`/compare/?id=${selectedIds.join("&id=")}`);
   };
 
   const router = useRouter();
@@ -44,43 +44,42 @@ function CompareBox({ users }) {
             />
             {query.length > 0 && (
               <div className="flex flex-wrap gap-4">
-                {users
-                  .filter((user) => {
-                    const { name, location } = user;
-                    const searchString = `${name.first} ${name.last} ${location.city} ${location.country}`;
+                {medicineData.items
+                  .filter((medicine) => {
+                    const searchString = `${medicine.ITEM_SEQ} ${medicine.ITEM_NAME} `;
                     return searchString
                       .toLowerCase()
                       .includes(query.toLowerCase());
                   })
-                  .map((user) => (
+                  .map((medicine) => (
                     <div
-                      key={user.login.uuid} // 수정된 부분
+                      key={medicine.ITEM_SEQ}
                       className="w-full border-2 border-black sm:lg:w-1/3"
                     >
                       <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between">
                         <div className="flex items-center sm:text-xs">
                           <Image
-                            src={user.picture.large} // 수정된 부분
-                            alt={user.name.first} // 수정된 부분
+                            src={medicine.ITEM_IMAGE}
+                            alt={medicine.ITEM_IMAGE}
                             width={300}
                             height={300}
                             className="w-16 h-16 rounded-full mr-4 sm:w-8 sm:h-8"
                           />
                           <div>
                             <div className="font-bold sm:text-xs">
-                              {user.name.first} {user.name.last}
+                              {medicine.ITEM_NAME}
                             </div>
                             <div className="text-gray-500 sm:hidden">
-                              {user.location.city}, {user.location.country}
+                              {medicine.ITEM_SEQ}
                             </div>
                           </div>
                         </div>
                         <div className="flex items-center justify-end ml-2 ">
                           <button
-                            onClick={() => handleSelect(user)} // 수정된 부분
+                            onClick={() => handleSelect(medicine)} // 수정된 부분
                             className={
                               selected.some(
-                                (item) => item.login.uuid === user.login.uuid
+                                (item) => item.ITEM_SEQ === medicine.ITEM_SEQ
                               ) // 수정된 부분
                                 ? " text-blue-500"
                                 : "text-black"
@@ -105,9 +104,7 @@ function CompareBox({ users }) {
               {selected.map((item, index) => (
                 <div key={index} className="w-full lg:w-1/3">
                   <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between text-sm sm:text-xs">
-                    <p>
-                      {item.name.first} {item.name.last}
-                    </p>
+                    <p>{item.ITEM_NAME}</p>
                     <button onClick={() => handleDelete(index)}>
                       <FaTimesCircle className="text-red-500" />
                     </button>
