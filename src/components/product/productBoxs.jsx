@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function ProductBox({ users }) {
+export default function ProductBoxs({ medicineData }) {
   return (
     <div className="bg-white p-6 rounded-md shadow-md ">
       <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
@@ -18,15 +18,15 @@ export default function ProductBox({ users }) {
           </tr>
         </thead>
         <tbody>
-          {users.slice(0, 30).map((result) => (
+          {medicineData.items.map((result) => (
             <tr
-              key={result.login.uuid}
+              key={result.ITEM_SEQ}
               className="border-b-2 border-gray-900 text-xs text-center"
             >
               <td className="py-2 justify-center flex sm:ml-2">
                 <Image
-                  src={result.picture.large}
-                  alt={result.name.first}
+                  src={result.ITEM_IMAGE}
+                  alt={result.ITEM_IMAGE}
                   width={300}
                   height={300}
                   className="rounded-full h-16 w-16 sm:h-auto sm:w-auto mr-4"
@@ -35,18 +35,14 @@ export default function ProductBox({ users }) {
               <td className="px-3 py-2">
                 <Link
                   href={{
-                    pathname: "/product/[last]",
-                    query: { last: result.name.last },
+                    pathname: "/product/[id]",
+                    query: { id: result.ITEM_SEQ },
                   }}
-                >{` ${result.name.first} ${result.name.last}`}</Link>
+                >{` ${result.ITEM_NAME}`}</Link>
               </td>
-              <td className=" py-2">
-                {`${result.location.street.name} ${result.location.street.number}`}
-              </td>
-              <td className=" py-2">
-                {`${result.location.city}, ${result.location.state}`}
-              </td>
-              <td className=" sm:hidden  py-2">{result.location.country}</td>
+              <td className=" py-2">{`${result.ENTP_NAME}`}</td>
+              <td className=" py-2">{`${result.CHART}`}</td>
+              <td className=" sm:hidden  py-2">{result.ITEM_SEQ}</td>
             </tr>
           ))}
         </tbody>

@@ -1,18 +1,20 @@
 import fetch from "isomorphic-unfetch";
 
-async function fetchUsers() {
-  const res = await fetch("https://randomuser.me/api/?results=500");
-  const data = await res.json();
-  return data.results;
-}
+export async function fetchMedicineData() {
+  const serviceKey = encodeURIComponent(
+    "0aq5WhGCXd25lcajnThUxW94UFyuv1WV8clq1W42wiCaMegFEzoQbw18rbKMr2JInoFAOINkrOAPmSIMxpgDlw=="
+  );
+  const apiUrl = `https://apis.data.go.kr/1471000/MdcinGrnIdntfcInfoService01/getMdcinGrnIdntfcInfoList01?serviceKey=${serviceKey}&pageNo=1&numOfRows=100&type=json`;
 
-export async function getServerSideProps({ query }) {
-  try {
-    const users = await fetchUsers();
-    const searchQuery = query.searchQuery || "";
-    return { props: { users, searchQuery } };
-  } catch (err) {
-    console.error(err);
-    return { props: { users: [], searchQuery: "" } };
+  const response = await fetch(apiUrl);
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to fetch data from API: ${response.status} ${response.statusText}`
+    );
   }
+
+  const data = await response.json();
+
+  return data;
 }

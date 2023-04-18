@@ -1,18 +1,32 @@
 import * as React from "react";
-import { getServerSideProps } from "../api/api";
+import { fetchMedicineData } from "../api/api";
 import Layout from "@/components/layout/layout";
-import Link from "next/link";
-import Image from "next/image";
 import ProductBoxs from "@/components/product/productBoxs";
 
-export default function ProductIndexPage({ users }) {
+export default function ProductIndexPage({ medicineData }) {
   return (
     <main>
       <Layout>
-        <ProductBoxs users={users} />
+        <ProductBoxs medicineData={medicineData} />
       </Layout>
     </main>
   );
 }
 
-export { getServerSideProps };
+export async function getServerSideProps() {
+  try {
+    const data = await fetchMedicineData();
+    return {
+      props: {
+        medicineData: data.body,
+      },
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      props: {
+        medicineData: null,
+      },
+    };
+  }
+}

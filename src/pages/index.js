@@ -1,10 +1,10 @@
 import SearchBar from "@/components/home/searchBar";
 import Layout from "@/components/layout/layout";
-import { getServerSideProps } from "./api/api";
+import { fetchMedicineData } from "./api/api";
 import ShapeFindBox from "@/components/shapeFind/shapeFindBox";
 import CompareBox from "@/components/compare/compareBox";
 
-export default function Home({ users }) {
+export default function Home({ medicineData }) {
   return (
     <div>
       <Layout>
@@ -15,10 +15,26 @@ export default function Home({ users }) {
           autofocus={true}
         />
         <ShapeFindBox />
-        <CompareBox users={users} />
+        <CompareBox medicineData={medicineData} />
       </Layout>
     </div>
   );
 }
 
-export { getServerSideProps };
+export async function getServerSideProps() {
+  try {
+    const data = await fetchMedicineData();
+    return {
+      props: {
+        medicineData: data.body,
+      },
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      props: {
+        medicineData: null,
+      },
+    };
+  }
+}

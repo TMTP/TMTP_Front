@@ -1,17 +1,14 @@
-import SearchBar from "@/components/home/searchBar";
 import Layout from "@/components/layout/layout";
 import { getServerSideProps } from "../api/api";
-import Link from "next/link";
-import Image from "next/image";
-import SearchPageBox from "@/components/search/searchPage";
 
-const SearchIndexPage = ({ users, searchQuery }) => {
+const SearchIndexPage = () => {
   return (
     <div>
-      <SearchPageBox users={users} searchQuery={searchQuery} />
+      <Layout>
+        <p>해당하는 정보가 없습니다.</p>
+      </Layout>
     </div>
   );
 };
 
-export { getServerSideProps };
 export default SearchIndexPage;
