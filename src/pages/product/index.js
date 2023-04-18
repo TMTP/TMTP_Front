@@ -18,7 +18,7 @@ export async function getServerSideProps() {
     const data = await fetchMedicineData();
     return {
       props: {
-        medicineData: data.body,
+        medicineData: data,
       },
     };
   } catch (err) {

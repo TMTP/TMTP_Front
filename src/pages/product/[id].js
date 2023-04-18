@@ -7,8 +7,8 @@ const ProductDetailPage = ({ medicineData }) => {
   const router = useRouter();
   const { id } = router.query;
 
-  const selectedProduct = medicineData.items.find(
-    (product) => product.ITEM_SEQ === id
+  const selectedProduct = medicineData.find(
+    (product) => product.item_SEQ === id
   );
 
   return (
@@ -17,11 +17,10 @@ const ProductDetailPage = ({ medicineData }) => {
         <div className="flex justify-center items-start mb-6">
           <div className="rounded-lg overflow-hidden shadow-md w-1/2 sm:w-96">
             <Image
-              src={selectedProduct.ITEM_IMAGE}
-              alt={selectedProduct.ITEM_IMAGE}
+              src={selectedProduct.item_IMAGE}
+              alt={selectedProduct.item_IMAGE}
               width={800}
               height={1000}
-              layout="responsive"
               className="object-cover h-60 sm:h-96 w-full"
             />
           </div>
@@ -29,23 +28,23 @@ const ProductDetailPage = ({ medicineData }) => {
         <div className="flex flex-col sm:flex-row justify-between">
           <div className="flex flex-col mb-4">
             <h1 className="text-3xl font-bold text-center mb-2">
-              {selectedProduct.ITEM_NAME}
+              {selectedProduct.item_NAME}
             </h1>
             <p className="text-gray-600">
               <span className="font-bold">품목 일련번호: </span>
-              {selectedProduct.ITEM_SEQ}
+              {selectedProduct.item_SEQ}
             </p>
             <p className="text-gray-600">
-              <span className="font-bold">업체명: </span>
-              {selectedProduct.ENTP_NAME}
+              <span className="font-bold">품목 목적: </span>
+              {selectedProduct.class_NAME}
             </p>
             <p className="text-gray-600">
               <span className="font-bold">품목 모양: </span>
-              {selectedProduct.DRUG_SHAPE}
+              {selectedProduct.drug_SHAPE}
             </p>
             <p className="text-gray-600">
               <span className="font-bold">품목 색상: </span>
-              {selectedProduct.COLOR_CLASS1}
+              {selectedProduct.color_CLASS1}
             </p>
           </div>
         </div>
@@ -59,7 +58,7 @@ export async function getServerSideProps() {
     const data = await fetchMedicineData();
     return {
       props: {
-        medicineData: data.body,
+        medicineData: data,
       },
     };
   } catch (err) {

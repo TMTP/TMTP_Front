@@ -9,8 +9,8 @@ function CompareBox({ medicineData }) {
   const [selected, setSelected] = useState([]);
 
   const handleSelect = (edge) => {
-    if (selected.some((item) => item.ITEM_SEQ === edge.ITEM_SEQ)) {
-      setSelected(selected.filter((item) => item.ITEM_SEQ !== edge.ITEM_SEQ));
+    if (selected.some((item) => item.item_SEQ === edge.item_SEQ)) {
+      setSelected(selected.filter((item) => item.item_SEQ !== edge.item_SEQ));
     } else {
       setSelected([...selected, edge]);
     }
@@ -21,7 +21,7 @@ function CompareBox({ medicineData }) {
   };
 
   const handleCompare = () => {
-    const selectedIds = selected.map((item) => item.ITEM_SEQ);
+    const selectedIds = selected.map((item) => item.item_SEQ);
     router.push(`/compare/?id=${selectedIds.join("&id=")}`);
   };
 
@@ -44,33 +44,33 @@ function CompareBox({ medicineData }) {
             />
             {query.length > 0 && (
               <div className="flex flex-wrap gap-4">
-                {medicineData.items
+                {medicineData
                   .filter((medicine) => {
-                    const searchString = `${medicine.ITEM_SEQ} ${medicine.ITEM_NAME} `;
+                    const searchString = `${medicine.item_SEQ} ${medicine.item_NAME} `;
                     return searchString
                       .toLowerCase()
                       .includes(query.toLowerCase());
                   })
                   .map((medicine) => (
                     <div
-                      key={medicine.ITEM_SEQ}
+                      key={medicine.item_SEQ}
                       className="w-full border-2 border-black sm:lg:w-1/3"
                     >
                       <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between">
                         <div className="flex items-center sm:text-xs">
                           <Image
-                            src={medicine.ITEM_IMAGE}
-                            alt={medicine.ITEM_IMAGE}
+                            src={medicine.item_IMAGE}
+                            alt={medicine.item_IMAGE}
                             width={300}
                             height={300}
                             className="w-16 h-16 rounded-full mr-4 sm:w-8 sm:h-8"
                           />
                           <div>
                             <div className="font-bold sm:text-xs">
-                              {medicine.ITEM_NAME}
+                              {medicine.item_NAME}
                             </div>
                             <div className="text-gray-500 sm:hidden">
-                              {medicine.ITEM_SEQ}
+                              {medicine.item_SEQ}
                             </div>
                           </div>
                         </div>
@@ -79,7 +79,7 @@ function CompareBox({ medicineData }) {
                             onClick={() => handleSelect(medicine)} // 수정된 부분
                             className={
                               selected.some(
-                                (item) => item.ITEM_SEQ === medicine.ITEM_SEQ
+                                (item) => item.item_SEQ === medicine.item_SEQ
                               ) // 수정된 부분
                                 ? " text-blue-500"
                                 : "text-black"
@@ -104,7 +104,7 @@ function CompareBox({ medicineData }) {
               {selected.map((item, index) => (
                 <div key={index} className="w-full lg:w-1/3">
                   <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between text-sm sm:text-xs">
-                    <p>{item.ITEM_NAME}</p>
+                    <p>{item.item_NAME}</p>
                     <button onClick={() => handleDelete(index)}>
                       <FaTimesCircle className="text-red-500" />
                     </button>

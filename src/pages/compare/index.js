@@ -3,14 +3,9 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
 import { fetchMedicineData } from "../api/api";
 
-const CompareIndexPage = ({ medicineData, searchQuery }) => {
+const CompareIndexPage = () => {
   const router = useRouter();
-  const uuResult = router.query.uuid || [];
-  console.log(uuResult);
-  const selectedUsers = users.filter((user) =>
-    uuResult.includes(user.login.uuid)
-  );
-  console.log(selectedUsers);
+
   return (
     <main>
       <Layout>
@@ -25,7 +20,7 @@ export async function getServerSideProps() {
     const data = await fetchMedicineData();
     return {
       props: {
-        medicineData: data.body,
+        medicineData: data,
       },
     };
   } catch (err) {

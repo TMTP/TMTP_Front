@@ -18,15 +18,15 @@ export default function ProductBoxs({ medicineData }) {
           </tr>
         </thead>
         <tbody>
-          {medicineData.items.map((result) => (
+          {medicineData.slice(0, 100).map((result) => (
             <tr
-              key={result.ITEM_SEQ}
+              key={result.item_SEQ}
               className="border-2 border-gray-900 text-xs text-center "
             >
               <td className=" justify-center  sm:mt-5  border-r-2 border-black">
                 <Image
-                  src={result.ITEM_IMAGE}
-                  alt={result.ITEM_IMAGE}
+                  src={result.item_IMAGE}
+                  alt={result.item_IMAGE}
                   width={300}
                   height={300}
                   className="rounded-full h-14 w-14 sm:h-auto sm:w-auto lg:m-4 xl:m-4 "
@@ -36,14 +36,14 @@ export default function ProductBoxs({ medicineData }) {
                 <Link
                   href={{
                     pathname: "/product/[id]",
-                    query: { id: result.ITEM_SEQ },
+                    query: { id: result.item_SEQ },
                   }}
-                >{` ${result.ITEM_NAME}`}</Link>
+                >{` ${result.item_NAME}`}</Link>
               </td>
-              <td className=" py-2 border-r-2 border-black">{`${result.ENTP_NAME}`}</td>
-              <td className=" py-2 border-r-2 border-black">{`${result.CHART}`}</td>
+              <td className=" py-2 border-r-2 border-black">{`${result.drug_SHAPE}`}</td>
+              <td className=" py-2 border-r-2 border-black">{`${result.form_CODE_NAME}`}</td>
               <td className=" sm:hidden  py-2 border-r-2 border-black">
-                {result.ITEM_SEQ}
+                {result.item_SEQ}
               </td>
             </tr>
           ))}

@@ -5,6 +5,7 @@ import ShapeFindBox from "@/components/shapeFind/shapeFindBox";
 import CompareBox from "@/components/compare/compareBox";
 
 export default function Home({ medicineData }) {
+  console.log(medicineData);
   return (
     <div>
       <Layout>
@@ -26,7 +27,7 @@ export async function getServerSideProps() {
     const data = await fetchMedicineData();
     return {
       props: {
-        medicineData: data.body,
+        medicineData: data,
       },
     };
   } catch (err) {
