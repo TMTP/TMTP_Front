@@ -1,14 +1,20 @@
 import Layout from "@/components/layout/layout";
 import SearchBar from "@/components/home/searchBar";
-import { fetchMedicineData } from "../api/api";
+import { fetchMedicineData } from "../../api/api";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function SearchPage({ medicineData, searchQuery }) {
   const filteredData = medicineData.filter(
     (item) =>
-      item.item_NAME.includes(searchQuery) ||
-      item.item_SEQ.toString().includes(searchQuery)
+      item.print_FRONT
+        .toString()
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      item.print_BACK
+        .toString()
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase())
   );
 
   return (

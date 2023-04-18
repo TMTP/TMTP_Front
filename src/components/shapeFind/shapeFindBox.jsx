@@ -26,6 +26,8 @@ const ShapeFindBox = () => {
               autofocus={false}
               placeholder="약에 적힌 문자검색"
               hidden="hidden"
+              searchPath="/search"
+              searchType="shape"
             />
           </div>
           <div>

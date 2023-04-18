@@ -5,7 +5,7 @@ import ShapeFindBox from "@/components/shapeFind/shapeFindBox";
 import CompareBox from "@/components/compare/compareBox";
 
 export default function Home({ medicineData }) {
-  console.log(medicineData);
+  // console.log(medicineData);
   return (
     <div>
       <Layout>
@@ -14,6 +14,7 @@ export default function Home({ medicineData }) {
           width="w-1/2"
           hidden="hidden"
           autofocus={true}
+          searchPath="/search"
         />
         <ShapeFindBox />
         <CompareBox medicineData={medicineData} />

@@ -10,7 +10,13 @@ const SearchBar = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push(`/search/${searchQuery}`);
+    const { searchPath, searchType } = props;
+    // 검색 타입(searchType)에 따라 경로를 생성
+    const path =
+      searchType === "shape"
+        ? `${searchPath}/shape/${searchQuery}`
+        : `${searchPath}/${searchQuery}`;
+    router.push(path);
   };
 
   useEffect(() => {
