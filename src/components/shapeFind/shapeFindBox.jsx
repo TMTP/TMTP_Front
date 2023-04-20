@@ -1,17 +1,8 @@
 import React from "react";
-import ColorTable from "../../components/shapeFind/colorTable";
-import ShapeTable from "../../components/shapeFind/shapeTable";
 import SearchBar from "../../components/home/searchBar";
+import ColorShapeBox from "./colorShapeBox";
 
 const ShapeFindBox = () => {
-  // const handleSelectedColor = (colors) => {
-  //   console.log(colors);
-  // };
-
-  // const handleReset = () => {
-  //   handleSelectedColor([]);
-  // };
-
   return (
     <div className="flex flex-col items-center h-full my-10">
       <div className="w-96 h-96 sm:w-64 sm:h-60 bg-gray-200 flex flex-col rounded-3xl">
@@ -31,11 +22,8 @@ const ShapeFindBox = () => {
             />
           </div>
           <div>
-            {/* <ColorTable handleSelectedColors={handleSelectedColor} /> */}
-            <ColorTable />
-            <ShapeTable />
+            <ColorShapeBox />
           </div>
-          {/* <button onClick={handleReset}>초기화</button> */}
         </div>
       </div>
     </div>

@@ -26,10 +26,6 @@ export default function SearchPage({ medicineData, searchQuery }) {
           searchPath="/search"
         />
         <div className="bg-white p-6 rounded-md shadow-md ">
-          <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
-            {searchQuery}에 대한 정보입니다.
-          </h1>
-
           <table className="w-full table-auto ">
             <thead>
               <tr className="bg-blue-200 sm:text-xs text-center">

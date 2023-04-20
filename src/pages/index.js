@@ -5,12 +5,11 @@ import ShapeFindBox from "@/components/shapeFind/shapeFindBox";
 import CompareBox from "@/components/compare/compareBox";
 
 export default function Home({ medicineData }) {
-  // console.log(medicineData);
   return (
     <div>
       <Layout>
         <SearchBar
-          placeholder="이름을 입력하세요"
+          placeholder="제품명, 코드를 입력하세요"
           width="w-1/2"
           hidden="hidden"
           autofocus={true}

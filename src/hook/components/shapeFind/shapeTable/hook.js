@@ -14,7 +14,7 @@ function useShapeTableDetail() {
       "팔각형",
     ],
     form: ["정제", "경질캡슐", "연질캡슐"],
-    splitLine: ["없음", "(+)형", "(-)형"],
+    splitLine: ["+", "-"],
   };
   return { baseName, drug };
 }

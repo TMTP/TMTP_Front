@@ -1,29 +1,62 @@
 import Layout from "@/components/layout/layout";
-import SearchBar from "@/components/home/searchBar";
-import { fetchMedicineData } from "../api/api";
+import { fetchMedicineData } from "../../api/api";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function SearchPage({ medicineData, searchQuery }) {
-  const filteredData = medicineData.filter(
-    (item) =>
-      item.item_NAME.includes(searchQuery) ||
-      item.item_SEQ.toString().includes(searchQuery)
-  );
+  const selectedOptions = searchQuery.split("+");
+  const [selectedColors, selectedShape, selectedForm, selectedSplitLine] =
+    selectedOptions.map((option) => option.split(":")[1]);
 
+  const filteredData = medicineData.filter((item) => {
+    let isMatched = false;
+
+    if (selectedColors) {
+      const colors = selectedColors.split(",");
+      isMatched = colors.some((color) =>
+        item.color_CLASS1.toString().toLowerCase().includes(color.toLowerCase())
+      );
+    }
+
+    if (!selectedColors || (isMatched && selectedShape)) {
+      if (selectedShape) {
+        isMatched = item.drug_SHAPE
+          .toString()
+          .toLowerCase()
+          .includes(selectedShape.toLowerCase());
+      }
+    }
+
+    if (!selectedColors || (isMatched && selectedForm)) {
+      if (selectedForm) {
+        isMatched = item.form_CODE_NAME
+          .toString()
+          .toLowerCase()
+          .includes(selectedForm.toLowerCase());
+      }
+    }
+
+    if (!selectedColors || (isMatched && selectedSplitLine)) {
+      if (selectedSplitLine) {
+        isMatched =
+          item.line_FRONT.toString().toLowerCase() ===
+            selectedSplitLine.toLowerCase() ||
+          item.line_BACK.toString().toLowerCase() ===
+            selectedSplitLine.toLowerCase();
+      }
+    }
+
+    return isMatched;
+  });
+  console.log(filteredData);
   return (
     <main>
       <Layout>
-        <SearchBar
-          placeholder="이름을 입력하세요"
-          width="w-1/2"
-          searchPath="/search"
-        />
         <div className="bg-white p-6 rounded-md shadow-md ">
           <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
-            {"("}
-            {searchQuery}
-            {")"}에 대한 정보입니다.
+            {selectedColors}, {selectedShape}, {selectedForm},
+            {selectedSplitLine}에 대한 정보입니다.
           </h1>
 
           <table className="w-full table-auto ">
