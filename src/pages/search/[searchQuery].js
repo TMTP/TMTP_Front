@@ -29,11 +29,11 @@ export default function SearchPage({ medicineData, searchQuery }) {
           <table className="w-full table-auto ">
             <thead>
               <tr className="bg-blue-200 sm:text-xs text-center">
-                <th className="px-2 py-2">사진</th>
-                <th className="px-4 py-2">제품명</th>
-                <th className="px-4 py-2">회사명</th>
-                <th className="px-4 py-2">제형</th>
-                <th className=" sm:hidden px-4 py-2">구분</th>
+                <th className=" py-2  border-2 border-black">사진</th>
+                <th className=" py-2 border-2 border-black">제품명</th>
+                <th className=" py-2 border-2 border-black">약품번호</th>
+                <th className=" py-2 border-2 border-black">클래스이름</th>
+                <th className=" sm:hidden  py-2 border-2 border-black">제형</th>
               </tr>
             </thead>
             <tbody>

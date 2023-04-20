@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FaPenFancy } from "react-icons/fa";
 
 export default function ProductBoxs({ medicineData }) {
   return (
@@ -23,14 +24,25 @@ export default function ProductBoxs({ medicineData }) {
               key={result.item_SEQ}
               className="border-2 border-gray-900 text-xs text-center font-extrabold"
             >
-              <td className=" justify-center  sm:mt-5  border-r-2 border-black">
-                <Image
-                  src={result.item_IMAGE}
-                  alt={result.item_IMAGE}
-                  width={100}
-                  height={100}
-                  className="rounded-full h-14 w-14 sm:h-auto sm:w-auto lg:m-4 xl:m-4 "
-                />
+              <td className=" justify-center flex  sm:mt-5  border-r-2 border-black">
+                <div className="relative">
+                  <Image
+                    src={result.item_IMAGE}
+                    alt={result.item_IMAGE}
+                    width={100}
+                    height={100}
+                    className="rounded-full h-14 w-14 sm:h-auto sm:w-auto lg:m-4 xl:m-4 "
+                  />
+                  {/* <div className="w-96 opacity-0 hover:opacity-100 transition duration-500 absolute inset-6  flex items-center justify-center z-10">
+                    <div className="bg-gray-800 text-white px-2 py-2 rounded-md">
+                      <span className="inline-block ml-2 transform ">
+                        <FaPenFancy />
+                        {"   "}
+                      </span>
+                      {result.item_NAME}
+                    </div>
+                  </div> */}
+                </div>
               </td>
               <td className="px-3 py-2 border-r-2 border-black">
                 <Link
