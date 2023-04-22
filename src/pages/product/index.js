@@ -14,15 +14,6 @@ export default function ProductIndexPage({ medicineData }) {
       <Layout>
         <ProductBoxs medicineData={currentData} />
         <div className="flex flex-row justify-center">
-          {/* 이전 페이지 버튼 */}
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-            className="border-2 border-black mr-4"
-          >
-            이전
-          </button>
-
           {/* 중앙 페이지 버튼 */}
           {visiblePages.map((page) => (
             <button
@@ -35,15 +26,6 @@ export default function ProductIndexPage({ medicineData }) {
               {page}
             </button>
           ))}
-
-          {/* 다음 페이지 버튼 */}
-          <button
-            disabled={currentPage === pages.length}
-            onClick={() => handlePageChange(currentPage + 1)}
-            className="border-2 border-black ml-4"
-          >
-            다음
-          </button>
         </div>
       </Layout>
     </main>

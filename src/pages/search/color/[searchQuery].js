@@ -2,7 +2,6 @@ import Layout from "@/components/layout/layout";
 import { fetchMedicineData } from "../../api/api";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/router";
 
 export default function SearchPage({ medicineData, searchQuery }) {
   const selectedOptions = searchQuery.split("+");
@@ -54,15 +53,10 @@ export default function SearchPage({ medicineData, searchQuery }) {
     <main>
       <Layout>
         <div className="bg-white p-6 rounded-md shadow-md ">
-          {/* <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
-            {selectedColors}, {selectedShape}, {selectedForm},
-            {selectedSplitLine}에 대한 정보입니다.
-          </h1> */}
-
           <table className="w-full table-auto ">
             <thead>
               <tr className="bg-blue-200 sm:text-xs text-center">
-                <th className=" py-2  ">사진</th>
+                <th className=" py-2 ">사진</th>
                 <th className=" py-2 ">제품명</th>
                 <th className=" py-2 ">약품번호</th>
                 <th className=" py-2 ">클래스이름</th>

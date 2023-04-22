@@ -2,8 +2,10 @@ import { useRouter } from "next/router";
 import Layout from "@/components/layout/layout";
 import { fetchMedicineData } from "../api/api";
 import Image from "next/image";
+import useProductDetailId from "@/hook/pages/product/id/hook";
 
 const ProductDetailPage = ({ medicineData }) => {
+  const { data, properties } = useProductDetailId();
   const router = useRouter();
   const { id } = router.query;
 
@@ -30,22 +32,12 @@ const ProductDetailPage = ({ medicineData }) => {
             <h1 className="text-3xl font-bold text-center mb-2">
               {selectedProduct.item_NAME}
             </h1>
-            <p className="text-gray-600">
-              <span className="font-bold">품목 일련번호: </span>
-              {selectedProduct.item_SEQ}
-            </p>
-            <p className="text-gray-600">
-              <span className="font-bold">품목 목적: </span>
-              {selectedProduct.class_NAME}
-            </p>
-            <p className="text-gray-600">
-              <span className="font-bold">품목 모양: </span>
-              {selectedProduct.drug_SHAPE}
-            </p>
-            <p className="text-gray-600">
-              <span className="font-bold">품목 색상: </span>
-              {selectedProduct.color_CLASS1}
-            </p>
+            {data.map((item, index) => (
+              <p className="text-gray-600" key={index}>
+                <span className="font-bold">{item}: </span>
+                {selectedProduct[properties[item]]}
+              </p>
+            ))}
           </div>
         </div>
       </div>
