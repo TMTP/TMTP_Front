@@ -56,8 +56,8 @@ function CompareBox({ medicineData }) {
                       key={medicine.item_SEQ}
                       className="w-full border-2 border-black sm:lg:w-1/3"
                     >
-                      <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between">
-                        <div className="flex items-center sm:text-xs">
+                      <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between ">
+                        <div className="flex items-center sm:text-xs text-ellipsis overflow-hidden">
                           <Image
                             src={medicine.item_IMAGE}
                             alt={medicine.item_IMAGE}
@@ -66,7 +66,7 @@ function CompareBox({ medicineData }) {
                             className="w-16 h-16 rounded-full mr-4 sm:w-8 sm:h-8"
                           />
                           <div>
-                            <div className="font-bold sm:text-xs">
+                            <div className="font-bold sm:text-xs ">
                               {medicine.item_NAME}
                             </div>
                             <div className="text-gray-500 sm:hidden">

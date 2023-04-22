@@ -132,9 +132,6 @@ const ColorShapeBox = () => {
     router.push(`/search/color/${query}`);
   };
 
-  console.log(selectedColors);
-  console.log(selectedShape, selectedForm, selectedSplitLine);
-
   return (
     <div className="py-4 sm:pt-0 pl-3">
       <div>
