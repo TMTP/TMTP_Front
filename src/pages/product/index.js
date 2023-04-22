@@ -2,7 +2,6 @@ import * as React from "react";
 import { fetchMedicineData } from "../api/api";
 import Layout from "@/components/layout/layout";
 import ProductBoxs from "@/components/product/productBoxs";
-import { useState } from "react";
 import { usePagination } from "@/utils/pagination";
 
 export default function ProductIndexPage({ medicineData }) {
@@ -19,7 +18,7 @@ export default function ProductIndexPage({ medicineData }) {
             <button
               key={page}
               onClick={() => handlePageChange(page)}
-              className={`text-gray-800 mx-1 px-3 py-1 rounded-full border ${
+              className={`text-gray-800 mx-1 px-3 py-1 rounded-full border mb-4 ${
                 currentPage === page ? "bg-red-500 text-white" : ""
               }`}
             >

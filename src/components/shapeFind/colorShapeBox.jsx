@@ -139,7 +139,7 @@ const ColorShapeBox = () => {
           {data.map((color) => (
             <li
               key={color.name}
-              className={`w-1/4 md:w-1/4 mb-2 md:mb-0 sm:mb-0  ${
+              className={`w-1/4 md:w-1/4 mb-2 md:mb-0 sm:mb-1 sm:text-xs  ${
                 selectedColors.includes(color.name) && color.colorClass
               }`}
               onClick={() => toggleColor(color.name)}
@@ -160,7 +160,7 @@ const ColorShapeBox = () => {
             {baseName.map((name, index) => (
               <button
                 key={`btn-${index}`}
-                className="border sm:px-1 sm:py-1 sm:text-sm border-black px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+                className="sm:w-18 sm:h-10 sm:mt-3 sm:text-xs sm:whitespace-nowrap border sm:px-1 sm:py-1  border-black px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
                 onClick={() => {
                   if (index === 0) setShowShapeModal(true);
                   if (index === 1) setShowFormModal(true);
@@ -208,15 +208,15 @@ const ColorShapeBox = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className=" flex justify-between mx-10">
         <button
-          className="border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+          className="border-1 border-black sm:mb-10 sm:w-auto sm:h-auto border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
           onClick={handleReset}
         >
           초기화
         </button>
         <button
-          className="border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+          className="border-1 border-black sm:mb-10 sm:w-auto sm:h-auto border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
           onClick={handleSearch}
         >
           검색

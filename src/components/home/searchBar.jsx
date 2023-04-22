@@ -43,7 +43,7 @@ const SearchBar = (props) => {
         />
         <button
           type="submit"
-          className="absolute inset-y-0 right-0 flex items-center justify-center w-10 h-[48px] text-gray-500 bg-transparent hover:text-gray-700 focus:outline-none"
+          className="absolute -inset-y-1 right-0 flex items-center justify-center w-10 h-[48px] text-gray-500 bg-transparent hover:text-gray-700 focus:outline-none"
         >
           <FaSearch />
         </button>

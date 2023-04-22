@@ -1,9 +1,9 @@
 import Layout from "@/components/layout/layout";
 import { fetchMedicineData } from "../../api/api";
-import Link from "next/link";
-import Image from "next/image";
+import CustomTable from "@/utils/table";
+import { usePagination } from "@/utils/pagination";
 
-export default function SearchPage({ medicineData, searchQuery }) {
+export default function ColorSearchPage({ medicineData, searchQuery }) {
   const selectedOptions = searchQuery.split("+");
   const [selectedColors, selectedShape, selectedForm, selectedSplitLine] =
     selectedOptions.map((option) => option.split(":")[1]);
@@ -48,51 +48,26 @@ export default function SearchPage({ medicineData, searchQuery }) {
 
     return isMatched;
   });
-  console.log(filteredData);
+  const { currentPage, handlePageChange, currentData, visiblePages, pages } =
+    usePagination(filteredData);
   return (
     <main>
       <Layout>
-        <div className="bg-white p-6 rounded-md shadow-md ">
-          <table className="w-full table-auto ">
-            <thead>
-              <tr className="bg-blue-200 sm:text-xs text-center">
-                <th className=" py-2 ">사진</th>
-                <th className=" py-2 ">제품명</th>
-                <th className=" py-2 ">약품번호</th>
-                <th className=" py-2 ">클래스이름</th>
-                <th className=" sm:hidden  py-2 ">제형</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((result) => (
-                <tr
-                  key={result.item_SEQ}
-                  className="border-b-[1px] border-gray-900 text-xs text-center"
-                >
-                  <td className="py-2 justify-center flex sm:ml-2">
-                    <Image
-                      src={result.item_IMAGE}
-                      alt={result.item_IMAGE}
-                      width={300}
-                      height={300}
-                      className="rounded-full h-16 w-16 sm:h-auto sm:w-auto mr-4"
-                    />
-                  </td>
-                  <td className="px-3 py-2">
-                    <Link
-                      href={{
-                        pathname: "/product/[id]",
-                        query: { id: result.item_SEQ },
-                      }}
-                    >{` ${result.item_NAME}`}</Link>
-                  </td>
-                  <td className=" py-2">{`${result.drug_SHAPE}`}</td>
-                  <td className=" py-2">{`${result.form_CODE_NAME}`}</td>
-                  <td className=" sm:hidden  py-2">{result.item_SEQ}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="bg-white p-6 rounded-md  ">
+          <CustomTable data={currentData} />
+        </div>
+        <div className="flex flex-row justify-center">
+          {visiblePages.map((page) => (
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              className={`text-gray-800 mx-1 px-3 py-1 rounded-full border mb-4 ${
+                currentPage === page ? "bg-red-500 text-white" : ""
+              }`}
+            >
+              {page}
+            </button>
+          ))}
         </div>
       </Layout>
     </main>
