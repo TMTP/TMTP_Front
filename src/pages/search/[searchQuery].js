@@ -1,17 +1,18 @@
 import Layout from "@/components/layout/layout";
 import SearchBar from "@/components/home/searchBar";
 import { fetchMedicineData } from "../api/api";
-import CustomTable from "@/utils/table";
 import { usePagination } from "@/utils/pagination";
+import MainSearch from "@/components/search/mainSearch";
 
-export default function SearchPage({ medicineData, searchQuery }) {
-  const filteredData = medicineData.filter(
-    (item) =>
-      item.item_NAME.includes(searchQuery) ||
-      item.item_SEQ.toString().includes(searchQuery)
-  );
+export default function MainSearchPage({ medicineData, searchQuery }) {
   const { currentPage, handlePageChange, currentData, visiblePages, pages } =
-    usePagination(filteredData);
+    usePagination(
+      medicineData.filter(
+        (item) =>
+          item.item_NAME.includes(searchQuery) ||
+          item.item_SEQ.toString().includes(searchQuery)
+      )
+    );
   return (
     <main>
       <Layout>
@@ -20,16 +21,7 @@ export default function SearchPage({ medicineData, searchQuery }) {
           width="w-1/2"
           searchPath="/search"
         />
-        <div className="bg-white p-6 rounded-md ">
-          <h1 className="text-3xl text-center font-bold mb-16 sm:text-base sm:mb-5 text-red-300">
-            {"("}
-            {searchQuery}
-            {")"}에 대한 정보입니다.
-          </h1>
-        </div>
-        <div className="bg-white p-6">
-          <CustomTable data={currentData} />
-        </div>
+        <MainSearch medicineData={currentData} searchQuery={searchQuery} />
         <div className="flex flex-row justify-center">
           {visiblePages.map((page) => (
             <button

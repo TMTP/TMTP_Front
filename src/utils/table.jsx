@@ -1,10 +1,9 @@
-import Layout from "@/components/layout/layout";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function CustomTable({ data }) {
   return (
-    <table className="w-full table-auto ">
+    <table className="w-full table-auto border-collapse">
       <thead>
         <tr className="bg-blue-200 sm:text-[8px] text-center ">
           <th className="py-2 border-2 border-black">사진</th>
@@ -27,7 +26,7 @@ export default function CustomTable({ data }) {
                   alt={result.item_IMAGE}
                   width={100}
                   height={100}
-                  className="rounded-full h-14 w-14 sm:h-auto sm:w-auto lg:m-4 xl:m-4"
+                  className="rounded-full h-14 w-14 sm:h-14 sm:w-64 lg:m-4 xl:m-4"
                 />
               </div>
             </td>
