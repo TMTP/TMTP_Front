@@ -1,10 +1,6 @@
 import fetch from "isomorphic-unfetch";
 
 export async function fetchMedicineData() {
-  // const serviceKey = encodeURIComponent(
-  //   "0aq5WhGCXd25lcajnThUxW94UFyuv1WV8clq1W42wiCaMegFEzoQbw18rbKMr2JInoFAOINkrOAPmSIMxpgDlw=="
-  // );
-  // const apiUrl = `https://apis.data.go.kr/1471000/MdcinGrnIdntfcInfoService01/getMdcinGrnIdntfcInfoList01?serviceKey=${serviceKey}&pageNo=1&numOfRows=100&type=json`;
   const apiUrl = "http://15.165.220.225:8080/all";
   const response = await fetch(apiUrl);
 
