@@ -4,14 +4,14 @@ import { FaSearch } from "react-icons/fa";
 
 const SearchBar = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
-  //나중에 api들어오면 이름을 변경하자
+
   const router = useRouter();
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { searchPath, searchType } = props;
-    // 검색 타입(searchType)에 따라 경로를 생성
+
     const path =
       searchType === "shape"
         ? `${searchPath}/shape/${searchQuery}`

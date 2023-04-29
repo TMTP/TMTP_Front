@@ -9,7 +9,7 @@ const CompareIndexPage = () => {
   return (
     <main>
       <Layout>
-        <h1>Selected Users:</h1>
+        <h1>하이고..</h1>
       </Layout>
     </main>
   );
@@ -17,10 +17,13 @@ const CompareIndexPage = () => {
 
 export async function getServerSideProps() {
   try {
-    const data = await fetchMedicineData();
+    const medicineData = await fetchMedicineData();
+    const epillData = await fetchEpillData();
+
     return {
       props: {
-        medicineData: data,
+        medicineData,
+        epillData,
       },
     };
   } catch (err) {
@@ -28,6 +31,7 @@ export async function getServerSideProps() {
     return {
       props: {
         medicineData: null,
+        epillData: null,
       },
     };
   }
