@@ -4,6 +4,7 @@ import { fetchMedicineData } from "./api/api";
 import ShapeFindBox from "@/components/shapeFind/shapeFindBox";
 import CompareBox from "@/components/compare/compareBox";
 import React from "react";
+import CaptureImage from "./webcam";
 
 export default function Home({ medicineData }) {
   return (
@@ -16,6 +17,7 @@ export default function Home({ medicineData }) {
           autofocus={true}
           searchPath="/search"
         />
+        {/* <CaptureImage /> */}
         <ShapeFindBox />
         <CompareBox medicineData={medicineData} />
       </Layout>

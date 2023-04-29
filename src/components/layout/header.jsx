@@ -3,6 +3,7 @@ import useHeaderDetail from "../../hook/components/header/hook";
 import { FaSearch, FaPills } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import CaptureImage from "@/pages/webcam";
 
 const Header = () => {
   const { data, title } = useHeaderDetail();
@@ -39,6 +40,7 @@ const Header = () => {
             );
           })}
         </div>
+        <CaptureImage />
       </div>
       <div className="flex items-center w-auto">
         <form className="flex-grow" onSubmit={handleSearch}>

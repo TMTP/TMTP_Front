@@ -7,6 +7,7 @@ const Layout = ({ children }) => {
     <div className="flex flex-col justify-between h-[120vh]">
       <Header />
       {children}
+
       <Footer />
     </div>
   );
