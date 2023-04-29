@@ -1,5 +1,5 @@
 function useProductDetailId() {
-  const data = [
+  const medicineTextData = [
     "품목 일련번호",
     "품목 목적",
     "품목 모양",
@@ -9,7 +9,7 @@ function useProductDetailId() {
     "PERMIT DATE",
     "품목 제형",
   ];
-  const properties = {
+  const medicineProperties = {
     "품목 일련번호": "item_SEQ",
     "품목 목적": "class_NAME",
     "품목 모양": "drug_SHAPE",
@@ -19,8 +19,22 @@ function useProductDetailId() {
     "PERMIT DATE": "item_PERMIT_DATE",
     "품목 제형": "form_CODE_NAME",
   };
+  const pillTextData = [
+    "약품 효능",
+    "약품 사용법",
+    "주의 사항",
+    "약품 부작용",
+    "약품 보관법",
+  ];
+  const pillProperties = {
+    "약품 효능": "efcyQesitm",
+    "약품 사용법": "useMethodQesitm",
+    "주의 사항": "atpnQesitm",
+    "약품 부작용": "seQesitm",
+    "약품 보관법": "depositMethodQesitm",
+  };
 
-  return { data, properties };
+  return { medicineTextData, medicineProperties, pillTextData, pillProperties };
 }
 
 export default useProductDetailId;
