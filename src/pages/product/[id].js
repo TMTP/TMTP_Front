@@ -4,7 +4,7 @@ import { fetchEpillData, fetchMedicineData } from "../api/api";
 import Image from "next/image";
 import useProductDetailId from "@/hook/pages/product/id/hook";
 
-const ProductDetailPage = ({ medicineData, epillData }) => {
+const ProductDetailPage = ({ medicineData }) => {
   const { medicineTextData, medicineProperties, pillTextData, pillProperties } =
     useProductDetailId();
   const router = useRouter();
@@ -12,9 +12,6 @@ const ProductDetailPage = ({ medicineData, epillData }) => {
 
   const selectedMedicineProduct = medicineData.find(
     (product) => product.item_SEQ === id
-  );
-  const selectedPillsProduct = epillData.find(
-    (product) => product.itemSeq === id
   );
 
   return (
@@ -27,7 +24,7 @@ const ProductDetailPage = ({ medicineData, epillData }) => {
               alt={selectedMedicineProduct.item_IMAGE}
               width={800}
               height={1000}
-              className="object-cover h-60 sm:h-96 w-full"
+              className="object-cover h-60 sm:h-48 w-full"
             />
           </div>
         </div>
@@ -36,30 +33,42 @@ const ProductDetailPage = ({ medicineData, epillData }) => {
             <h1 className="text-3xl font-bold text-center my-10">
               {selectedMedicineProduct.item_NAME}
             </h1>
-            {selectedPillsProduct && (
-              <div>
-                {pillTextData.map((item, index) => (
-                  <div key={index}>
-                    <div>
-                      <span className="font-bold text-xl">{item}:</span>
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: selectedPillsProduct[pillProperties[item]],
-                        }}
-                        title={item}
-                      />
-                    </div>
+            <div className="flex sm:text-sm">
+              <div className="w-1/2">
+                {selectedMedicineProduct && (
+                  <div>
+                    {pillTextData.map((item, index) => (
+                      <div key={index}>
+                        <div>
+                          <span className="font-bold text-xl">
+                            {index + 1}.{item}
+                          </span>
+                          <p
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                selectedMedicineProduct[pillProperties[item]],
+                            }}
+                            title={item}
+                          />
+                        </div>
+                      </div>
+                    ))}
                   </div>
+                )}
+              </div>
+              <div className="w-1/2">
+                {medicineTextData.map((item, index) => (
+                  <p key={index}>
+                    <span className="font-bold mr-3">
+                      {index + 1}.{item} :
+                    </span>
+                    <span className="inline-flex justify-end">
+                      {selectedMedicineProduct[medicineProperties[item]]}
+                    </span>
+                  </p>
                 ))}
               </div>
-            )}
-
-            {medicineTextData.map((item, index) => (
-              <p key={index}>
-                <span className="font-bold ">{item}: </span>
-                {selectedMedicineProduct[medicineProperties[item]]}
-              </p>
-            ))}
+            </div>
           </div>
         </div>
       </div>
@@ -70,12 +79,10 @@ const ProductDetailPage = ({ medicineData, epillData }) => {
 export async function getServerSideProps() {
   try {
     const medicineData = await fetchMedicineData();
-    const epillData = await fetchEpillData();
 
     return {
       props: {
         medicineData,
-        epillData,
       },
     };
   } catch (err) {
@@ -83,7 +90,6 @@ export async function getServerSideProps() {
     return {
       props: {
         medicineData: null,
-        epillData: null,
       },
     };
   }
