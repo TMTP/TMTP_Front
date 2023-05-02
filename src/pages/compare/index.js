@@ -27,6 +27,14 @@ const CompareIndexPage = ({ medicineData }) => {
           )
         );
       console.log(overlappingContents);
+      if (overlappingContents.length > 0) {
+        return (
+          <div>
+            <p>{medicine.item_NAME}</p>
+            <p>{medicine.intrcQesitm}</p>
+          </div>
+        );
+      }
     }
 
     return null;
@@ -45,10 +53,7 @@ const CompareIndexPage = ({ medicineData }) => {
         <h1>Compare Medicines</h1>
 
         {availableToTake ? (
-          <div>
-            <h2>Overlapping Medicines</h2>
-            {medicineContents}
-          </div>
+          <div>{medicineContents}</div>
         ) : (
           <p>Available to take!</p>
         )}
