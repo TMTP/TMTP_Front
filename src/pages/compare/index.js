@@ -15,9 +15,6 @@ const CompareIndexPage = ({ medicineData }) => {
         ? medicine.class_NAME.split(".").flatMap((word) => word.split(" "))
         : [medicine.class_NAME];
 
-      console.log(classWords);
-      console.log(medicine.intrcQesitm);
-
       const overlappingContents = medicine.intrcQesitm
         .split(/<[^>]*>/g)
         .flatMap((str) => str.trim().split(/\s+/))
@@ -26,34 +23,43 @@ const CompareIndexPage = ({ medicineData }) => {
             content.toLowerCase().includes(classWord.toLowerCase())
           )
         );
-      console.log(overlappingContents);
-      if (overlappingContents.length > 0) {
-        return (
-          <div>
-            <p>{medicine.item_NAME}</p>
-            <p>{medicine.intrcQesitm}</p>
-          </div>
-        );
-      }
+
+      return overlappingContents.length > 0;
     }
 
-    return null;
+    return false;
   };
 
   const medicineContents = medicineData.map((medicine) =>
     checkContents(medicine)
   );
 
-  const availableToTake =
-    medicineContents.filter((content) => content !== null).length > 0;
+  const availableToTake = medicineData.some((medicine) =>
+    checkContents(medicine)
+  );
 
   return (
     <main>
       <Layout>
-        <h1>Compare Medicines</h1>
-
+        <h2 className="flex justify-center font-bold text-3xl">
+          상호 복용 여부
+        </h2>
         {availableToTake ? (
-          <div>{medicineContents}</div>
+          <div>
+            {medicineData.map((medicine) =>
+              checkContents(medicine) ? (
+                <div key={medicine.item_SEQ}>
+                  <p>{medicine.item_NAME}</p>
+                  <p
+                    className=" font-bold"
+                    dangerouslySetInnerHTML={{
+                      __html: medicine.intrcQesitm,
+                    }}
+                  ></p>
+                </div>
+              ) : null
+            )}
+          </div>
         ) : (
           <p>Available to take!</p>
         )}
