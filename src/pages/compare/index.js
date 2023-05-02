@@ -3,13 +3,61 @@ import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
 import { fetchMedicineData } from "../api/api";
 
-const CompareIndexPage = () => {
+const CompareIndexPage = ({ medicineData }) => {
   const router = useRouter();
+  const { id: ids = [] } = router.query;
+
+  const idsArray = Array.isArray(ids) ? ids : [ids];
+
+  const checkContents = (medicine) => {
+    if (idsArray.includes(medicine.item_SEQ)) {
+      const classWords = medicine.class_NAME.includes(".")
+        ? medicine.class_NAME.split(".").flatMap((word) => word.split(" "))
+        : [medicine.class_NAME];
+
+      const overlappingContents = [...medicine.intrcQesitm].filter((content) =>
+        classWords.some((classWord) => content.includes(classWord))
+      );
+      console.log(classWords);
+      console.log(overlappingContents);
+
+      if (overlappingContents.length > 0) {
+        return (
+          <div>
+            <h2>{medicine.item_NAME}</h2>
+            <ul>
+              {overlappingContents.map((content, index) => (
+                <li key={index}>{content}</li>
+              ))}
+            </ul>
+          </div>
+        );
+      }
+    }
+
+    return null;
+  };
+
+  const medicineContents = medicineData.map((medicine) =>
+    checkContents(medicine)
+  );
+
+  const availableToTake =
+    medicineContents.filter((content) => content !== null).length > 0;
 
   return (
     <main>
       <Layout>
-        <h1>하이고..</h1>
+        <h1>Compare Medicines</h1>
+
+        {availableToTake ? (
+          <div>
+            <h2>Overlapping Medicines</h2>
+            {medicineContents}
+          </div>
+        ) : (
+          <p>Available to take!</p>
+        )}
       </Layout>
     </main>
   );
@@ -18,12 +66,10 @@ const CompareIndexPage = () => {
 export async function getServerSideProps() {
   try {
     const medicineData = await fetchMedicineData();
-    const epillData = await fetchEpillData();
 
     return {
       props: {
         medicineData,
-        epillData,
       },
     };
   } catch (err) {
@@ -31,7 +77,6 @@ export async function getServerSideProps() {
     return {
       props: {
         medicineData: null,
-        epillData: null,
       },
     };
   }

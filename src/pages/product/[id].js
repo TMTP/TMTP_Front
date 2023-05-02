@@ -60,7 +60,7 @@ const ProductDetailPage = ({ medicineData }) => {
                 {medicineTextData.map((item, index) => (
                   <p key={index}>
                     <span className="font-bold mr-3">
-                      {index + 1}.{item} :
+                      {pillTextData.length + index + 1}. {item} :
                     </span>
                     <span className="inline-flex justify-end">
                       {selectedMedicineProduct[medicineProperties[item]]}

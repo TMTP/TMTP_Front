@@ -47,8 +47,23 @@ const CaptureImage = () => {
   };
   // 스탑캡쳐에서 오류발생 ㅠ
 
+  const videoConstraints = {
+    width: 640,
+    height: 480,
+    facingMode: "user",
+  };
+
+  const gridStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "repeat(3, 1fr)",
+    gridGap: "10px",
+    height: "100vh",
+    padding: "10px",
+  };
+
   return (
-    <>
+    <div>
       {!isCameraOpen && (
         <button onClick={startCapture}>
           <FaCamera size={20} />
@@ -56,14 +71,18 @@ const CaptureImage = () => {
       )}
       {isCameraOpen && (
         <>
-          <Webcam audio={false} ref={webcamRef} />
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            videoConstraints={videoConstraints}
+          />
           <button onClick={capture}>캡쳐</button>
           <button onClick={stopCapture}>카메라 닫기</button>
           {photo && <Image width={500} height={500} src={photo} alt={photo} />}
           {photo && <button onClick={uploadToS3}>S3로 업로드</button>}
         </>
       )}
-    </>
+    </div>
   );
 };
 
