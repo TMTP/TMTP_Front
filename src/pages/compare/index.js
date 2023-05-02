@@ -15,24 +15,18 @@ const CompareIndexPage = ({ medicineData }) => {
         ? medicine.class_NAME.split(".").flatMap((word) => word.split(" "))
         : [medicine.class_NAME];
 
-      const overlappingContents = [...medicine.intrcQesitm].filter((content) =>
-        classWords.some((classWord) => content.includes(classWord))
-      );
       console.log(classWords);
-      console.log(overlappingContents);
+      console.log(medicine.intrcQesitm);
 
-      if (overlappingContents.length > 0) {
-        return (
-          <div>
-            <h2>{medicine.item_NAME}</h2>
-            <ul>
-              {overlappingContents.map((content, index) => (
-                <li key={index}>{content}</li>
-              ))}
-            </ul>
-          </div>
+      const overlappingContents = medicine.intrcQesitm
+        .split(/<[^>]*>/g)
+        .flatMap((str) => str.trim().split(/\s+/))
+        .filter((content) =>
+          classWords.some((classWord) =>
+            content.toLowerCase().includes(classWord.toLowerCase())
+          )
         );
-      }
+      console.log(overlappingContents);
     }
 
     return null;
