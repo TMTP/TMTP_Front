@@ -48,10 +48,12 @@ const CompareIndexPage = ({ medicineData }) => {
           <div>
             {medicineData.map((medicine) =>
               checkContents(medicine) ? (
-                <div key={medicine.item_SEQ}>
-                  <p>{medicine.item_NAME}</p>
+                <div className="mx-10" key={medicine.item_SEQ}>
+                  <p className="text-3xl mb-4 text-red-500 font-bold">
+                    {medicine.item_NAME}
+                  </p>
                   <p
-                    className=" font-bold"
+                    className="mb-3 font-bold"
                     dangerouslySetInnerHTML={{
                       __html: medicine.intrcQesitm,
                     }}
@@ -61,7 +63,7 @@ const CompareIndexPage = ({ medicineData }) => {
             )}
           </div>
         ) : (
-          <p>Available to take!</p>
+          <p>복용 가능</p>
         )}
       </Layout>
     </main>
