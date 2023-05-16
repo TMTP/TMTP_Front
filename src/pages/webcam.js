@@ -16,15 +16,14 @@ const CaptureImage = () => {
 
   const uploadToS3 = async () => {
     const s3 = new AWS.S3({
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
     });
     const params = {
-      Bucket: process.env.AWS_BUCKET_NAME,
-      Key: `photo-${Date.now()}.jpg`,
+      Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
+      Key: `photo-${Date.now()}.png`,
       Body: photo,
-      ContentType: "image/jpg",
-      ACL: "public-read",
+      ContentType: "image/png",
     };
     try {
       await s3.upload(params).promise();
@@ -38,14 +37,6 @@ const CaptureImage = () => {
     setIsCameraOpen(true);
     webcamRef.current?.startCapture();
   };
-
-  const stopCapture = () => {
-    setIsCameraOpen(false);
-    if (webcamRef.current) {
-      webcamRef.current.stopCapture();
-    }
-  };
-  // 스탑캡쳐에서 오류발생 ㅠ
 
   const videoConstraints = {
     width: 640,
@@ -77,7 +68,7 @@ const CaptureImage = () => {
             videoConstraints={videoConstraints}
           />
           <button onClick={capture}>캡쳐</button>
-          <button onClick={stopCapture}>카메라 닫기</button>
+          {/* <button onClick={stopCapture}>카메라 닫기</button> */}
           {photo && <Image width={500} height={500} src={photo} alt={photo} />}
           {photo && <button onClick={uploadToS3}>S3로 업로드</button>}
         </>
