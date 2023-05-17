@@ -9,9 +9,22 @@ const CaptureImage = () => {
   const [photo, setPhoto] = useState(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
 
+  const dataURLtoBlob = (dataURL) => {
+    const arr = dataURL.split(",");
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+  };
+
   const capture = () => {
     const imageSrc = webcamRef.current.getScreenshot();
-    setPhoto(imageSrc);
+    const blob = dataURLtoBlob(imageSrc);
+    setPhoto(blob);
   };
 
   const uploadToS3 = async () => {
@@ -21,9 +34,9 @@ const CaptureImage = () => {
     });
     const params = {
       Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET_NAME,
-      Key: `photo-${Date.now()}.png`,
+      Key: `photo-${Date.now()}.jpg`,
       Body: photo,
-      ContentType: "image/png",
+      ContentType: "image/jpg",
     };
     try {
       await s3.upload(params).promise();
@@ -44,19 +57,11 @@ const CaptureImage = () => {
     facingMode: "user",
   };
 
-  const gridStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
-    gridTemplateRows: "repeat(3, 1fr)",
-    gridGap: "10px",
-    height: "100vh",
-    padding: "10px",
-  };
-
   return (
     <div>
       {!isCameraOpen && (
         <button onClick={startCapture}>
+          1
           <FaCamera size={20} />
         </button>
       )}
@@ -68,7 +73,7 @@ const CaptureImage = () => {
             videoConstraints={videoConstraints}
           />
           <button onClick={capture}>캡쳐</button>
-          {/* <button onClick={stopCapture}>카메라 닫기</button> */}
+
           {photo && <Image width={500} height={500} src={photo} alt={photo} />}
           {photo && <button onClick={uploadToS3}>S3로 업로드</button>}
         </>
