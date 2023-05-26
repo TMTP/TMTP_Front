@@ -29,16 +29,6 @@ export default function Home({ medicineData }) {
   return (
     <div>
       <Layout>
-        <div>
-          <button onClick={handleModalOpen}>Open Webcam</button>
-
-          {/* Modal component */}
-          {isModalOpen && (
-            <WebCamModal onClose={handleModalClose}>
-              {isCameraOpen && <CaptureImage />}
-            </WebCamModal>
-          )}
-        </div>
         <SearchBar
           placeholder="제품명, 코드를 입력하세요"
           width="w-1/2"

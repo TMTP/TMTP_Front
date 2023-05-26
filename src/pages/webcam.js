@@ -62,22 +62,48 @@ const CaptureImage = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       {!isCameraOpen && (
-        <button onClick={startCapture}>
-          <FaCamera size={20} />
+        <button
+          onClick={startCapture}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          <FaCamera size={32} color="white" />
         </button>
       )}
       {isCameraOpen && (
         <>
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            videoConstraints={videoConstraints}
-          />
-          <div>
-            <button onClick={captureAndUpload}>Capture and Upload</button>
-            <button onClick={stopCapture}>
+          <div className="relative">
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              videoConstraints={videoConstraints}
+              className="rounded-md"
+            />
+            <div className="absolute top-0 left-0 right-0 bottom-0 grid grid-cols-3 grid-rows-3 gap-0">
+              {Array.from(Array(9).keys()).map((index) => (
+                <div
+                  key={index}
+                  className="border border-gray-500"
+                  style={{
+                    gridColumn: `span 1`,
+                    gridRow: `span 1`,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="mt-4">
+            <button
+              onClick={captureAndUpload}
+              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
+            >
+              캡쳐하기
+            </button>
+            <button
+              onClick={stopCapture}
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >
               <FaTimes size={20} />
             </button>
           </div>
