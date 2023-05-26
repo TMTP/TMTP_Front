@@ -4,7 +4,7 @@ import useFooterDetail from "../../hook/components/footer/hook";
 const Footer = () => {
   const { data, copyright } = useFooterDetail();
   return (
-    <footer className="bg-blue-500 text-gray-400 py-4 px-4 sm:flex sm:justify-between sm:text-xs">
+    <footer className="bg-[#2AC1BC] text-gray-400 py-4 px-4 sm:flex sm:justify-between sm:text-xs">
       <div className="flex justify-center sm:justify-start mb-2 sm:mb-0">
         <p className="text-center sm:text-left text-white">
           {copyright.map((item, index) => {
