@@ -1,12 +1,10 @@
 import Webcam from "react-webcam";
 import AWS from "aws-sdk";
 import { useRef, useState } from "react";
-import Image from "next/image";
-import { FaCamera } from "react-icons/fa";
+import { FaCamera, FaTimes } from "react-icons/fa";
 
 const CaptureImage = () => {
   const webcamRef = useRef(null);
-  const [photo, setPhoto] = useState(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
 
   const dataURLtoBlob = (dataURL) => {
@@ -21,13 +19,13 @@ const CaptureImage = () => {
     return new Blob([u8arr], { type: mime });
   };
 
-  const capture = () => {
+  const captureAndUpload = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     const blob = dataURLtoBlob(imageSrc);
-    setPhoto(blob);
+    uploadToS3(blob);
   };
 
-  const uploadToS3 = async () => {
+  const uploadToS3 = async (photo) => {
     const s3 = new AWS.S3({
       accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
@@ -51,17 +49,22 @@ const CaptureImage = () => {
     webcamRef.current?.startCapture();
   };
 
+  const stopCapture = () => {
+    setIsCameraOpen(false);
+    const videoElement = webcamRef.current.video;
+    videoElement.pause();
+  };
+
   const videoConstraints = {
     width: 640,
     height: 480,
-    facingMode: "user",
+    facingMode: "environment",
   };
 
   return (
     <div>
       {!isCameraOpen && (
         <button onClick={startCapture}>
-          1
           <FaCamera size={20} />
         </button>
       )}
@@ -72,10 +75,12 @@ const CaptureImage = () => {
             ref={webcamRef}
             videoConstraints={videoConstraints}
           />
-          <button onClick={capture}>캡쳐</button>
-
-          {photo && <Image width={500} height={500} src={photo} alt={photo} />}
-          {photo && <button onClick={uploadToS3}>S3로 업로드</button>}
+          <div>
+            <button onClick={captureAndUpload}>Capture and Upload</button>
+            <button onClick={stopCapture}>
+              <FaTimes size={20} />
+            </button>
+          </div>
         </>
       )}
     </div>
