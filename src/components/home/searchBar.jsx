@@ -38,12 +38,18 @@ const SearchBar = (props) => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder={props.placeholder || "Search"}
-          className="block w-full border border-gray-300 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          className={`block w-full ${
+            props.height || "h-auto"
+          }  border border-gray-300 rounded-md py-2 px-4 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm`}
           ref={inputRef}
         />
         <button
           type="submit"
-          className="absolute -inset-y-1 right-0 flex items-center justify-center w-10 h-[48px] text-gray-500 bg-transparent hover:text-gray-700 focus:outline-none"
+          className={`absolute -inset-y-${
+            props.height ? "1" : "1"
+          } right-0  flex items-center justify-center w-10 h-[${
+            props.height ? "60" : "48"
+          }]px  text-gray-500 bg-transparent hover:text-gray-700 focus:outline-none`}
         >
           <FaSearch />
         </button>
