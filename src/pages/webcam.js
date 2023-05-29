@@ -2,10 +2,12 @@ import Webcam from "react-webcam";
 import AWS from "aws-sdk";
 import { useRef, useState } from "react";
 import { FaCamera, FaTimes } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const CaptureImage = () => {
   const webcamRef = useRef(null);
   const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const router = useRouter();
 
   const dataURLtoBlob = (dataURL) => {
     const arr = dataURL.split(",");
@@ -23,6 +25,7 @@ const CaptureImage = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     const blob = dataURLtoBlob(imageSrc);
     uploadToS3(blob);
+    router.push(`/camera`);
   };
 
   const uploadToS3 = async (photo) => {
