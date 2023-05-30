@@ -17,7 +17,7 @@ export default function CustomTable({ data }) {
         {data.map((result) => (
           <tr
             key={result.item_SEQ}
-            className="border-2 border-gray-900 text-xs text-center font-extrabold"
+            className="border-2 border-gray-900 text-xs text-center font-extrabold  sm:text-xs sm:text-ellipsis"
           >
             <td className="justify-center flex sm:mt-3 border-r-2 border-black">
               <div className="relative">
@@ -30,7 +30,7 @@ export default function CustomTable({ data }) {
                 />
               </div>
             </td>
-            <td className="px-3 py-2 border-r-2 border-black text-lg sm:text-xs">
+            <td className="px-3 py-2 border-r-2 border-black text-lg sm:hidden">
               <Link
                 href={{
                   pathname: "/product/[id]",
@@ -42,9 +42,9 @@ export default function CustomTable({ data }) {
               </Link>
             </td>
 
-            <td className="py-2 border-r-2 border-black">{`${result.item_SEQ}`}</td>
-            <td className="py-2 border-r-2 border-black">{`${result.class_NAME}`}</td>
-            <td className="sm:hidden py-2 border-r-2 border-black">
+            <td className="py-2 border-r-2 border-black sm:text-xs">{`${result.item_SEQ}`}</td>
+            <td className="py-2 border-r-2 border-black sm:text-xs">{`${result.class_NAME}`}</td>
+            <td className=" py-2 border-r-2 border-black">
               {result.form_CODE_NAME}
             </td>
           </tr>

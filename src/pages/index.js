@@ -28,41 +28,43 @@ export default function Home({ medicineData }) {
 
   return (
     <div className="bg-[#2AC1BC]">
-      <Layout>
-        <SectionsContainer {...options}>
-          <Section anchors="search">
-            <div className="mt-72">
-              <SearchBar
-                placeholder="제품명, 코드를 입력하세요"
-                width="w-2/3"
-                hidden="hidden"
-                height="h-20"
-                autofocus={true}
-                searchPath="/search"
-              />
-            </div>
-          </Section>
-          <Section anchors="shape">
-            <div className="flex justify-center  items-center mt-24 sm:flex-col sm:mt-10 md:flex-col">
-              <div className="mr-10  bg-opacity-40 sm:bg-opacity-100  p-4 rounded-lg">
-                <div className="border-b-2 flex items-start border-black">
-                  <p className="text-4xl font-bold  sm:text-2xl">
-                    {data.shapeBox.title}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-2xl font-semibold sm:text-lg">
-                    {data.shapeBox.description}
-                  </p>
-                </div>
+      <SectionsContainer {...options}>
+        <Section anchors="search">
+          <Header />
+          <div className="mt-72">
+            <SearchBar
+              placeholder="제품명, 코드를 입력하세요"
+              width="w-2/3"
+              hidden="hidden"
+              height="h-20"
+              autofocus={true}
+              searchPath="/search"
+            />
+          </div>
+        </Section>
+        <Section anchors="shape">
+          <Header />
+          <div className="flex justify-center  items-center mt-24 sm:flex-col sm:mt-10 md:flex-col">
+            <div className="mr-10  bg-opacity-40 sm:bg-opacity-100  p-4 rounded-lg">
+              <div className="border-b-2 flex items-start border-black">
+                <p className="text-4xl font-bold  sm:text-2xl">
+                  {data.shapeBox.title}
+                </p>
               </div>
-
               <div>
-                <ShapeFindBox />
+                <p className="text-2xl font-semibold sm:text-lg">
+                  {data.shapeBox.description}
+                </p>
               </div>
             </div>
-          </Section>
-          <Section anchors="compare">
+
+            <div>
+              <ShapeFindBox />
+            </div>
+          </div>
+        </Section>
+        <Section anchors="compare">
+          <Layout>
             <div className="flex justify-center items-center mt-24 pb-64 sm:pb-48 sm:flex-col sm:mt-5 md:flex-col">
               <div className="mr-10  bg-opacity-40 sm:bg-opacity-100  p-4 rounded-lg">
                 <div className="border-b-2 flex items-start border-black">
@@ -81,10 +83,9 @@ export default function Home({ medicineData }) {
                 <CompareBox medicineData={medicineData} />
               </div>
             </div>
-            <Footer />
-          </Section>
-        </SectionsContainer>
-      </Layout>
+          </Layout>
+        </Section>
+      </SectionsContainer>
     </div>
   );
 }
