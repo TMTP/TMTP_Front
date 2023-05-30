@@ -45,14 +45,14 @@ export default function Home({ medicineData }) {
         <Section anchors="shape">
           <Header />
           <div className="flex justify-center  items-center mt-24 sm:flex-col sm:mt-10 md:flex-col">
-            <div className="mr-10  bg-opacity-40 sm:bg-opacity-100  p-4 rounded-lg">
+            <div className="mr-10 bg-opacity-40 sm:bg-opacity-100 p-4 rounded-lg transition ease-in duration-500 hover:text-white">
               <div className="border-b-2 flex items-start border-black">
-                <p className="text-4xl font-bold  sm:text-2xl">
+                <p className="text-4xl font-bold sm:text-2xl ">
                   {data.shapeBox.title}
                 </p>
               </div>
               <div>
-                <p className="text-2xl font-semibold sm:text-lg">
+                <p className="text-2xl font-semibold sm:text-lg ">
                   {data.shapeBox.description}
                 </p>
               </div>
@@ -65,8 +65,8 @@ export default function Home({ medicineData }) {
         </Section>
         <Section anchors="compare">
           <Layout>
-            <div className="flex justify-center items-center mt-24 pb-64 sm:pb-48 sm:flex-col sm:mt-5 md:flex-col">
-              <div className="mr-10  bg-opacity-40 sm:bg-opacity-100  p-4 rounded-lg">
+            <div className="flex justify-center items-center mt-24 pb-64  sm:pb-48 sm:flex-col sm:mt-5 md:flex-col">
+              <div className="mr-10 transition ease-in duration-500 hover:text-white p-4 rounded-lg">
                 <div className="border-b-2 flex items-start border-black">
                   <p className="text-4xl font-bold  sm:text-2xl">
                     {data.compareBox.title}
