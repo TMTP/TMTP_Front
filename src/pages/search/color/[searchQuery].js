@@ -2,8 +2,10 @@ import Layout from "@/components/layout/layout";
 import { fetchMedicineData } from "../../api/api";
 import CustomTable from "@/utils/table";
 import { usePagination } from "@/utils/pagination";
+import useSearchColorDetail from "@/hook/pages/search/color/[searchQuery]/hook";
 
 export default function ColorSearchPage({ medicineData, searchQuery }) {
+  const { data } = useSearchColorDetail();
   const selectedOptions = searchQuery.split("+");
   const [selectedColors, selectedShape, selectedForm, selectedSplitLine] =
     selectedOptions.map((option) => option.split(":")[1]);
@@ -48,14 +50,35 @@ export default function ColorSearchPage({ medicineData, searchQuery }) {
 
     return isMatched;
   });
+
   const { currentPage, handlePageChange, currentData, visiblePages, pages } =
     usePagination(filteredData);
+
   return (
     <main>
       <Layout>
-        <div className="bg-white p-6 rounded-md  ">
-          <CustomTable data={currentData} />
+        <div className="text-4xl my-10 text-center sm:text-xl sm:my-5">
+          {currentData.length > 0 && (
+            <div className="my-0">
+              <h2>
+                {selectedColors},{selectedShape},{selectedForm},(
+                {selectedSplitLine}) 에 대한
+              </h2>
+              <br />
+              <h2>{data.title}</h2>
+            </div>
+          )}
         </div>
+        {currentData.length > 0 && (
+          <div className="bg-white p-6 rounded-md">
+            <CustomTable data={currentData} />
+          </div>
+        )}
+        {currentData.length === 0 && (
+          <div className="mb-10 text-center">
+            <h3 className="text-6xl">{data.untitle}</h3>
+          </div>
+        )}
         <div className="flex flex-row justify-center">
           {visiblePages.map((page) => (
             <button

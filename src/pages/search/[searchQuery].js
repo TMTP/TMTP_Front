@@ -19,7 +19,9 @@ export default function MainSearchPage({ medicineData, searchQuery }) {
       <Layout>
         <SearchBar
           placeholder="이름을 입력하세요"
-          width="w-1/2"
+          width="w-2/3"
+          hidden="hidden"
+          height="h-20"
           searchPath="/search"
         />
         {noResults ? (
