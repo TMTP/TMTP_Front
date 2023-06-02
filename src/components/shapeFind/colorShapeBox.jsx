@@ -124,22 +124,21 @@ const ColorShapeBox = () => {
       selectedSplitLine,
     };
     const query = Object.entries(selectedOptions)
-      .filter(([, value]) => value) // 값이 존재하는 프로퍼티만 필터링
-      .map(([key, value]) => `${key}:${value}`) // 쿼리스트링 형태로 변환
-      .join("+"); // 각 쿼리스트링을 "+"로 연결하여 하나의 문자열로 만듦
+      .filter(([, value]) => value)
+      .map(([key, value]) => `${key}:${value}`)
+      .join("+");
 
-    // 검색 결과 페이지로 이동
     router.push(`/search/color/${query}`);
   };
 
   return (
-    <div className="py-4 sm:pt-0 pl-3">
+    <div className="py-4 ml-12 sm:ml-3 sm:py-2 md:ml-4">
       <div>
         <ul className="flex flex-wrap ">
           {data.map((color) => (
             <li
               key={color.name}
-              className={`w-1/4 md:w-1/4 mb-2 md:mb-0 sm:mb-1 sm:text-xs  ${
+              className={`w-1/4 md:w-1/4 mb-6 text-xl md:mb-5 sm:mb-3 sm:text-sm  ${
                 selectedColors.includes(color.name) && color.colorClass
               }`}
               onClick={() => toggleColor(color.name)}
@@ -155,12 +154,12 @@ const ColorShapeBox = () => {
         </ul>
       </div>
       <div>
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex space-x-4 mb-8">
+        <div className="flex flex-row  justify-between sm:justify-center sm:mr-4 md:justify-center md:mr-4">
+          <div className=" flex space-x-4 my-8">
             {baseName.map((name, index) => (
               <button
                 key={`btn-${index}`}
-                className="sm:w-18 sm:h-10 sm:mt-3 sm:text-xs sm:whitespace-nowrap border sm:px-1 sm:py-1  border-black px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+                className="border w-40  h-14 sm:w-20 sm:h-10  border-black px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-white  sm:mt-3 sm:text-xs sm:whitespace-nowrap  sm:px-1 sm:py-1"
                 onClick={() => {
                   if (index === 0) setShowShapeModal(true);
                   if (index === 1) setShowFormModal(true);
@@ -185,11 +184,11 @@ const ColorShapeBox = () => {
                     className="fixed inset-0 z-50 flex items-center justify-center"
                   >
                     <div className="absolute inset-0 opacity-75"></div>
-                    <div className="z-10 bg-white grid grid-cols-4 border-[1px] border-black p-4 gap-1 rounded-md relative sm:text-xs">
+                    <div className="z-10 bg-white grid grid-cols-4 border-[1px] border-black p-4 gap-1 rounded-md relative sm:text-[8px]">
                       {modal.options.map((option, optionIndex) => (
                         <button
                           key={optionIndex}
-                          className="px-4 py-2 rounded-md hover:bg-cyan-100 bg-gray-200"
+                          className="px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-gray-200"
                           onClick={() => modal.handleClick(option)}
                         >
                           {option.toLowerCase()}
@@ -208,15 +207,15 @@ const ColorShapeBox = () => {
           </div>
         </div>
       </div>
-      <div className=" flex justify-between mx-10">
+      <div className="flex text-center justify-between mx-16 sm:mx-10">
         <button
-          className="border-1 border-black sm:mb-10 sm:w-auto sm:h-auto border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+          className="border-1   w-24 h-10 sm:w-auto sm:h-auto border-black sm:mb-10 border px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-white"
           onClick={handleReset}
         >
           초기화
         </button>
         <button
-          className="border-1 border-black sm:mb-10 sm:w-auto sm:h-auto border px-4 py-2 rounded-md hover:bg-gray-200 bg-white"
+          className="border-1   w-24 h-10 sm:w-auto sm:h-auto border-black sm:mb-10 border px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-white"
           onClick={handleSearch}
         >
           검색

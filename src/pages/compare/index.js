@@ -41,7 +41,7 @@ const CompareIndexPage = ({ medicineData }) => {
   return (
     <main>
       <Layout>
-        <h2 className="flex justify-center font-bold text-3xl">
+        <h2 className="flex justify-center font-bold text-3xl sm:text-2xl">
           상호 복용 여부
         </h2>
         {availableToTake ? (
@@ -63,7 +63,7 @@ const CompareIndexPage = ({ medicineData }) => {
             )}
           </div>
         ) : (
-          <p>복용 가능</p>
+          <p>상호복용 가능</p>
         )}
       </Layout>
     </main>

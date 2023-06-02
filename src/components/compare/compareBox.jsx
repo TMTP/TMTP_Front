@@ -63,10 +63,10 @@ function CompareBox({ medicineData }) {
                             alt={medicine.item_IMAGE}
                             width={300}
                             height={300}
-                            className="w-16 h-16 rounded-full mr-4 sm:w-8 sm:h-8"
+                            className="w-16 h-16 rounded-full mr-4 sm:w-8 sm:h-8 sm:hidden"
                           />
                           <div>
-                            <div className="font-bold sm:text-xs ">
+                            <div className="font-bold sm:text-[4px] ">
                               {medicine.item_NAME}
                             </div>
                             <div className="text-gray-500 sm:hidden">
@@ -104,7 +104,7 @@ function CompareBox({ medicineData }) {
               {selected.map((item, index) => (
                 <div key={index} className="w-full lg:w-1/3">
                   <div className="bg-white shadow rounded-lg p-4 flex items-center justify-between text-sm sm:text-xs">
-                    <p>{item.item_NAME}</p>
+                    <p className="sm:text-[4px]">{item.item_NAME}</p>
                     <button onClick={() => handleDelete(index)}>
                       <FaTimesCircle className="text-red-500" />
                     </button>

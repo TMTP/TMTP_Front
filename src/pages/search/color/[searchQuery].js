@@ -76,7 +76,7 @@ export default function ColorSearchPage({ medicineData, searchQuery }) {
         )}
         {currentData.length === 0 && (
           <div className="mb-10 text-center">
-            <h3 className="text-6xl">{data.untitle}</h3>
+            <h3 className="text-6xl sm:text-2xl">{data.untitle}</h3>
           </div>
         )}
         <div className="flex flex-row justify-center">

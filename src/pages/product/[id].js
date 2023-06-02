@@ -23,7 +23,7 @@ const ProductDetailPage = ({ medicineData }) => {
 
   return (
     <Layout>
-      <div className=" p-6 flex flex-col">
+      <div className="p-6 flex flex-col">
         <div className="flex justify-center items-start mb-6">
           <div className="rounded-lg overflow-hidden shadow-md w-1/2 sm:w-96">
             <Image

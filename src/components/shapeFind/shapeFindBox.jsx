@@ -5,7 +5,7 @@ import ColorShapeBox from "./colorShapeBox";
 const ShapeFindBox = () => {
   return (
     <div className="flex flex-col items-center h-full my-10">
-      <div className="w-96 h-96 sm:w-64 sm:h-60 bg-gray-200 flex flex-col rounded-3xl">
+      <div className="w-[600px] h-[600px] sm:w-80 sm:h-80 bg-gray-200 flex flex-col rounded-3xl">
         <div className="bg-blue-500 text-white h-10 flex items-center justify-center w-full rounded-xl">
           모양 검색
         </div>
@@ -14,6 +14,7 @@ const ShapeFindBox = () => {
             <SearchBar
               my="my-3"
               width="w-full"
+              height="h-14"
               autofocus={false}
               placeholder="약에 적힌 문자검색"
               hidden="hidden"
