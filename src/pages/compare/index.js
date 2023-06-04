@@ -8,35 +8,29 @@ const CompareIndexPage = ({ medicineData }) => {
   const { id: ids = [] } = router.query;
 
   const idsArray = Array.isArray(ids) ? ids : [ids];
+  const [medicineA, medicineB] = medicineData.filter((medicine) =>
+    idsArray.includes(medicine.item_SEQ)
+  );
 
-  const checkContents = (medicine) => {
-    if (idsArray.includes(medicine.item_SEQ)) {
-      const classWords = medicine.class_NAME.includes(".")
-        ? medicine.class_NAME.split(".").flatMap((word) => word.split(" "))
-        : [medicine.class_NAME];
+  const checkContents = (medicineA, medicineB) => {
+    const classWords = medicineB.class_NAME
+      .split(".")
+      .flatMap((word) => word.split(" "));
 
-      const overlappingContents = medicine.intrcQesitm
-        .split(/<[^>]*>/g)
-        .flatMap((str) => str.trim().split(/\s+/))
-        .filter((content) =>
-          classWords.some((classWord) =>
-            content.toLowerCase().includes(classWord.toLowerCase())
-          )
-        );
-
-      return overlappingContents.length > 0;
-    }
-
-    return false;
+    const overlappingContents = medicineA.intrcQesitm
+      .split(/<[^>]*>/g)
+      .flatMap((str) => str.trim().split(/\s+/))
+      .filter((content) =>
+        classWords.some((classWord) =>
+          content.toLowerCase().includes(classWord.toLowerCase())
+        )
+      );
+    console.log(classWords);
+    return overlappingContents.length > 0;
   };
 
-  const medicineContents = medicineData.map((medicine) =>
-    checkContents(medicine)
-  );
-
-  const availableToTake = medicineData.some((medicine) =>
-    checkContents(medicine)
-  );
+  const isInteractionA = checkContents(medicineA, medicineB);
+  const isInteractionB = checkContents(medicineB, medicineA);
 
   return (
     <main>
@@ -44,26 +38,38 @@ const CompareIndexPage = ({ medicineData }) => {
         <h2 className="flex justify-center font-bold text-3xl sm:text-2xl">
           상호 복용 여부
         </h2>
-        {availableToTake ? (
+
+        {isInteractionA || isInteractionB ? (
           <div>
-            {medicineData.map((medicine) =>
-              checkContents(medicine) ? (
-                <div className="mx-10" key={medicine.item_SEQ}>
-                  <p className="text-3xl mb-4 text-red-500 font-bold">
-                    {medicine.item_NAME}
-                  </p>
-                  <p
-                    className="mb-3 font-bold"
-                    dangerouslySetInnerHTML={{
-                      __html: medicine.intrcQesitm,
-                    }}
-                  ></p>
-                </div>
-              ) : null
+            {isInteractionA && (
+              <div className="mx-10" key={medicineA.item_SEQ}>
+                <p className="text-3xl mb-4 text-red-500 font-bold">
+                  {medicineA.item_NAME}
+                </p>
+                <p
+                  className="mb-3 font-bold"
+                  dangerouslySetInnerHTML={{
+                    __html: medicineA.intrcQesitm,
+                  }}
+                ></p>
+              </div>
+            )}
+            {isInteractionB && (
+              <div className="mx-10" key={medicineB.item_SEQ}>
+                <p className="text-3xl mb-4 text-red-500 font-bold">
+                  {medicineB.item_NAME}
+                </p>
+                <p
+                  className="mb-3 font-bold"
+                  dangerouslySetInnerHTML={{
+                    __html: medicineB.intrcQesitm,
+                  }}
+                ></p>
+              </div>
             )}
           </div>
         ) : (
-          <p>상호복용 가능</p>
+          <p>복용 가능</p>
         )}
       </Layout>
     </main>
