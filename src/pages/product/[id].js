@@ -46,7 +46,7 @@ const ProductDetailPage = ({ medicineData }) => {
                 <button
                   key={tab}
                   className={`w-28 h-10 text-white mr-2 rounded-xl sm:mb-1 md:mb-2 ${
-                    selectedTab === tab ? "bg-[#2AC1BC]" : "bg-gray-400"
+                    selectedTab === tab ? "bg-blue-400" : "bg-gray-400"
                   }`}
                   onClick={() => handleTabClick(tab)}
                 >

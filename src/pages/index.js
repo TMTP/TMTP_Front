@@ -36,8 +36,12 @@ export default function Home({ medicineData }) {
           <div className="sm:mt-20 md:mt-36 md:ml-10">
             <p className="xl:hidden lg:hidden text-right mr-10 text-3xl font-bold text-black">
               내가
-              <hr /> 먹는 약이
-              <hr /> 궁금할때
+            </p>
+            <p className="xl:hidden lg:hidden text-right mr-10 text-3xl font-bold text-black">
+              먹는 약이
+            </p>
+            <p className="xl:hidden lg:hidden text-right mr-10 text-3xl font-bold text-black">
+              궁금할때
             </p>
             <Image
               src={Background}
