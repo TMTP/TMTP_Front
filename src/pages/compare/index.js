@@ -25,7 +25,7 @@ const CompareIndexPage = ({ medicineData }) => {
           content.toLowerCase().includes(classWord.toLowerCase())
         )
       );
-    console.log(classWords);
+    // console.log(classWords);
     return overlappingContents.length > 0;
   };
 
