@@ -8,6 +8,8 @@ import { SectionsContainer, Section } from "react-fullpage";
 import Footer from "@/components/layout/footer";
 import useIndexDetail from "@/hook/pages/index/hook";
 import Header from "@/components/layout/header";
+import Background from "../assets/back.png";
+import Image from "next/image";
 
 export default function Home({ medicineData }) {
   const { data } = useIndexDetail();
@@ -17,7 +19,7 @@ export default function Home({ medicineData }) {
     arrowNavigation: true,
     className: "SectionContainer",
     delay: 1000,
-    navigation: false,
+    navigation: true,
     scrollBar: false,
     sectionClassName: "Section",
     sectionPaddingTop: "10",
@@ -27,11 +29,25 @@ export default function Home({ medicineData }) {
   };
 
   return (
-    <div className="bg-[#2AC1BC]">
+    <div className="bg-[#E7E7E7]">
       <SectionsContainer {...options}>
         <Section anchors="search">
           <Header />
-          <div className="mt-72">
+          <div className="sm:mt-20 md:mt-36 md:ml-10">
+            <p className="xl:hidden lg:hidden text-right mr-10 text-3xl font-bold text-black">
+              내가
+              <hr /> 먹는 약이
+              <hr /> 궁금할때
+            </p>
+            <Image
+              src={Background}
+              alt="background"
+              width={600}
+              height={600}
+              className="xl:hidden lg:hidden"
+            />
+          </div>
+          <div className="mt-72 sm:mt-0">
             <SearchBar
               placeholder="제품명, 코드를 입력하세요"
               width="w-2/3"
@@ -44,15 +60,15 @@ export default function Home({ medicineData }) {
         </Section>
         <Section anchors="shape">
           <Header />
-          <div className="flex justify-center  items-center mt-24 sm:flex-col sm:mt-10 md:flex-col">
-            <div className="mr-10 bg-opacity-40 text-white sm:bg-opacity-100 p-4 rounded-lg transition ease-in duration-500 hover:text-red-500">
+          <div className="flex justify-center  items-center mt-24 sm:flex-col sm:mt-0 md:flex-col">
+            <div className="mr-10 bg-opacity-40 text-black sm:bg-opacity-100 p-4 rounded-lg transition ease-in duration-500 hover:text-blue-400">
               <div className="border-b-2 flex items-start border-black">
-                <p className="text-4xl text-red-500 font-bold sm:text-2xl ">
+                <p className="text-5xl mb-1 text-black font-bold sm:text-3xl ">
                   {data.shapeBox.title}
                 </p>
               </div>
               <div>
-                <p className="text-2xl font-semibold sm:text-lg ">
+                <p className="text-2xl font-semibold opacity-60 hover:opacity-100 sm:text-lg ">
                   {data.shapeBox.description}
                 </p>
               </div>
@@ -65,15 +81,15 @@ export default function Home({ medicineData }) {
         </Section>
         <Section anchors="compare">
           <Layout>
-            <div className="flex justify-center items-center mt-24 pb-64  sm:pb-48 sm:flex-col sm:mt-5 md:flex-col">
-              <div className="mr-10 text-white transition ease-in duration-500 hover:text-red-500 p-4 rounded-lg">
+            <div className="flex justify-center items-center mt-24 pb-64 mx-20 sm:mx-0  sm:pb-48 sm:flex-col sm:mt-5 md:flex-col">
+              <div className="mr-10 text-black transition ease-in duration-500 hover:text-blue-400 p-4 rounded-lg">
                 <div className="border-b-2 flex items-start border-black">
-                  <p className="text-4xl text-red-500 font-bold  sm:text-2xl">
+                  <p className="text-5xl mb-1 text-black font-bold  sm:text-3xl">
                     {data.compareBox.title}
                   </p>
                 </div>
                 <div>
-                  <p className="text-lg font-semibold sm:text-lg">
+                  <p className="text-lg font-semibold opacity-60 hover:opacity-100 sm:text-lg">
                     {data.compareBox.description}
                   </p>
                 </div>

@@ -1,7 +1,7 @@
 function useIndexDetail() {
   const data = {
     shapeBox: {
-      title: "모양 검색 창",
+      title: "모양 검색창",
       description: "약품의 색깔과 모양으로 쉽게 검색가능",
     },
 

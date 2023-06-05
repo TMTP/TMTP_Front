@@ -37,7 +37,10 @@ const CompareIndexPage = ({ medicineData }) => {
       <Layout>
         <h2 className="flex flex-wrap  font-bold text-3xl sm:text-2xl">
           <p className="w-full text-center text-red-500">
-            {medicineA.item_NAME},{medicineB.item_NAME}
+            {medicineA.item_NAME}
+          </p>
+          <p className="w-full text-center text-red-500">
+            {medicineB.item_NAME}
           </p>
           <p className="w-full text-center">상호 복용 여부</p>
         </h2>
@@ -83,7 +86,10 @@ const CompareIndexPage = ({ medicineData }) => {
             </div>
           </div>
         ) : (
-          <p>복용 가능</p>
+          <p className="text-center text-2xl font-bold sm:text-base sm:mx-10">
+            {medicineA.item_NAME}, {medicineB.item_NAME} 두 약은 같이{" "}
+            <span className="bg-blue-200">복용 가능합니다.</span>
+          </p>
         )}
       </Layout>
     </main>

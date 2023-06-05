@@ -34,8 +34,8 @@ const Header = () => {
   }, [isModalOpen]);
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-[#2AC1BC] p-6">
-      <div className="flex items-center flex-shrink-0 text-white">
+    <nav className="flex items-center justify-between flex-wrap  p-6">
+      <div className="flex items-center flex-shrink-0 text-black">
         <FaPills size={48} />
         <Link
           className="mx-2 font-bold text-xl tracking-tight"
@@ -48,7 +48,7 @@ const Header = () => {
           {data.map((data, index) => {
             return (
               <Link
-                className="ml-3 text-lg font-bold text-white hover:text-gray-900 sm:text-xs"
+                className="ml-3 text-lg font-bold text-black hover:text-gray-900 sm:text-xs"
                 href={data.url}
                 passHref
                 key={index}
@@ -59,7 +59,7 @@ const Header = () => {
           })}
 
           <button
-            className="px-3 text-lg font-bold text-white hover:text-gray-900 sm:text-xs"
+            className="px-3 text-lg font-bold text-black hover:text-gray-900 sm:text-xs"
             onClick={handleModalOpen}
           >
             카메라 열기
@@ -76,7 +76,7 @@ const Header = () => {
         <form className="flex-grow" onSubmit={handleSearch}>
           <div className="flex items-center border-b-2 border-white py-2">
             <input
-              className="appearance-none bg-transparent border-none w-full text-white mr-3 py-1 px-2 leading-tight focus:outline-none"
+              className="appearance-none bg-transparent border-none w-full text-black mr-3 py-1 px-2 leading-tight focus:outline-none"
               type="text"
               placeholder="Search"
               value={searchQuery}

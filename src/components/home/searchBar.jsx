@@ -26,12 +26,12 @@ const SearchBar = (props) => {
   }, [props.autofocus]);
 
   return (
-    <div className="flex justify-center items-start">
+    <div className="flex justify-center items-start ">
       <form
         onSubmit={handleSubmit}
         className={`relative ${props.width || "w-96"} ${
           props.my || "my-10"
-        } sm:${props.hidden || ""}`}
+        } sm:${props.hidden || ""} shadow-xl`}
       >
         <div className="relative">
           <input

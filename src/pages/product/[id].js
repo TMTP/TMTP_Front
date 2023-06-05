@@ -58,7 +58,6 @@ const ProductDetailPage = ({ medicineData }) => {
                 </button>
               ))}
             </div>
-
             {/* 버튼 */}
             {/* 내용물 */}
             <div className="flex  sm:text-sm">

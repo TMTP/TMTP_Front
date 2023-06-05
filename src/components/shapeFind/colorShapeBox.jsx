@@ -159,7 +159,7 @@ const ColorShapeBox = () => {
             {baseName.map((name, index) => (
               <button
                 key={`btn-${index}`}
-                className="border w-40  h-14 sm:w-20 sm:h-10  border-black px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-white  sm:mt-3 sm:text-xs sm:whitespace-nowrap  sm:px-1 sm:py-1"
+                className="border w-40  h-14 sm:w-20 sm:h-10  border-black px-4 py-2 rounded-md hover:bg-[#E7E7E7] focus:border-blue-500 focus:border-[2px] bg-white  sm:mt-3 sm:text-xs sm:whitespace-nowrap  sm:px-1 sm:py-1"
                 onClick={() => {
                   if (index === 0) setShowShapeModal(true);
                   if (index === 1) setShowFormModal(true);
