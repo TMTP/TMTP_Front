@@ -35,57 +35,33 @@ const ProductDetailPage = ({ medicineData }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between">
-          <div className="flex flex-col mb-4">
+        <div className="flex flex-col mx-96 sm:mx-0 sm:flex-row justify-between">
+          <div className="flex flex-col  mb-4">
             <h1 className="text-3xl font-bold text-center my-10">
               {selectedMedicineProduct.item_NAME}
             </h1>
             {/* 버튼 */}
-            <div className="flex justify-center mt-4 mb-10 font-bold sm:grid sm:grid-cols-2 md:grid md:grid-cols-3">
-              <button
-                className={`w-28 h-10 text-white mr-2 sm:mb-1 md:mb-2 ${
-                  selectedTab === 1 ? "bg-[#2AC1BC]" : "bg-gray-400"
-                }`}
-                onClick={() => handleTabClick(1)}
-              >
-                품목 정보
-              </button>
-              <button
-                className={`w-28 h-10 text-white mr-2 sm:mb-1 md:mb-2 ${
-                  selectedTab === 2 ? "bg-[#2AC1BC]" : "bg-gray-400"
-                }`}
-                onClick={() => handleTabClick(2)}
-              >
-                약품 효능
-              </button>
-              <button
-                className={`w-28 h-10 text-white mr-2 sm:mb-1 md:mb-2 ${
-                  selectedTab === 3 ? "bg-[#2AC1BC]" : "bg-gray-400"
-                }`}
-                onClick={() => handleTabClick(3)}
-              >
-                주의 사항
-              </button>
-              <button
-                className={`w-28 h-10 text-white mr-2 sm:mb-1 md:mb-2 ${
-                  selectedTab === 4 ? "bg-[#2AC1BC]" : "bg-gray-400"
-                }`}
-                onClick={() => handleTabClick(4)}
-              >
-                약품 부작용
-              </button>
-              <button
-                className={`w-28 h-10 text-white mr-2  ${
-                  selectedTab === 5 ? "bg-[#2AC1BC]" : "bg-gray-400"
-                }`}
-                onClick={() => handleTabClick(5)}
-              >
-                약품 보관법
-              </button>
+            <div className="flex  justify-center mt-4 mb-10 font-bold  sm:grid sm:grid-cols-2 md:grid md:grid-cols-3">
+              {[1, 2, 3, 4, 5].map((tab) => (
+                <button
+                  key={tab}
+                  className={`w-28 h-10 text-white mr-2 rounded-xl sm:mb-1 md:mb-2 ${
+                    selectedTab === tab ? "bg-[#2AC1BC]" : "bg-gray-400"
+                  }`}
+                  onClick={() => handleTabClick(tab)}
+                >
+                  {tab === 1 && "품목 정보"}
+                  {tab === 2 && "약품 효능"}
+                  {tab === 3 && "주의 사항"}
+                  {tab === 4 && "약품 부작용"}
+                  {tab === 5 && "약품 보관법"}
+                </button>
+              ))}
             </div>
+
             {/* 버튼 */}
             {/* 내용물 */}
-            <div className="flex sm:text-sm">
+            <div className="flex  sm:text-sm">
               <div className=" w-full">
                 {/* 버튼 클릭에 따라 해당 항목을 보여줌 */}
                 {selectedTab === 1 && (

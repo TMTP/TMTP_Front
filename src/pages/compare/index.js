@@ -31,42 +31,56 @@ const CompareIndexPage = ({ medicineData }) => {
 
   const isInteractionA = checkContents(medicineA, medicineB);
   const isInteractionB = checkContents(medicineB, medicineA);
-
+  // console.log(isInteractionA, isInteractionB);
   return (
     <main>
       <Layout>
-        <h2 className="flex justify-center font-bold text-3xl sm:text-2xl">
-          상호 복용 여부
+        <h2 className="flex flex-wrap  font-bold text-3xl sm:text-2xl">
+          <p className="w-full text-center text-red-500">
+            {medicineA.item_NAME},{medicineB.item_NAME}
+          </p>
+          <p className="w-full text-center">상호 복용 여부</p>
         </h2>
 
         {isInteractionA || isInteractionB ? (
-          <div>
-            {isInteractionA && (
-              <div className="mx-10" key={medicineA.item_SEQ}>
-                <p className="text-3xl mb-4 text-red-500 font-bold">
+          <div className="flex flex-row justify-around sm:flex-col ">
+            <div
+              className="border-2 w-1/3 sm:w-auto border-black mx-10 sm:mb-5"
+              key={medicineA.item_SEQ}
+            >
+              <div>
+                <p className="text-2xl py-2 border-b-2 border-black text-center mb-4 text-red-500 font-bold sm:text-xl">
                   {medicineA.item_NAME}
                 </p>
+              </div>
+              <div>
                 <p
-                  className="mb-3 font-bold"
+                  className="mx-2 my-2 font-bold sm:text-xs"
                   dangerouslySetInnerHTML={{
                     __html: medicineA.intrcQesitm,
                   }}
                 ></p>
               </div>
-            )}
-            {isInteractionB && (
-              <div className="mx-10" key={medicineB.item_SEQ}>
-                <p className="text-3xl mb-4 text-red-500 font-bold">
+            </div>
+
+            <div
+              className="border-2 w-1/3 sm:w-auto border-black mx-10 sm:mb-5"
+              key={medicineB.item_SEQ}
+            >
+              <div>
+                <p className="text-2xl py-2 border-b-2 border-black text-center mb-4 text-red-500 font-bold sm:text-xl">
                   {medicineB.item_NAME}
                 </p>
+              </div>
+              <div>
                 <p
-                  className="mb-3 font-bold"
+                  className="mx-2 my-2 font-bold sm:text-xs"
                   dangerouslySetInnerHTML={{
                     __html: medicineB.intrcQesitm,
                   }}
                 ></p>
               </div>
-            )}
+            </div>
           </div>
         ) : (
           <p>복용 가능</p>
