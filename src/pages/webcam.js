@@ -1,5 +1,5 @@
 import Webcam from "react-webcam";
-import AWS from "aws-sdk";
+// import AWS from "aws-sdk";
 import { useRef, useState } from "react";
 import { FaCamera, FaTimes } from "react-icons/fa";
 import { useRouter } from "next/router";
