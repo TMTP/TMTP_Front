@@ -14,6 +14,7 @@ export default function MainSearchPage({ medicineData, searchQuery }) {
       )
     );
   const noResults = currentData.length === 0;
+  console.log(currentData);
   return (
     <main>
       <Layout>
