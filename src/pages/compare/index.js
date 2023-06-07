@@ -25,70 +25,77 @@ const CompareIndexPage = ({ medicineData }) => {
           content.toLowerCase().includes(classWord.toLowerCase())
         )
       );
-    // console.log(classWords);
+
     return overlappingContents.length > 0;
   };
 
   const isInteractionA = checkContents(medicineA, medicineB);
   const isInteractionB = checkContents(medicineB, medicineA);
-  // console.log(isInteractionA, isInteractionB);
+
   return (
     <main>
       <Layout>
-        <h2 className="flex flex-wrap  font-bold text-3xl sm:text-2xl">
-          <p className="w-full text-center text-red-500">
-            {medicineA.item_NAME}
-          </p>
-          <p className="w-full text-center text-red-500">
-            {medicineB.item_NAME}
-          </p>
-          <p className="w-full text-center">상호 복용 여부</p>
-        </h2>
+        <div className=" lg:mx-20 lg:py-20 lg:bg-gray-200 lg:shadow-md xl:mx-20 xl:py-20 xl:bg-gray-200 xl:shadow-md">
+          <h2 className="flex flex-wrap  font-bold text-3xl sm:text-2xl">
+            <p className="w-full text-center text-blue-400">
+              {medicineA.item_NAME}
+            </p>
+            <p className="w-full text-center text-blue-400 mb-8 sm:mb-0">
+              {medicineB.item_NAME}
+            </p>
+            <p className="w-full text-center">상호 복용 여부</p>
+          </h2>
+        </div>
 
         {isInteractionA || isInteractionB ? (
-          <div className="flex flex-row justify-around sm:flex-col ">
-            <div
-              className="border-2 w-1/3 sm:w-auto border-black mx-10 sm:mb-5"
-              key={medicineA.item_SEQ}
-            >
-              <div>
-                <p className="text-2xl py-2 border-b-2 border-black text-center mb-4 text-red-500 font-bold sm:text-xl">
-                  {medicineA.item_NAME}
-                </p>
+          <div>
+            <p className="text-center mb-10 font-bold text-4xl sm:text-2xl text-red-500">
+              선택한 두 약은 복용이 불가합니다
+            </p>
+            <div className="flex flex-row justify-around sm:flex-col ">
+              <div
+                className="rounded-2xl w-1/3 bg-white sm:w-auto border-black shadow-2xl hover:scale-110 transition-transform duration-500 mx-10 sm:mb-5"
+                key={medicineA.item_SEQ}
+              >
+                <div>
+                  <p className="text-2xl py-2 border-b-[2px] border-black text-center mb-4 text-red-500 font-bold sm:text-xl">
+                    {medicineA.item_NAME}
+                  </p>
+                </div>
+                <div>
+                  <p
+                    className="mx-2 my-2 font-bold sm:text-xs"
+                    dangerouslySetInnerHTML={{
+                      __html: medicineA.intrcQesitm,
+                    }}
+                  ></p>
+                </div>
               </div>
-              <div>
-                <p
-                  className="mx-2 my-2 font-bold sm:text-xs"
-                  dangerouslySetInnerHTML={{
-                    __html: medicineA.intrcQesitm,
-                  }}
-                ></p>
-              </div>
-            </div>
 
-            <div
-              className="border-2 w-1/3 sm:w-auto border-black mx-10 sm:mb-5"
-              key={medicineB.item_SEQ}
-            >
-              <div>
-                <p className="text-2xl py-2 border-b-2 border-black text-center mb-4 text-red-500 font-bold sm:text-xl">
-                  {medicineB.item_NAME}
-                </p>
-              </div>
-              <div>
-                <p
-                  className="mx-2 my-2 font-bold sm:text-xs"
-                  dangerouslySetInnerHTML={{
-                    __html: medicineB.intrcQesitm,
-                  }}
-                ></p>
+              <div
+                className="rounded-2xl w-1/3 bg-white sm:w-auto border-black shadow-2xl hover:scale-110 transition-transform duration-500 mx-10 sm:mb-5"
+                key={medicineB.item_SEQ}
+              >
+                <div>
+                  <p className="text-2xl py-2 border-b-2 border-black text-center mb-4 text-red-500 font-bold sm:text-xl">
+                    {medicineB.item_NAME}
+                  </p>
+                </div>
+                <div>
+                  <p
+                    className="mx-2 my-2 font-bold sm:text-xs"
+                    dangerouslySetInnerHTML={{
+                      __html: medicineB.intrcQesitm,
+                    }}
+                  ></p>
+                </div>
               </div>
             </div>
           </div>
         ) : (
           <p className="text-center text-2xl font-bold sm:text-base sm:mx-10">
             {medicineA.item_NAME}, {medicineB.item_NAME} 두 약은 같이{" "}
-            <span className="bg-blue-200">복용 가능합니다.</span>
+            <span className="bg-yellow-200">복용 가능합니다.</span>
           </p>
         )}
       </Layout>

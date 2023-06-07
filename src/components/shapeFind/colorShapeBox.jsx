@@ -159,7 +159,7 @@ const ColorShapeBox = () => {
             {baseName.map((name, index) => (
               <button
                 key={`btn-${index}`}
-                className="border w-40  h-14 sm:w-20 sm:h-10  border-black px-4 py-2 rounded-md hover:bg-[#E7E7E7] focus:border-blue-500 focus:border-[2px] bg-white  sm:mt-3 sm:text-xs sm:whitespace-nowrap  sm:px-1 sm:py-1"
+                className="border w-40  h-14 sm:w-20 sm:h-10  border-black px-4 py-2 rounded-md hover:bg-[#E7E7E7]  bg-white  sm:mt-3 sm:text-xs sm:whitespace-nowrap  sm:px-1 sm:py-1"
                 onClick={() => {
                   if (index === 0) setShowShapeModal(true);
                   if (index === 1) setShowFormModal(true);
@@ -188,7 +188,7 @@ const ColorShapeBox = () => {
                       {modal.options.map((option, optionIndex) => (
                         <button
                           key={optionIndex}
-                          className="px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-gray-200"
+                          className="px-4 py-2 rounded-md hover:bg-[#E7E7E7]  bg-gray-200"
                           onClick={() => modal.handleClick(option)}
                         >
                           {option.toLowerCase()}
@@ -209,13 +209,13 @@ const ColorShapeBox = () => {
       </div>
       <div className="flex text-center justify-between mx-16 sm:mx-10">
         <button
-          className="border-1   w-24 h-10 sm:w-auto sm:h-auto border-black sm:mb-10 border px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-white"
+          className="border-1   w-24 h-10 sm:w-auto sm:h-auto border-black sm:mb-10 border px-4 py-2 rounded-md hover:bg-[#E7E7E7]  bg-white"
           onClick={handleReset}
         >
           초기화
         </button>
         <button
-          className="border-1   w-24 h-10 sm:w-auto sm:h-auto border-black sm:mb-10 border px-4 py-2 rounded-md hover:bg-[#2AC1BC] bg-white"
+          className="border-1   w-24 h-10 sm:w-auto sm:h-auto border-black sm:mb-10 border px-4 py-2 rounded-md hover:bg-[#E7E7E7]  bg-white"
           onClick={handleSearch}
         >
           검색

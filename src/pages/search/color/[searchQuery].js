@@ -57,7 +57,7 @@ export default function ColorSearchPage({ medicineData, searchQuery }) {
   return (
     <main>
       <Layout>
-        <div className="text-4xl my-10 text-center sm:text-xl sm:my-5">
+        <div className="text-4xl  bg-white  text-center sm:text-xl sm:my-5">
           {currentData.length > 0 && (
             <div className="my-0">
               <h2>

@@ -43,8 +43,8 @@ export default function CustomTable({ data }) {
             </td>
 
             <td className="py-2 border-r-2 border-l-2 border-black sm:text-xs">{`${result.item_SEQ}`}</td>
-            <td className="py-2 border-r-2 border-black sm:text-xs">{`${result.class_NAME}`}</td>
-            <td className=" py-2 border-r-2 border-black">
+            <td className="py-2 border-r-2 text-base border-black sm:text-xs">{`${result.class_NAME}`}</td>
+            <td className=" py-2 border-r-2 text-base border-black sm:text-xs">
               {result.form_CODE_NAME}
             </td>
           </tr>

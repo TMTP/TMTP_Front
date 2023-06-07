@@ -58,12 +58,12 @@ const Header = () => {
             );
           })}
 
-          <button
+          {/* <button
             className="px-3 text-lg font-bold text-black hover:text-gray-900 sm:text-xs"
             onClick={handleModalOpen}
           >
             카메라 열기
-          </button>
+          </button> */}
 
           {isModalOpen && (
             <WebCamModal onClose={handleModalClose}>
