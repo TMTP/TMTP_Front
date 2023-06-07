@@ -19,4 +19,7 @@ module.exports = {
     },
   },
   plugins: [],
+  experimental: {
+    fontFace: true,
+  },
 };
