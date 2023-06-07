@@ -5,7 +5,6 @@ import ShapeFindBox from "@/components/shapeFind/shapeFindBox";
 import CompareBox from "@/components/compare/compareBox";
 import React from "react";
 import { SectionsContainer, Section } from "react-fullpage";
-import Footer from "@/components/layout/footer";
 import useIndexDetail from "@/hook/pages/index/hook";
 import Header from "@/components/layout/header";
 import Background from "../assets/back.png";
@@ -29,7 +28,7 @@ export default function Home({ medicineData }) {
   };
 
   return (
-    <div className="bg-[#E7E7E7]">
+    <div className="bg-[#E7E7E7] font-jamsil">
       <SectionsContainer {...options}>
         <Section anchors="search">
           <Header />

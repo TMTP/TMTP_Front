@@ -35,19 +35,21 @@ const CompareIndexPage = ({ medicineData }) => {
   return (
     <main>
       <Layout>
-        <h2 className="flex flex-wrap  font-bold text-3xl sm:text-2xl">
-          <p className="w-full text-center text-blue-400">
-            {medicineA.item_NAME}
-          </p>
-          <p className="w-full text-center text-blue-400">
-            {medicineB.item_NAME}
-          </p>
-          <p className="w-full text-center">상호 복용 여부</p>
-        </h2>
+        <div className=" lg:mx-20 lg:py-20 lg:bg-gray-200 lg:shadow-md xl:mx-20 xl:py-20 xl:bg-gray-200 xl:shadow-md">
+          <h2 className="flex flex-wrap  font-bold text-3xl sm:text-2xl">
+            <p className="w-full text-center text-blue-400">
+              {medicineA.item_NAME}
+            </p>
+            <p className="w-full text-center text-blue-400 mb-8 sm:mb-0">
+              {medicineB.item_NAME}
+            </p>
+            <p className="w-full text-center">상호 복용 여부</p>
+          </h2>
+        </div>
 
         {isInteractionA || isInteractionB ? (
           <div>
-            <p className="text-center mb-10 font-bold text-4xl text-red-500">
+            <p className="text-center mb-10 font-bold text-4xl sm:text-2xl text-red-500">
               선택한 두 약은 복용이 불가합니다
             </p>
             <div className="flex flex-row justify-around sm:flex-col ">

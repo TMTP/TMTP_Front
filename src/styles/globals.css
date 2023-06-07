@@ -18,11 +18,11 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  font-family: -apple-system, InkLipquid, sans-serif;
+}
 
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+@font-face {
+  font-family: "InkLipquid";
+  font-weight: 200;
+  src: url("/fonts/OAGothic-Medium.ttf") format("truetype");
 }
