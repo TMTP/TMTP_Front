@@ -20,15 +20,23 @@ export default function CustomTable({ data }) {
             className="border-2 border-gray-900 text-xs text-center font-extrabold  sm:text-xs sm:text-ellipsis"
           >
             <td className="justify-center flex sm:mt-3  border-black">
-              <div className="relative ">
-                <Image
-                  src={result.item_IMAGE}
-                  alt={result.item_IMAGE}
-                  width={100}
-                  height={100}
-                  className="rounded-full h-14 w-14 sm:h-14 sm:w-24 sm:p-3 lg:m-4 xl:m-4"
-                />
-              </div>
+              <Link
+                href={{
+                  pathname: "/product/[id]",
+                  query: { id: result.item_SEQ },
+                }}
+                className="hover:text-blue-400 transition-colors duration-300"
+              >
+                <div className="relative ">
+                  <Image
+                    src={result.item_IMAGE}
+                    alt={result.item_IMAGE}
+                    width={100}
+                    height={100}
+                    className="rounded-full h-14 w-14 sm:h-14 sm:w-24 sm:p-3 lg:m-4 xl:m-4"
+                  />
+                </div>
+              </Link>
             </td>
             <td className="px-3 py-2 border-r-2 border-l-2  border-black text-lg sm:hidden">
               <Link

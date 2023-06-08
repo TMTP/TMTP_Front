@@ -63,7 +63,7 @@ export default function Home({ medicineData }) {
         </Section>
         <Section anchors="shape">
           <Header />
-          <div className="flex justify-center  items-center mt-24 sm:flex-col sm:mt-0 md:flex-col">
+          <div className="flex justify-center  items-center mt-10 sm:flex-col sm:mt-0 md:flex-col">
             <div className="mr-10 bg-opacity-40 text-black sm:bg-opacity-100 p-4 rounded-lg transition ease-in duration-500 hover:text-blue-400">
               <div className="border-b-2 flex items-start border-black">
                 <p className="text-5xl mb-1 text-black font-bold sm:text-3xl ">

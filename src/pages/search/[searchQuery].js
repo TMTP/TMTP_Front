@@ -61,6 +61,7 @@ export async function getServerSideProps({ query }) {
   try {
     const { searchQuery } = query;
     const data = await fetchMedicineData();
+    console.log(query);
     return {
       props: {
         medicineData: data,

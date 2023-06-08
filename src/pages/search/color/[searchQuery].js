@@ -12,7 +12,7 @@ export default function ColorSearchPage({ medicineData, searchQuery }) {
 
   const filteredData = medicineData.filter((item) => {
     let isMatched = false;
-
+    console.log(item.color_CLASS1);
     if (selectedColors) {
       const colors = selectedColors.split(",");
       isMatched = colors.some((color) =>
@@ -57,7 +57,7 @@ export default function ColorSearchPage({ medicineData, searchQuery }) {
   return (
     <main>
       <Layout>
-        <div className="text-4xl  bg-white  text-center sm:text-xl sm:my-5">
+        <div className="text-4xl mt-2 bg-white text-center sm:text-xl sm:my-5">
           {currentData.length > 0 && (
             <div className="my-0">
               <h2>
